@@ -9,6 +9,7 @@ import { HomeComponent } from './feature/home/home.component';
 import { MenuComponent } from './feature/menu/menu.component';
 import { AboutComponent } from './feature/about/about.component';
 import { ContactComponent } from './feature/contact/contact.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ContactComponent } from './feature/contact/contact.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule
   ],
   providers: [],
