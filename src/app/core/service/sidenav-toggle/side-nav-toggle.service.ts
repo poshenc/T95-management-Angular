@@ -12,4 +12,12 @@ export class SideNavToggleService {
   toggleSideNav() {
     this.sideNavState$.next(!this.sideNavState$.getValue());
   }
+
+  toggleSideNavExpand() {
+    this.sideNavState$.next(true);
+  }
+
+  toggleSideNavCollapse() {
+    this.sideNavState$.next(false);
+  }
 }
