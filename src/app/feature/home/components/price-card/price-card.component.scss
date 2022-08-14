@@ -1,0 +1,46 @@
+.price-card-container {
+  padding: 5px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.card-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(203, 228, 203);
+  border-radius: 5px;
+  min-width: 85px;
+}
+
+.stock-name {
+  text-align: center;
+  font-size: 18px;
+  padding-top: 6px;
+}
+
+.stock-price {
+  text-align: center;
+  font-size: 18px;
+  padding-top: 6px;
+}
+
+//movement
+.movement-container{
+  padding: 8px 4px;
+  width: 85px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.movement-point {
+  line-height: 8px;
+  font-size: 8px;
+}
+
+.movement-percentage {
+  font-size: 8px;
+  line-height: 8px;
+}

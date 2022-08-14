@@ -1,0 +1,10 @@
+<div class="price-card-container">
+  <div class="card-wrapper" *ngFor="let stock of stockData">
+    <p class="stock-name">{{stock.name}}</p>
+    <p class="stock-price">{{stock.price}}</p>
+    <div class="movement-container">
+      <p class="movement-point">{{stock.movementPrice}}</p>
+      <p class="movement-percentage">{{stock.movementPercentage}}%</p>
+    </div>
+  </div>
+</div>
