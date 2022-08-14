@@ -13,8 +13,9 @@
     // position: fixed;
     width: 100%;
     overflow: hidden;
-    position: sticky;
-    top: 100%;
+    position: fixed;
+    bottom: 0;
+    // : 0;
   }
 
   .nav-bot-wrapper {
@@ -75,14 +76,13 @@
   width: 70px;
   height: 100vh;
   background-color: #383c54;
-  transition: 300ms;
-  transition-timing-function: ease-in-out;
+  transition: width 300ms ease-in-out;
 }
 
 .navbar-left-expanded {
   width: 300px;
-  transition: 300ms;
-  transition-timing-function: ease-in-out;
+  transition: width 300ms ease-in-out;
+
 }
 
 .nav-left-wrapper{
@@ -131,7 +131,7 @@
   cursor: pointer;
 }
 
-.bi-box-arrow-left:hover {
+.bi-box-arrow-left:hover, .bi-box-arrow-right:hover {
   color: #545c6c
 }
 

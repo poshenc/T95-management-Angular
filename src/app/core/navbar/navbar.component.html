@@ -2,11 +2,11 @@
   <div class="nav-bot-wrapper">
     <div class="nav-bot-item" routerLink="" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}"><i
         class="bi bi-house-fill"></i><span>Home</span></div>
-    <div class="nav-bot-item" routerLink="menu" routerLinkActive="active-link"><i
+    <div class="nav-bot-item" routerLink="watchlist" routerLinkActive="active-link"><i
         class="bi bi-list-stars"></i><span>Watchlist</span></div>
-    <div class="nav-bot-item" routerLink="about" routerLinkActive="active-link"><i
+    <div class="nav-bot-item" routerLink="portfolio" routerLinkActive="active-link"><i
         class="bi bi-pie-chart-fill"></i><span>Portfolio</span></div>
-    <div class="nav-bot-item" routerLink="contact" routerLinkActive="active-link"><i
+    <div class="nav-bot-item" routerLink="analysis" routerLinkActive="active-link"><i
         class="bi bi-file-earmark-bar-graph-fill"></i><span>Analysis</span></div>
   </div>
 </nav>
@@ -25,15 +25,15 @@
         <i class="bi bi-house-fill"></i>
         <span class="nav-text" [ngClass]="{'text-collapse': !(toggle$ | async)}">Home</span>
       </div>
-      <div class="nav-left-item" routerLink="menu" routerLinkActive="active-link">
+      <div class="nav-left-item" routerLink="watchlist" routerLinkActive="active-link">
         <i class="bi bi-list-stars"></i>
         <span class="nav-text" [ngClass]="{'text-collapse': !(toggle$ | async)}">Watchlist</span>
       </div>
-      <div class="nav-left-item" routerLink="about" routerLinkActive="active-link">
+      <div class="nav-left-item" routerLink="portfolio" routerLinkActive="active-link">
         <i class="bi bi-pie-chart-fill"></i>
         <span class="nav-text" [ngClass]="{'text-collapse': !(toggle$ | async)}">Portfolio</span>
       </div>
-      <div class="nav-left-item" routerLink="contact" routerLinkActive="active-link">
+      <div class="nav-left-item" routerLink="analysis" routerLinkActive="active-link">
         <i class="bi bi-file-earmark-bar-graph-fill"></i>
         <span class="nav-text" [ngClass]="{'text-collapse': !(toggle$ | async)}">Analysis</span>
       </div>

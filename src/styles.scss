@@ -9,29 +9,29 @@
 // Be sure that you only ever include this mixin once!
 @include mat.core();
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$t95-primary: mat.define-palette(mat.$indigo-palette);
-$t95-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+// // Define the palettes for your theme using the Material Design palettes available in palette.scss
+// // (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// // hue. Available color palettes: https://material.io/design/color/
+// $t95-primary: mat.define-palette(mat.$indigo-palette);
+// $t95-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
 
-// The warn palette is optional (defaults to red).
-$t95-warn: mat.define-palette(mat.$red-palette);
+// // The warn palette is optional (defaults to red).
+// $t95-warn: mat.define-palette(mat.$red-palette);
 
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
-$t95-theme: mat.define-light-theme((
-  color: (
-    primary: $t95-primary,
-    accent: $t95-accent,
-    warn: $t95-warn,
-  )
-));
+// // Create the theme object. A theme consists of configurations for individual
+// // theming systems such as "color" or "typography".
+// $t95-theme: mat.define-light-theme((
+//   color: (
+//     primary: $t95-primary,
+//     accent: $t95-accent,
+//     warn: $t95-warn,
+//   )
+// ));
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include mat.all-component-themes($t95-theme);
+// @include mat.all-component-themes($t95-theme);
 
 /* You can add global styles to this file, and also import other style files */
 * {
