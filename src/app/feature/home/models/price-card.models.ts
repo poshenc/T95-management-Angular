@@ -1,6 +1,6 @@
 export interface priceCard {
   name: string;
-  price: string;
-  movementPrice: string;
-  movementPercentage: string;
+  price: number;
+  movementPrice: number;
+  movementPercentage: number;
 }
