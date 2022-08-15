@@ -1,0 +1,31 @@
+.holdings-card {
+  background-color: rgb(126, 123, 123);
+  padding: 15px;
+  border-radius: 8px;
+  color: #ffffff;
+}
+
+.holdings-total {
+  margin-top: 5px;
+  margin-bottom: 18px;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.green-text {
+  color: rgb(112, 223, 149);
+}
+
+.red-text {
+  color: rgb(218, 132, 132);
+}
+
+.card-date {
+  padding-top: 10px;
+}

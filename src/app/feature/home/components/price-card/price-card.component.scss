@@ -1,8 +1,8 @@
 .price-card-container {
-  padding: 5px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 8px;
+  margin-bottom: 15px;
 }
 
 .card-wrapper {
@@ -10,9 +10,14 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: rgb(203, 228, 203);
+  background-color: rgb(110, 158, 126);
+  color: #ffffff;
   border-radius: 5px;
   min-width: 85px;
+}
+
+.red-card-wrapper {
+  background-color: rgb(218, 132, 132);
 }
 
 .stock-name {
