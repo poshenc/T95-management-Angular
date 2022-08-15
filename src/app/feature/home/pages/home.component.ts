@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MarketStackApiService } from 'src/app/core/service/market-stack-api/market-stack-api.service';
 import { priceCard } from 'src/app/feature/home/models/price-card.models';
 
 @Component({
@@ -9,8 +10,9 @@ import { priceCard } from 'src/app/feature/home/models/price-card.models';
 export class HomeComponent implements OnInit {
 
   stockData: priceCard[];
+  stockList: string[];
 
-  constructor() {
+  constructor(private marketStackApiService: MarketStackApiService) {
     this.stockData = [
       {
         name: 'Dow Jones',
@@ -36,10 +38,26 @@ export class HomeComponent implements OnInit {
         movementPrice: '40.20',
         movementPercentage: '4.58'
       },
-    ]
+    ];
+
+    this.stockList = ['AAPL', 'TSLA']
+
   }
 
+
+
   ngOnInit(): void {
+    this.getIntradayPriceData(this.stockList);
+  }
+
+  getIntradayPriceData(stockList: string[]) {
+    stockList.map(async stock => {
+      let data = await this.marketStackApiService.getIntradayPriceData(stock).toPromise();
+      console.log('stock name:', stock)
+      console.log('regularMarketPrice', data.quoteResponse.result[0].regularMarketPrice);
+      console.log('regularMarketChange', data.quoteResponse.result[0].regularMarketChange)
+      console.log('regularMarketChangePercent', data.quoteResponse.result[0].regularMarketChangePercent);
+    })
   }
 
 
