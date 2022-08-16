@@ -4,10 +4,10 @@
         class="bi bi-house-fill"></i><span>Home</span></div>
     <div class="nav-bot-item" routerLink="watchlist" routerLinkActive="active-link"><i
         class="bi bi-list-stars"></i><span>Watchlist</span></div>
-    <div class="nav-bot-item" routerLink="portfolio" routerLinkActive="active-link"><i
-        class="bi bi-pie-chart-fill"></i><span>Portfolio</span></div>
     <div class="nav-bot-item" routerLink="analysis" routerLinkActive="active-link"><i
         class="bi bi-file-earmark-bar-graph-fill"></i><span>Analysis</span></div>
+    <div class="nav-bot-item" routerLink="settings" routerLinkActive="active-link"><i
+        class="bi bi-gear-fill"></i><span>Settings</span></div>
   </div>
 </nav>
 
@@ -36,6 +36,10 @@
       <div class="nav-left-item" routerLink="analysis" routerLinkActive="active-link">
         <i class="bi bi-file-earmark-bar-graph-fill"></i>
         <span class="nav-text" [ngClass]="{'text-collapse': !(toggle$ | async)}">Analysis</span>
+      </div>
+      <div class="nav-left-item" routerLink="settings" routerLinkActive="active-link">
+        <i class="bi bi-gear-fill"></i>
+        <span class="nav-text" [ngClass]="{'text-collapse': !(toggle$ | async)}">Settings</span>
       </div>
     </div>
     <div class="nav-t95" [ngClass]="{'text-large': (toggle$ | async)}">T95</div>
