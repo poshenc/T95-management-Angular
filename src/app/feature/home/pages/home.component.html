@@ -1,5 +1,6 @@
 <div class="content-container">
   <app-price-card [stockData]="stockData"></app-price-card>
-  <app-holdings-card></app-holdings-card>
-  <app-portfolio-card [portfolioData]="portfolioData"></app-portfolio-card>
+  <app-profile-card></app-profile-card>
+  <app-holdings-card [(showMoney)]="showMoney"></app-holdings-card>
+  <app-portfolio-card [portfolioData]="portfolioData" [showMoney]="showMoney"></app-portfolio-card>
 </div>

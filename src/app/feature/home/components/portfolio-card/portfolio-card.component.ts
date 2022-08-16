@@ -9,6 +9,7 @@ import { portfolioCard } from '../../models/price-card.models';
 export class PortfolioCardComponent implements OnInit {
 
   @Input() portfolioData: portfolioCard[] | undefined;
+  @Input() showMoney: boolean | undefined;
 
   constructor() { }
 

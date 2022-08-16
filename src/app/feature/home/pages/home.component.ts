@@ -13,6 +13,9 @@ export class HomeComponent implements OnInit {
   stockList: string[];
   portfolioData: portfolioCard[];
 
+  //props to children
+  public showMoney = true;
+
   constructor(private marketStackApiService: MarketStackApiService) {
 
     //mock data for 4 index
