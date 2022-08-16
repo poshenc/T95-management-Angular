@@ -3,6 +3,7 @@
   padding: 15px;
   border-radius: 8px;
   color: #ffffff;
+  margin-bottom: 15px;
 }
 
 .holdings-total {
@@ -16,14 +17,6 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 5px;
-}
-
-.green-text {
-  color: rgb(112, 223, 149);
-}
-
-.red-text {
-  color: rgb(218, 132, 132);
 }
 
 .card-date {

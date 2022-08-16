@@ -54,3 +54,19 @@ body {
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+//common display styles
+.flex-between-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+//common styles
+.red-text {
+  color: rgb(218, 132, 132);
+}
+
+.green-text {
+  color: rgb(112, 223, 149);
+}

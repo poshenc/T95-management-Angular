@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MarketStackApiService } from 'src/app/core/service/market-stack-api/market-stack-api.service';
-import { priceCard } from 'src/app/feature/home/models/price-card.models';
+import { portfolioCard, priceCard } from 'src/app/feature/home/models/price-card.models';
 
 @Component({
   selector: 'app-home',
@@ -11,8 +11,11 @@ export class HomeComponent implements OnInit {
 
   stockData: priceCard[];
   stockList: string[];
+  portfolioData: portfolioCard[];
 
   constructor(private marketStackApiService: MarketStackApiService) {
+
+    //mock data for 4 index
     this.stockData = [
       {
         name: 'Dow Jones',
@@ -40,7 +43,30 @@ export class HomeComponent implements OnInit {
       },
     ];
 
+    //for fetch API use
     this.stockList = ['AAPL', 'TSLA']
+
+    //for portfolio
+    this.portfolioData = [
+      {
+        portfolioName: 'US Stock',
+        total: 120621.92,
+        movementAmount: 39.66,
+        movementPercentage: 0.04
+      },
+      {
+        portfolioName: 'TW Stock',
+        total: 27288.08,
+        movementAmount: 118.84,
+        movementPercentage: 0.44
+      },
+      {
+        portfolioName: 'Crypto',
+        total: 24240.16,
+        movementAmount: -95.11,
+        movementPercentage: -0.39
+      },
+    ]
 
   }
 

@@ -4,3 +4,11 @@ export interface priceCard {
   movementPrice: number;
   movementPercentage: number;
 }
+
+export interface portfolioCard {
+  portfolioName: string;
+  total: number;
+  movementAmount: number;
+  movementPercentage: number;
+}
+
