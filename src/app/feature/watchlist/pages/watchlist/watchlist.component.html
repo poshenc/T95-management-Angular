@@ -1,4 +1,5 @@
-<div class="test">
-  <p>watchlist works!</p>
-
+<div class="layout-container">
+  <app-watchlist-header [watchlists]='watchlists' [currentWatchlist]='currentWatchlist' [watchlistData]='watchlistData'
+    (changeWatchlist)='changeWatchlist($event)'>
+  </app-watchlist-header>
 </div>
