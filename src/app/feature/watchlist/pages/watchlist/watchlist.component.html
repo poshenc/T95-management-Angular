@@ -1,5 +1,7 @@
 <div class="layout-container">
-  <app-watchlist-header [watchlists]='watchlists' [currentWatchlist]='currentWatchlist' [watchlistData]='watchlistData'
+  <app-watchlist-header [watchlists]='watchlists' [currentWatchlist]='currentWatchlist'
     (changeWatchlist)='changeWatchlist($event)'>
   </app-watchlist-header>
+
+  <app-watchlist-grid [watchlistData]='watchlistData'></app-watchlist-grid>
 </div>

@@ -34,6 +34,10 @@
 // @include mat.all-component-themes($t95-theme);
 
 /* You can add global styles to this file, and also import other style files */
+@import 'ag-grid-community/styles/ag-grid.css';
+@import 'ag-grid-community/styles/ag-theme-alpine.css';
+
+
 * {
   padding: 0;
   margin: 0;
@@ -54,6 +58,7 @@ body {
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
 
 
 //common display styles

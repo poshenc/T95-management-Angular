@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Watchlist } from '../../models/watchlist.model';
 
 @Component({
   selector: 'app-watchlist',
@@ -12,7 +13,7 @@ export class WatchlistComponent implements OnInit {
   public watchlistData: any;
 
   //mocked data
-  public watchlistUS = [
+  public watchlistUS: Watchlist[] = [
     {
       symbol: 'TSLA',
       name: 'Tesla',
@@ -29,7 +30,7 @@ export class WatchlistComponent implements OnInit {
     },
   ]
 
-  public watchlistTW = [
+  public watchlistTW: Watchlist[] = [
     {
       symbol: 'TSM',
       name: '台積電',
@@ -46,7 +47,7 @@ export class WatchlistComponent implements OnInit {
     },
   ]
 
-  public watchlistCrypto = [
+  public watchlistCrypto: Watchlist[] = [
     {
       symbol: 'BTC',
       name: 'Bitcoin',

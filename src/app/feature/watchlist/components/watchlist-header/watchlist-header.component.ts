@@ -7,18 +7,14 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class WatchlistHeaderComponent implements OnInit {
 
-
   //from parent
   @Input() watchlists: string[] | undefined;
-  @Input() watchlistData: any;
   @Input() currentWatchlist: string | undefined;
 
   //to parent
   @Output() changeWatchlist = new EventEmitter<any>();
 
-
   constructor() {
-
   }
 
   ngOnInit(): void {

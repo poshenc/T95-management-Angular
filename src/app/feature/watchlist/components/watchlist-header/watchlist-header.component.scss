@@ -37,19 +37,3 @@
   min-width: 43px;
   border-radius: 50%;
 }
-
-//table header
-.table-header {
-  display: flex;
-  padding-bottom: 5px;
-  border-bottom: 1px solid #5e5e70;
-
-  .w-grow {
-    flex-grow: 1;
-  }
-
-  .w-120px {
-    width: 120px;
-  }
-
-}
