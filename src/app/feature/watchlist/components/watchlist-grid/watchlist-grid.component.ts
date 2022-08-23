@@ -27,10 +27,10 @@ export class WatchlistGridComponent implements OnInit {
 
   columnDefs: ColDef[] = [
     { headerName: 'Name', field: 'name', resizable: true, sortable: true, maxWidth: 350 },
-    { headerName: 'Symbol', field: 'symbol', resizable: true, sortable: true, maxWidth: 150 },
-    { headerName: 'Price', field: 'price', resizable: true, sortable: true, maxWidth: 150 },
-    { headerName: 'Change', field: 'movementPrice', resizable: true, sortable: true, maxWidth: 150 },
-    { headerName: 'Change%', field: 'movementPercentage', resizable: true, sortable: true, maxWidth: 150 },
+    { headerName: 'Symbol', field: 'symbol', resizable: true, sortable: true, maxWidth: 165 },
+    { headerName: 'Price', field: 'price', resizable: true, sortable: true, maxWidth: 165 },
+    { headerName: 'Change', field: 'movementPrice', resizable: true, sortable: true, maxWidth: 165 },
+    { headerName: 'Change%', field: 'movementPercentage', resizable: true, sortable: true, maxWidth: 165 },
   ];
 
   constructor(private breakpointObserver: BreakpointObserver) { }
