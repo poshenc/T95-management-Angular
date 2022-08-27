@@ -13,10 +13,13 @@
   border-radius: 35px;
   padding: 10px 16px;
   min-width: 35px;
+  height: 43px;
   text-align: center;
   font-size: 14px;
   font-weight: 500;
   color: #5e5e70;
+  overflow: hidden;
+  white-space: nowrap;
   cursor: pointer;
   transition: 0.5s ease-in-out;
 }
@@ -34,6 +37,10 @@
 .add-icon{
   font-size: 24px;
   font-weight: 400;
-  min-width: 43px;
+  width: 43px;
+  height: 43px;
   border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
