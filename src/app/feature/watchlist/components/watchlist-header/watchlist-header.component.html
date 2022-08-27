@@ -1,0 +1,11 @@
+<div>
+  <h1 class="title">Watchlists</h1>
+  <div class="watchlist-item-container">
+    <div *ngFor="let item of watchlists">
+      <div class="watchlist-item" [ngClass]="{'dark-background': currentWatchlist === item}" (click)='onChange(item)'>
+        {{item}}
+      </div>
+    </div>
+    <div class="watchlist-item add-icon">+</div>
+  </div>
+</div>

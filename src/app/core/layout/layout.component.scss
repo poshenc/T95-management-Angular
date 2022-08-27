@@ -1,0 +1,32 @@
+//small
+@media screen and (max-width: 1023px) {
+  .content {
+    margin-bottom: 70px;
+  }
+}
+
+//medium
+@media screen and (min-width: 1024px) and (max-width: 1364px) {
+  .content {
+    margin-left: 70px;
+    transition: 300ms ease-in-out;
+  } 
+
+  .sidenav-is-expanded {
+    margin-left: 300px;
+    transition: 300ms ease-in-out;
+  }
+}
+
+//large
+@media screen and (min-width: 1365px){
+  .content {
+    margin-left: 70px;
+    transition: 300ms ease-in-out;
+  }
+
+  .sidenav-is-expanded {
+    margin-left: 300px;
+    transition: 300ms ease-in-out;
+  }
+}

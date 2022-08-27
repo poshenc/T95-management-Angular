@@ -1,0 +1,17 @@
+<div class="holdings-card">
+  <div class="flex-between-container">
+    <p>Holdings List</p>
+    <i *ngIf="showMoney" class="bi bi-eye-slash-fill eye-slash-icon" (click)="toggleShowMoney()"></i>
+    <i *ngIf="!showMoney" class="bi bi-eye-fill eye-slash-icon" (click)="toggleShowMoney()"></i>
+  </div>
+  <h1 *ngIf="showMoney" class="holdings-total">$172,109.10</h1>
+  <div class="flex-container">
+    <p>Daily P&L</p>
+    <p class="green-text"><span *ngIf="showMoney">+313.35</span>(+0.19%)</p>
+  </div>
+  <div class="flex-container">
+    <p>Total P&L</p>
+    <p class="red-text"><span *ngIf="showMoney">-13,612.43</span>(-7.33%)</p>
+  </div>
+  <p class="card-date">2022/08/15 11:06pm</p>
+</div>

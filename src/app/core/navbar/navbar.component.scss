@@ -1,3 +1,160 @@
 .active-link {
-  font-weight: bold;
+  font-weight: 600;
+  color: #ffffff;
 }
+
+//small
+@media screen and (max-width: 1023px) {
+  .navbar-left-collapsed {
+    display: none;
+  }
+
+  .navbar-bottom { 
+    // position: fixed;
+    width: 100%;
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    // : 0;
+  }
+
+  .nav-bot-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background-color: white;
+    border-top: 1px solid rgba(151,151,151,.25);
+    height: 70px;
+    color: #797989
+  }
+
+  .nav-bot-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    cursor: pointer;
+
+    span {
+      font-size: 12px;
+    }
+  }
+
+  .nav-bot-item:hover {
+    color: #525761
+  }
+
+  .active-link {
+  font-weight: 600;
+  background-color: #97a0b1;
+}
+}
+
+//medium
+@media screen and (min-width: 1024px) and (max-width: 1364px) {
+  .navbar-bottom { 
+    display: none;
+  }
+}
+
+//large
+@media screen and (min-width: 1365px){
+  .navbar-bottom { 
+    display: none;
+  }
+  
+  // .navbar-left-collapsed {
+  //   position: fixed;
+  //   width: 340px;
+  //   height: 100vh;
+  //   background-color: #bababa;
+  // }
+}
+
+.navbar-left-collapsed {
+  position: fixed;
+  width: 70px;
+  height: 100vh;
+  background-color: #383c54;
+  transition: width 300ms ease-in-out;
+}
+
+.navbar-left-expanded {
+  width: 300px;
+  transition: width 300ms ease-in-out;
+
+}
+
+.nav-left-wrapper{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100vh;
+  color: #797989
+}
+
+//toggle icon button
+.toggle-icon{
+  padding-left: 3px;
+  color: #ffffff;
+  transition: opacity 2s;
+}
+
+.icon-collapse{
+  height: 0px !important;
+  opacity: 0;
+  transition: 0s;
+}
+
+.nav-left-item{
+  height: 70px;
+  display: flex;
+  font-size: 28px;
+  margin-left: 20px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.nav-left-item:hover {
+  color: #ffffff
+}
+
+.expanded-icon {
+  height: 70px;
+  font-size: 28px;
+  display: block;
+  text-align: right;
+  padding: 12px 20px;
+}
+
+.bi-box-arrow-left {
+  cursor: pointer;
+}
+
+.bi-box-arrow-left:hover, .bi-box-arrow-right:hover {
+  color: #545c6c
+}
+
+.nav-text {
+  margin-left: 15px;
+  transition: opacity 0.4s;
+}
+
+.text-collapse {
+  opacity: 0;
+}
+
+.nav-t95{
+  font-size: 20px;
+  margin-bottom: 8px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.text-large {
+  font-size: 30px;
+  font-weight: 500;
+  padding-bottom: 8px;
+}
+
+

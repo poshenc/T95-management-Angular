@@ -1,0 +1,51 @@
+.price-card-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.card-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(110, 158, 126);
+  color: #ffffff;
+  border-radius: 5px;
+  min-width: 85px;
+}
+
+.red-card-wrapper {
+  background-color: rgb(218, 132, 132);
+}
+
+.stock-name {
+  text-align: center;
+  font-size: 18px;
+  padding-top: 6px;
+}
+
+.stock-price {
+  text-align: center;
+  font-size: 18px;
+  padding-top: 6px;
+}
+
+//movement
+.movement-container{
+  padding: 8px 4px;
+  width: 85px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.movement-point {
+  line-height: 8px;
+  font-size: 8px;
+}
+
+.movement-percentage {
+  font-size: 8px;
+  line-height: 8px;
+}

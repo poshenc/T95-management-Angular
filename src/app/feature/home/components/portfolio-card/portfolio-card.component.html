@@ -1,0 +1,12 @@
+<div class="portfolio-card-container">
+  <h3>Portfolio List</h3>
+  <div class="portfolio-card" *ngFor="let portfolio of portfolioData">
+    <p>{{portfolio.portfolioName}}</p>
+    <div class="inline-flex-container">
+      <p *ngIf="showMoney">${{portfolio.total}}</p>
+      <p class="red-text" [ngClass]="{'green-text': portfolio.movementAmount > 0}"><span
+          *ngIf="showMoney">{{portfolio.movementAmount}}</span>
+        ({{portfolio.movementPercentage}}%)</p>
+    </div>
+  </div>
+</div>

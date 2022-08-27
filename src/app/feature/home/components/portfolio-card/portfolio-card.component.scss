@@ -1,0 +1,25 @@
+.portfolio-card-container {
+  margin-bottom: 15px;
+
+  h3 {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+}
+
+.portfolio-card{
+  background-color: rgb(126, 123, 123);
+  padding: 15px;
+  border-radius: 8px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.inline-flex-container {
+  display: inline-flex;
+  gap: 20px;
+}
