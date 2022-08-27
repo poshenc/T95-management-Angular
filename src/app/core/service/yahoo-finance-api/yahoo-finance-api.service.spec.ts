@@ -1,10 +1,10 @@
 import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 
-import { MarketStackApiService } from './market-stack-api.service';
+import { YahooFinanceApiService } from './yahoo-finance-api.service';
 
-describe('MarketStackApiService', () => {
-  let service: MarketStackApiService;
+describe('YahooFinanceApiService', () => {
+  let service: YahooFinanceApiService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -12,7 +12,7 @@ describe('MarketStackApiService', () => {
         HttpClientModule,
       ]
     });
-    service = TestBed.inject(MarketStackApiService);
+    service = TestBed.inject(YahooFinanceApiService);
   });
 
   it('should be created', () => {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MarketStackApiService } from 'src/app/core/service/market-stack-api/market-stack-api.service';
+import { YahooFinanceApiService } from 'src/app/core/service/yahoo-finance-api/yahoo-finance-api.service';
 import { portfolioCard, priceCard } from 'src/app/feature/home/models/price-card.models';
 
 @Component({
@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   //props to children
   public showMoney = true;
 
-  constructor(private marketStackApiService: MarketStackApiService) {
+  constructor(private yahooFinanceApiService: YahooFinanceApiService) {
 
     //mock data for 4 index
     this.stockData = [
@@ -82,7 +82,7 @@ export class HomeComponent implements OnInit {
 
   getIntradayPriceData(stockList: string[]) {
     stockList.map(async stock => {
-      let data = await this.marketStackApiService.getIntradayPriceData(stock).toPromise();
+      let data = await this.yahooFinanceApiService.getIntradayPriceData(stock).toPromise();
       console.log('stock name:', stock)
       console.log('regularMarketPrice', data.quoteResponse.result[0].regularMarketPrice);
       console.log('regularMarketChange', data.quoteResponse.result[0].regularMarketChange)

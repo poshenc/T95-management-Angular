@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class MarketStackApiService {
+export class YahooFinanceApiService {
 
   constructor(
     private http: HttpClient
