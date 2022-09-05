@@ -8,7 +8,7 @@
   margin-bottom: 15px;
 }
 
-.watchlist-item{
+.watchlist-item {
   border: 1.5px solid #c4c4cc;
   border-radius: 35px;
   padding: 10px 16px;
@@ -34,7 +34,7 @@
   background-color: #5e5e70;
 }
 
-.add-icon{
+.add-icon {
   font-size: 24px;
   font-weight: 400;
   width: 43px;
@@ -42,5 +42,11 @@
   border-radius: 50%;
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+.setting-icon {
+  margin-top: 10px;
+  font-size: 24px;
   align-items: center;
 }

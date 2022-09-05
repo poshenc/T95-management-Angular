@@ -8,7 +8,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class WatchlistHeaderComponent implements OnInit {
 
   //from parent
-  @Input() watchlists: string[] | undefined;
+  @Input() watchlists: any | undefined;
   @Input() currentWatchlist: string | undefined;
 
   //to parent
@@ -20,9 +20,9 @@ export class WatchlistHeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onChange(watchlistName: string) {
-    this.currentWatchlist = watchlistName
-    this.changeWatchlist.emit(this.currentWatchlist)
+  onChange(watchlist: any) {
+    this.currentWatchlist = watchlist.name;
+    this.changeWatchlist.emit(watchlist);
   }
 
 }
