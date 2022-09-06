@@ -14,6 +14,8 @@ export class WatchlistComponent implements OnInit {
 
   public watchlists: Watchlist[] | undefined;
   public currentWatchlist: string | undefined;
+  public currentWatchlistId: number | undefined;
+
   public watchlistData: any;
 
   constructor(private watchlistService: WatchlistService) {
@@ -26,6 +28,7 @@ export class WatchlistComponent implements OnInit {
   async fetchData() {
     this.watchlists = await lastValueFrom(this.watchlistService.getWatchlists(this.userId));
     this.currentWatchlist = this.watchlists[0].name;
+    this.currentWatchlistId = this.watchlists[0].id;
     this.watchlistData = await lastValueFrom(this.watchlistService.getWatchedStocks(this.userId));
 
   }

@@ -1,7 +1,6 @@
 <div>
   <h1 class="title">Watchlists</h1>
   <div class="flex-between-container">
-
     <div class="watchlist-item-container">
       <div *ngFor="let item of watchlists">
         <div class="watchlist-item" [ngClass]="{'dark-background': currentWatchlist === item.name}"
@@ -11,6 +10,6 @@
       </div>
       <div class="watchlist-item add-icon">+</div>
     </div>
-    <div class="setting-icon"><i class="bi bi-gear-fill"></i></div>
+    <div class="setting-icon" (click)="editWatchlist()"><i class="bi bi-gear-fill"></i></div>
   </div>
 </div>

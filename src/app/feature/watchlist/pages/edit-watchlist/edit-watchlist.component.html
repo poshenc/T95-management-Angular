@@ -1,0 +1,13 @@
+<div class="mat-dialog-container">
+  <div class="flex-between-container">
+    <h1 class="title">{{watchListName}}</h1>
+    <div class="btn-outline">Delete</div>
+  </div>
+  <div class="checklist-container">
+    <div class="title">All markets</div>
+    <input class="search-bar" id="search-text" placeholder="Search name or code...">
+    <div *ngFor="let stock of allStocks" class="checklist-items">
+      <li>{{stock}}</li>
+    </div>
+  </div>
+</div>

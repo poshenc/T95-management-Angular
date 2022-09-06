@@ -1,0 +1,41 @@
+.mat-dialog-container {
+  padding: 20px 30px;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+.checklist-container {
+  width: 100%;
+  height: 80%;
+  border: 2px solid black;
+  border-radius: 5px;
+
+  .title {
+    padding: 10px 20px;
+    height: 40px;
+    width: 100%;
+    font-weight: 500;
+    border-bottom: 1px solid black;
+    background-color: #97A0B1;
+    color: #ffffff;
+  }
+
+  .search-bar {
+    width: 100%;
+    padding: 10px 20px;
+    border: hidden;
+    border-bottom: 2px solid black;
+  }
+
+  .search-bar:focus {
+    outline: none;
+  }
+
+  .checklist-items {
+    padding: 10px 20px;
+  }
+
+  .checklist-items:hover {
+    background-color: rgb(148, 188, 206);
+  }
+}
