@@ -1,14 +1,33 @@
-.mat-dialog-container {
+.dialog-container {
+  height: 100%;
   padding: 20px 30px;
   border-radius: 10px;
   background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+.title-container {
+  height: 48px;
+  display: flex;
+  justify-content: space-between;
+
+  .btn-outline:hover {
+    background-color: rgb(252, 36, 36);
+  }
+
+  span {
+    color: #97A0B1;
+  }
 }
 
 .checklist-container {
   width: 100%;
-  height: 80%;
+  height: 90%;
   border: 2px solid black;
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
 
   .title {
     padding: 10px 20px;
@@ -21,6 +40,7 @@
   }
 
   .search-bar {
+    height: 40px;
     width: 100%;
     padding: 10px 20px;
     border: hidden;
@@ -31,11 +51,46 @@
     outline: none;
   }
 
-  .checklist-items {
+}
+
+.checklist-wrapper {
+  overflow: auto;
+
+  .item-wrapper {
+    display: inline-flex;
+    gap: 16px;
+
+    .minus-icon {
+      margin: auto 0;
+      font-size: 22px;
+      color: rgb(252, 36, 36);
+      cursor: pointer;
+    }
+
+    .plus-icon {
+      margin: auto 0;
+      font-size: 22px;
+      color: rgb(16, 246, 116);
+      cursor: pointer;
+    }
+  }
+
+  .item-title {
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .item-subtitle {
+    font-size: 14px;
+    color: #97A0B1;
+  }
+
+  .checklist-item {
     padding: 10px 20px;
   }
 
-  .checklist-items:hover {
+  .checklist-item:hover {
     background-color: rgb(148, 188, 206);
   }
+
 }

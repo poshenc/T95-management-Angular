@@ -5,4 +5,5 @@ export interface Watchlist {
   price: number;
   movementPrice: number;
   movementPercentage: number;
+  stock_code?: string;
 }

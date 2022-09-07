@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { Watchlist } from '../../models/watchlist.model';
-import { WatchlistService } from '../../services/watchlist.service';
+import { WatchlistService } from '../../services/watchlist/watchlist.service';
 
 @Component({
   selector: 'app-watchlist',

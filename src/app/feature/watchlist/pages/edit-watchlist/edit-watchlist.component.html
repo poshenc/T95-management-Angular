@@ -1,13 +1,43 @@
-<div class="mat-dialog-container">
-  <div class="flex-between-container">
-    <h1 class="title">{{watchListName}}</h1>
-    <div class="btn-outline">Delete</div>
+<div class="dialog-container">
+  <div class="title-container">
+    <h1 class="title">Edit <span>{{watchListName}}</span></h1>
+    <div class="btn-outline">Delete watchlist</div>
   </div>
   <div class="checklist-container">
+    <!-- title -->
     <div class="title">All markets</div>
-    <input class="search-bar" id="search-text" placeholder="Search name or code...">
-    <div *ngFor="let stock of allStocks" class="checklist-items">
-      <li>{{stock}}</li>
+
+    <!-- search -->
+    <input type="text" class="search-bar" id="searchText" aria-describedby="searchText" [(ngModel)]="searchText"
+      [ngModelOptions]="{standalone: true}" placeholder="Search name or code..." autocomplete="off">
+
+    <!-- checklist wrapper-->
+    <div class="checklist-wrapper">
+      <!-- existing watched stocks -->
+      <div *ngFor="let stock of watchedStocks | objectArrayFilter : searchText ">
+        <div class="checklist-item" id="stock.id">
+          <div class="item-wrapper">
+            <i class="bi bi-dash-circle-fill minus-icon"></i>
+            <div>
+              <span class="item-title">{{stock.stock_code}}</span>
+              <div class="item-subtitle">{{stock.name}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- remaining watched stocks -->
+      <div *ngFor="let stock of remainedStocks | objectArrayFilter : searchText ">
+        <div class="checklist-item" id="stock.id">
+          <div class="item-wrapper">
+            <i class="bi bi-plus-circle-fill plus-icon"></i>
+            <div>
+              <span class="item-title">{{stock.stock_code}}</span>
+              <div class="item-subtitle">{{stock.name}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
-</div>

@@ -8,6 +8,8 @@ import { AgGridModule } from 'ag-grid-angular';
 import { WatchlistGridComponent } from './components/watchlist-grid/watchlist-grid.component';
 import { EditWatchlistComponent } from './pages/edit-watchlist/edit-watchlist.component';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
     CommonModule,
     WatchlistRoutingModule,
     AgGridModule,
-    MatDialogModule
+    MatDialogModule,
+    FormsModule,
+    SharedModule
   ]
 })
 export class WatchlistModule { }
