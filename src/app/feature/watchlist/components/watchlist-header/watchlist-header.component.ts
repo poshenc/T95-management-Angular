@@ -18,6 +18,7 @@ export class WatchlistHeaderComponent implements OnInit {
 
   //to parent
   @Output() changeWatchlist = new EventEmitter<any>();
+  @Output() refreshAgGrid = new EventEmitter();
 
   constructor(private dialog: MatDialog) {
   }
@@ -41,6 +42,10 @@ export class WatchlistHeaderComponent implements OnInit {
       width: '100vw',
       maxWidth: '600px',
       height: '80%'
+    })
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.refreshAgGrid.emit();
     })
 
   }

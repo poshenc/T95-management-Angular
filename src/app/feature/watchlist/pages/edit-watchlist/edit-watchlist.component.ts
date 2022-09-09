@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { lastValueFrom } from 'rxjs';
 import { Watchlist } from '../../models/watchlist.model';
 import { StocksService } from '../../services/stocks/stocks.service';
+import { WatchlistService } from '../../services/watchlist/watchlist.service';
 
 @Component({
   selector: 'app-edit-watchlist',
@@ -21,7 +22,7 @@ export class EditWatchlistComponent implements OnInit {
   //for column search function
   public searchText = '';
 
-  constructor(private stocksService: StocksService, @Inject(MAT_DIALOG_DATA) public data: any) {
+  constructor(private stocksService: StocksService, private watchlistService: WatchlistService, @Inject(MAT_DIALOG_DATA) public data: any) {
     this.watchListId = data.watchListId;
     this.watchListName = data.watchListName;
     this.watchlistData = data.watchlistData;
@@ -47,5 +48,38 @@ export class EditWatchlistComponent implements OnInit {
         this.remainedStocks?.push(stock);
       }
     });
+  }
+
+  onClickRemove(stockId: number) {
+    if (this.watchListId) {
+      this.watchlistService.removeWatchedStock(this.watchListId, stockId).subscribe(res => {
+        //add to removed
+        const removedStock = this.watchedStocks.filter(stock => { return stock.id === stockId });
+        this.remainedStocks.push(removedStock[0]);
+
+        //remove from existing
+        this.watchedStocks = this.watchedStocks.filter((stock) => {
+          return stock.id !== stockId;
+        })
+      })
+    }
+
+
+  }
+
+  onClickAdd(stockId: number) {
+    if (this.watchListId) {
+      this.watchlistService.addWatchedStock(this.watchListId, stockId).subscribe(res => {
+        //add to exiting
+        const addedStock = this.remainedStocks.filter(stock => { return stock.id === stockId });
+        this.watchedStocks.push(addedStock[0]);
+
+        //remove
+        this.remainedStocks = this.remainedStocks.filter((stock) => {
+          return stock.id !== stockId;
+        })
+      })
+    }
+
   }
 }

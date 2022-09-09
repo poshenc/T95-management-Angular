@@ -17,7 +17,7 @@
       <div *ngFor="let stock of watchedStocks | objectArrayFilter : searchText ">
         <div class="checklist-item" id="stock.id">
           <div class="item-wrapper">
-            <i class="bi bi-dash-circle-fill minus-icon"></i>
+            <i class="bi bi-dash-circle-fill minus-icon" (click)="onClickRemove(stock.id)"></i>
             <div>
               <span class="item-title">{{stock.stock_code}}</span>
               <div class="item-subtitle">{{stock.name}}</div>
@@ -30,7 +30,7 @@
       <div *ngFor="let stock of remainedStocks | objectArrayFilter : searchText ">
         <div class="checklist-item" id="stock.id">
           <div class="item-wrapper">
-            <i class="bi bi-plus-circle-fill plus-icon"></i>
+            <i class="bi bi-plus-circle-fill plus-icon" (click)="onClickAdd(stock.id)"></i>
             <div>
               <span class="item-title">{{stock.stock_code}}</span>
               <div class="item-subtitle">{{stock.name}}</div>

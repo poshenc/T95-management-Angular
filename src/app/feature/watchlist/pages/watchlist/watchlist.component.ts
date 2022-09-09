@@ -35,7 +35,14 @@ export class WatchlistComponent implements OnInit {
 
   async changeWatchlist(watchlist: any) {
     this.currentWatchlist = watchlist.name;
+    this.currentWatchlistId = watchlist.id;
     this.watchlistData = await lastValueFrom(this.watchlistService.getWatchedStocks(watchlist.id));
+  }
+
+  async refreshAgGrid() {
+    if (this.currentWatchlistId) {
+      this.watchlistData = await lastValueFrom(this.watchlistService.getWatchedStocks(this.currentWatchlistId));
+    }
   }
 
 }
