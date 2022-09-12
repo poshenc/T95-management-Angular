@@ -11,10 +11,24 @@ export class WatchlistService {
 
   constructor(private http: HttpClient) { }
 
+  //watchlist
   getWatchlists(userId: number): Observable<any[]> {
     return this.http.get<any[]>(this.url + 'watchlist/' + userId);
   }
 
+  addWatchlist(userId: number, name: string): Observable<any> {
+    const params = new HttpParams()
+      .set('name', name);
+    return this.http.post<any>(this.url + `watchlist/${userId}`, params);
+  }
+
+  deleteWatchlist(userId: number, name: string): Observable<any> {
+    const params = new HttpParams()
+      .set('name', name);
+    return this.http.delete<any>(this.url + `watchlist/${userId}?name=${name}`);
+  }
+
+  //watched stocks
   getWatchedStocks(watchlistId: number): Observable<any[]> {
     return this.http.get<any[]>(this.url + 'watchedStocks/' + watchlistId);
   }

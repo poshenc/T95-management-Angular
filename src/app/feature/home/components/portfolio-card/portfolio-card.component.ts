@@ -14,8 +14,7 @@ export class PortfolioCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.portfolioData);
-
+    // console.log(this.portfolioData);
   }
 
 }

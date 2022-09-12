@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { lastValueFrom } from 'rxjs';
 import { Watchlist } from '../../models/watchlist.model';
-import { StocksService } from '../../services/stocks/stocks.service';
+import { StocksService } from '../../../../core/service/stocks/stocks.service';
 import { WatchlistService } from '../../services/watchlist/watchlist.service';
 
 @Component({
@@ -11,6 +11,9 @@ import { WatchlistService } from '../../services/watchlist/watchlist.service';
   styleUrls: ['./edit-watchlist.component.scss']
 })
 export class EditWatchlistComponent implements OnInit {
+
+  //todo
+  public userId = 1;
 
   public watchedStocks = [] as Watchlist[];
   public remainedStocks = [] as Watchlist[];
@@ -22,7 +25,7 @@ export class EditWatchlistComponent implements OnInit {
   //for column search function
   public searchText = '';
 
-  constructor(private stocksService: StocksService, private watchlistService: WatchlistService, @Inject(MAT_DIALOG_DATA) public data: any) {
+  constructor(private stocksService: StocksService, private watchlistService: WatchlistService, @Inject(MAT_DIALOG_DATA) public data: any, private dialogRef: MatDialogRef<EditWatchlistComponent>) {
     this.watchListId = data.watchListId;
     this.watchListName = data.watchListName;
     this.watchlistData = data.watchlistData;
@@ -30,9 +33,6 @@ export class EditWatchlistComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchStocksList();
-    console.log(this.watchListId);
-    console.log(this.watchListName);
-    console.log(this.watchlistData);
   }
 
   async fetchStocksList() {
@@ -80,6 +80,13 @@ export class EditWatchlistComponent implements OnInit {
         })
       })
     }
+  }
 
+  deleteWatchlist() {
+    if (this.watchListName) {
+      this.watchlistService.deleteWatchlist(this.userId, this.watchListName).subscribe(() => {
+        this.dialogRef.close();
+      });
+    }
   }
 }

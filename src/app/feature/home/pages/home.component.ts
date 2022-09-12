@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StocksService } from 'src/app/core/service/stocks/stocks.service';
 import { YahooFinanceApiService } from 'src/app/core/service/yahoo-finance-api/yahoo-finance-api.service';
 import { portfolioCard, priceCard } from 'src/app/feature/home/models/price-card.models';
 
@@ -9,42 +10,14 @@ import { portfolioCard, priceCard } from 'src/app/feature/home/models/price-card
 })
 export class HomeComponent implements OnInit {
 
-  stockData: priceCard[];
+  stockData = [] as priceCard[];
   stockList: string[];
   portfolioData: portfolioCard[];
 
   //props to children
   public showMoney = true;
 
-  constructor(private yahooFinanceApiService: YahooFinanceApiService) {
-
-    //mock data for 4 index
-    this.stockData = [
-      {
-        name: 'Dow Jones',
-        price: 33753.60,
-        movementPrice: 416.90,
-        movementPercentage: 1.25
-      },
-      {
-        name: 'Nasdaq',
-        price: 13560.20,
-        movementPrice: 268.20,
-        movementPercentage: 2.02
-      },
-      {
-        name: 'S&P 500',
-        price: 4278.50,
-        movementPrice: 71.20,
-        movementPercentage: 1.69
-      },
-      {
-        name: 'TSLA',
-        price: 900.29,
-        movementPrice: -40.20,
-        movementPercentage: -4.58
-      },
-    ];
+  constructor(private yahooFinanceApiService: YahooFinanceApiService, private stocksService: StocksService) {
 
     //for fetch API use
     this.stockList = ['AAPL', 'TSLA']
@@ -78,6 +51,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     //yahoo finance API
     // this.getIntradayPriceData(this.stockList);ß
+    this.fetchStocks();
   }
 
   getIntradayPriceData(stockList: string[]) {
@@ -88,6 +62,14 @@ export class HomeComponent implements OnInit {
       console.log('regularMarketChange', data.quoteResponse.result[0].regularMarketChange)
       console.log('regularMarketChangePercent', data.quoteResponse.result[0].regularMarketChangePercent);
     })
+  }
+
+  fetchStocks() {
+    for (let i = 1; i < 5; i++) {
+      this.stocksService.getStockById(i).subscribe(res => {
+        this.stockData.push(res);
+      })
+    }
   }
 
 

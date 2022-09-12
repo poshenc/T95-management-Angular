@@ -1,7 +1,7 @@
 export interface priceCard {
   name: string;
   price: number;
-  movementPrice: number;
+  movementPoints: number;
   movementPercentage: number;
 }
 

@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Watchlist } from '../../models/watchlist.model';
 import { EditWatchlistComponent } from '../../pages/edit-watchlist/edit-watchlist.component';
+import { NewWatchlistComponent } from '../../pages/new-watchlist/new-watchlist.component';
 
 @Component({
   selector: 'app-watchlist-header',
@@ -19,6 +20,7 @@ export class WatchlistHeaderComponent implements OnInit {
   //to parent
   @Output() changeWatchlist = new EventEmitter<any>();
   @Output() refreshAgGrid = new EventEmitter();
+  @Output() refreshWatchlist = new EventEmitter();
 
   constructor(private dialog: MatDialog) {
   }
@@ -30,6 +32,17 @@ export class WatchlistHeaderComponent implements OnInit {
     this.currentWatchlist = watchlist.name;
     this.currentWatchlistId = watchlist.id;
     this.changeWatchlist.emit(watchlist);
+  }
+
+  newWatchlist() {
+    const dialogRef = this.dialog.open(NewWatchlistComponent, {
+      width: '300px',
+      height: '200px'
+    })
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.refreshWatchlist.emit();
+    })
   }
 
   editWatchlist() {
@@ -46,6 +59,7 @@ export class WatchlistHeaderComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(() => {
       this.refreshAgGrid.emit();
+      this.refreshWatchlist.emit();
     })
 
   }

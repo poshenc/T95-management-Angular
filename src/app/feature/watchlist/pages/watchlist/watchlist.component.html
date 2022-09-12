@@ -1,8 +1,10 @@
 <div class="layout-container">
   <app-watchlist-header [watchlists]='watchlists' [currentWatchlist]='currentWatchlist'
     [currentWatchlistId]='currentWatchlistId' [watchlistData]='watchlistData'
-    (changeWatchlist)='changeWatchlist($event)' (refreshAgGrid)='refreshAgGrid()'>
+    (changeWatchlist)='changeWatchlist($event)' (refreshAgGrid)='refreshAgGrid()'
+    (refreshWatchlist)='refreshWatchlist()'>
   </app-watchlist-header>
 
-  <app-watchlist-grid [watchlistData]='watchlistData'></app-watchlist-grid>
+  <app-watchlist-grid [watchlistData]=' watchlistData'>
+  </app-watchlist-grid>
 </div>

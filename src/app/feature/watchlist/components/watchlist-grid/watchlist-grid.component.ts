@@ -29,7 +29,7 @@ export class WatchlistGridComponent implements OnInit {
     { headerName: 'Name', field: 'name', resizable: true, sortable: true, maxWidth: 350 },
     { headerName: 'Symbol', field: 'symbol', resizable: true, sortable: true, maxWidth: 165 },
     { headerName: 'Price', field: 'price', resizable: true, sortable: true, maxWidth: 165 },
-    { headerName: 'Change', field: 'movementPrice', resizable: true, sortable: true, maxWidth: 165 },
+    { headerName: 'Change', field: 'movementPoints', resizable: true, sortable: true, maxWidth: 165 },
     { headerName: 'Change%', field: 'movementPercentage', resizable: true, sortable: true, maxWidth: 165 },
   ];
 
@@ -40,12 +40,12 @@ export class WatchlistGridComponent implements OnInit {
 
   private breakpointChanged() {
     if (this.breakpointObserver.isMatched('(min-width: 650px)')) {
-      this.gridColumnApi.setColumnsVisible(['symbol', 'movementPrice'], true)
+      this.gridColumnApi.setColumnsVisible(['symbol', 'movementPoints'], true)
     } else if (this.breakpointObserver.isMatched('(min-width: 520px)')) {
-      this.gridColumnApi.setColumnVisible('movementPrice', true)
+      this.gridColumnApi.setColumnVisible('movementPoints', true)
       this.gridColumnApi.setColumnVisible('symbol', false)
     } else if (this.breakpointObserver.isMatched('(max-width: 519px)')) {
-      this.gridColumnApi.setColumnsVisible(['symbol', 'movementPrice'], false)
+      this.gridColumnApi.setColumnsVisible(['symbol', 'movementPoints'], false)
     }
   }
 

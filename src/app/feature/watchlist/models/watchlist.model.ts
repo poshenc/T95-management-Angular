@@ -3,7 +3,7 @@ export interface Watchlist {
   symbol: string;
   name: string;
   price: number;
-  movementPrice: number;
+  movementPoints: number;
   movementPercentage: number;
   stock_code?: string;
 }

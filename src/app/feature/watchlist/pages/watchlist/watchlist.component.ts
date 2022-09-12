@@ -45,4 +45,8 @@ export class WatchlistComponent implements OnInit {
     }
   }
 
+  async refreshWatchlist() {
+    this.watchlists = await lastValueFrom(this.watchlistService.getWatchlists(this.userId));
+  }
+
 }

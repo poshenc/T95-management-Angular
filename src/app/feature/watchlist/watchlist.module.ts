@@ -10,6 +10,7 @@ import { EditWatchlistComponent } from './pages/edit-watchlist/edit-watchlist.co
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule } from '@angular/forms';
+import { NewWatchlistComponent } from './pages/new-watchlist/new-watchlist.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { FormsModule } from '@angular/forms';
     WatchlistComponent,
     WatchlistHeaderComponent,
     WatchlistGridComponent,
-    EditWatchlistComponent
+    EditWatchlistComponent,
+    NewWatchlistComponent
   ],
   imports: [
     CommonModule,

@@ -14,7 +14,7 @@ export class PriceCardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.stockData)
+    // console.log(this.stockData)
   }
 
 }
