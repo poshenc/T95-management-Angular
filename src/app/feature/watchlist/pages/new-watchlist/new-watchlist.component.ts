@@ -28,8 +28,8 @@ export class NewWatchlistComponent implements OnInit {
 
   onConfirm() {
     if (this.watchlistName) {
-      this.watchlistService.addWatchlist(this.userId, this.watchlistName).subscribe(() => {
-        this.dialogRef.close();
+      this.watchlistService.addWatchlist(this.userId, this.watchlistName).subscribe((res) => {
+        this.dialogRef.close(this.watchlistName);
       });
     } else {
       this.errorName = true;

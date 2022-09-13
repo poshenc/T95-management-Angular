@@ -19,8 +19,8 @@ export class WatchlistHeaderComponent implements OnInit {
 
   //to parent
   @Output() changeWatchlist = new EventEmitter<any>();
-  @Output() refreshAgGrid = new EventEmitter();
   @Output() refreshWatchlist = new EventEmitter();
+  @Output() updateWatchlist = new EventEmitter<string>();
 
   constructor(private dialog: MatDialog) {
   }
@@ -40,8 +40,8 @@ export class WatchlistHeaderComponent implements OnInit {
       height: '200px'
     })
 
-    dialogRef.afterClosed().subscribe(() => {
-      this.refreshWatchlist.emit();
+    dialogRef.afterClosed().subscribe(newWatchlistName => {
+      this.updateWatchlist.emit(newWatchlistName);
     })
   }
 
@@ -57,9 +57,11 @@ export class WatchlistHeaderComponent implements OnInit {
       height: '80%'
     })
 
-    dialogRef.afterClosed().subscribe(() => {
-      this.refreshAgGrid.emit();
-      this.refreshWatchlist.emit();
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 'delete') {
+        this.refreshWatchlist.emit();
+      }
+      this.updateWatchlist.emit();
     })
 
   }

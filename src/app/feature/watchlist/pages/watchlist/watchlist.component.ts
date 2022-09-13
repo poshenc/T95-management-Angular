@@ -29,7 +29,9 @@ export class WatchlistComponent implements OnInit {
     this.watchlists = await lastValueFrom(this.watchlistService.getWatchlists(this.userId));
     this.currentWatchlist = this.watchlists[0].name;
     this.currentWatchlistId = this.watchlists[0].id;
-    this.watchlistData = await lastValueFrom(this.watchlistService.getWatchedStocks(this.userId));
+    if (this.currentWatchlistId) {
+      this.watchlistData = await lastValueFrom(this.watchlistService.getWatchedStocks(this.currentWatchlistId));
+    }
 
   }
 
@@ -45,8 +47,22 @@ export class WatchlistComponent implements OnInit {
     }
   }
 
-  async refreshWatchlist() {
+  async updateWatchlist(newWatchlistName: string) {
     this.watchlists = await lastValueFrom(this.watchlistService.getWatchlists(this.userId));
+    if (newWatchlistName) {
+      const newWatchlist = this.watchlists.filter(watchlist => {
+        return watchlist.name === newWatchlistName
+      })
+      this.currentWatchlist = newWatchlist[0].name;
+      this.currentWatchlistId = newWatchlist[0].id;
+    }
+    if (this.currentWatchlistId) {
+      this.watchlistData = await lastValueFrom(this.watchlistService.getWatchedStocks(this.currentWatchlistId));
+    }
+  }
+
+  refreshWatchlist() {
+    this.fetchData();
   }
 
 }

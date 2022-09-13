@@ -63,7 +63,14 @@ export class WatchlistGridComponent implements OnInit {
 
     window.onresize = () => {
       this.gridApi.sizeColumnsToFit();
+
+      //todo
+      //https://www.ag-grid.com/javascript-data-grid/grid-size/
+      //Dynamic Resizing without Horizontal Scroll
+      //Dynamic Resizing without Horizontal Scroll
     }
   }
+
+
 
 }

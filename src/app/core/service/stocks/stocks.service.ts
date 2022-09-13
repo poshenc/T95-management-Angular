@@ -11,8 +11,8 @@ export class StocksService {
 
   constructor(private http: HttpClient) { }
 
-  getStockById(stockId: number): Observable<any> {
-    return this.http.get<any>(this.url + stockId);
+  getStockBySymbol(symbol: string): Observable<any> {
+    return this.http.get<any>(this.url + symbol);
   }
 
   getStocksList(): Observable<any[]> {

@@ -85,7 +85,7 @@ export class EditWatchlistComponent implements OnInit {
   deleteWatchlist() {
     if (this.watchListName) {
       this.watchlistService.deleteWatchlist(this.userId, this.watchListName).subscribe(() => {
-        this.dialogRef.close();
+        this.dialogRef.close('delete');
       });
     }
   }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { lastValueFrom } from 'rxjs';
 import { StocksService } from 'src/app/core/service/stocks/stocks.service';
 import { YahooFinanceApiService } from 'src/app/core/service/yahoo-finance-api/yahoo-finance-api.service';
 import { portfolioCard, priceCard } from 'src/app/feature/home/models/price-card.models';
@@ -64,11 +65,11 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  fetchStocks() {
-    for (let i = 1; i < 5; i++) {
-      this.stocksService.getStockById(i).subscribe(res => {
-        this.stockData.push(res);
-      })
+  async fetchStocks() {
+    const mainSymbols = ['DOW J', 'IXIC', 'GSPC', 'USDTWD']
+    for (let symbol of mainSymbols) {
+      const res = await lastValueFrom(this.stocksService.getStockBySymbol(symbol));
+      this.stockData.push(res);
     }
   }
 
