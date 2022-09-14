@@ -1,0 +1,23 @@
+<div class="login-container">
+  <div class="login-box">
+    <div class="t95">T95</div>
+    <div class="title">User Login</div>
+    <div class="input-container">
+      <div class="input-wrapper">
+        <i class="bi bi-person-circle"></i>
+        <input class="actions" type="text" placeholder="Username" (keydown)="onKeydown($event)" [(ngModel)]="user.name">
+      </div>
+      <div class="input-wrapper">
+        <i class="bi bi-unlock-fill"></i>
+        <input class="actions password-hidden" type="text" placeholder="Password" (keydown)="onKeydown($event)"
+          [(ngModel)]="user.password">
+      </div>
+      <div class="input-wrapper">
+        <i class="bi bi-arrow-right-circle-fill"></i>
+        <div class="actions btn-actions" (click)="login()">Login</div>
+      </div>
+    </div>
+    <div class="text">Create an account</div>
+    <div class="text">Use a demo account</div>
+  </div>
+</div>
