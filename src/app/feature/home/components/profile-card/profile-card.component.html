@@ -1,6 +1,9 @@
 <div class="portfolio-card">
   <div class="flex-between-container">
     <h2>Welcome back, Johnson</h2>
-    <i class="bi bi-gear-fill settings-icon" routerLink="settings"></i>
+    <div class="actions">
+      <i class="bi bi-gear-fill settings-icon" routerLink="settings"></i>
+      <span class="logout" (click)="logout()">Logout</span>
+    </div>
   </div>
 </div>

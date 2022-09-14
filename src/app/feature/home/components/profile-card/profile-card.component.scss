@@ -1,4 +1,4 @@
-.portfolio-card{
+.portfolio-card {
   background-color: rgb(126, 123, 123);
   padding: 15px;
   border-radius: 8px;
@@ -11,8 +11,22 @@ h2 {
   margin-bottom: 0;
 }
 
-.settings-icon{
-  font-size: 20px;
-  margin: auto 0;
-  cursor: pointer;
+.actions {
+  display: flex;
+  align-items: center;
+
+  .settings-icon {
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  .logout {
+    cursor: pointer;
+    margin-left: 14px;
+  }
+
+  .logout:hover {
+    color: #97A0B1;
+    font-weight: 900;
+  }
 }
