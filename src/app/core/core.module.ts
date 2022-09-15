@@ -1,14 +1,19 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppRoutingModule } from '../app-routing.module';
+
+//components
 import { FooterComponent } from './footer/footer.component';
 import { LayoutComponent } from './layout/layout.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { AppRoutingModule } from '../app-routing.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
+import { NavbarComponent } from './navbar/navbar.component';
+
+//interceptors
+import { JwtHttpInterceptorService } from './interceptors/jwt-http-interceptor.service';
 
 
 
@@ -26,6 +31,13 @@ import { LoginComponent } from './login/login.component';
     BrowserModule,
     FormsModule,
     HttpClientModule
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtHttpInterceptorService,
+      multi: true,
+    }
   ]
 })
 export class CoreModule { }

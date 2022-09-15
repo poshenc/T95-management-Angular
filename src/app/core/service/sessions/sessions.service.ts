@@ -8,10 +8,10 @@ export class SessionsService {
   constructor() { }
 
   setSession(key: string, currentUser: any) {
-    if (sessionStorage.getItem('currentUser') !== null) {
-      sessionStorage.removeItem('currentUser');
+    if (sessionStorage.getItem(key) !== null) {
+      sessionStorage.removeItem(key);
     }
-    sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
+    sessionStorage.setItem(key, JSON.stringify(currentUser));
   }
 
   getCurrentUser() {

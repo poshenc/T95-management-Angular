@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './core/gaurds/auth.guard';
 import { LayoutComponent } from './core/layout/layout.component';
 import { LoginComponent } from './core/login/login.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {
-    path: '', component: LayoutComponent, children: [
+    path: '', component: LayoutComponent,
+    canActivate: [AuthGuard],
+    children: [
       { path: '', loadChildren: () => import('./feature/home/home.module').then(m => m.HomeModule) },
       { path: 'watchlist', loadChildren: () => import('./feature/watchlist/watchlist.module').then(m => m.WatchlistModule) },
       { path: 'portfolio', loadChildren: () => import('./feature/portfolio/portfolio.module').then(m => m.PortfolioModule) },
