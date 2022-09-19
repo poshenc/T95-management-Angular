@@ -10,7 +10,7 @@ export class JwtHttpInterceptorService {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     //ignore login request
-    if(request.url.indexOf('/login/')!=-1){
+    if (request.url.indexOf('/login/') != -1) {
       return next.handle(request);
     }
 
@@ -20,14 +20,12 @@ export class JwtHttpInterceptorService {
     const isApiUrl = request.url.startsWith('http://localhost:8086/api/');
 
     if (isLoggedIn && isApiUrl) {
-        request = request.clone({
-            setHeaders: {
-              'Content-Type':'application/json',
-              'Authorization': jwtToken
-             }
-        });
-        console.log('interceptor: ', request);
-
+      request = request.clone({
+        setHeaders: {
+          'Content-Type': 'application/json',
+          'Authorization': jwtToken
+        }
+      });
     }
 
     return next.handle(request);

@@ -15,7 +15,7 @@ export class SessionsService {
   }
 
   getCurrentUser() {
-    console.log(sessionStorage.getItem('currentUser'));
+    // console.log(sessionStorage.getItem('currentUser'));
 
     return sessionStorage.getItem('currentUser');
   }
