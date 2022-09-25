@@ -6,7 +6,7 @@
       <p *ngIf="showMoney">${{portfolio.total}}</p>
       <p class="red-text" [ngClass]="{'green-text': portfolio.movementAmount > 0}"><span
           *ngIf="showMoney">{{portfolio.movementAmount}}</span>
-        ({{portfolio.movementPercentage}}%)</p>
+        ({{portfolio.movementPercentage}})</p>
     </div>
   </div>
 </div>
