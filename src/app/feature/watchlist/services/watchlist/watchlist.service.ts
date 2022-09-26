@@ -17,15 +17,13 @@ export class WatchlistService {
   }
 
   addWatchlist(userId: number, name: string): Observable<any> {
-    const params = new HttpParams()
-      .set('name', name);
-    return this.http.post<any>(this.url + `watchlists/users/${userId}`, params);
+    const params = new HttpParams().set('name', name);
+    return this.http.post<any>(this.url + `watchlists/users/${userId}`, null, { params });
   }
 
   deleteWatchlist(userId: number, name: string): Observable<any> {
-    const params = new HttpParams()
-      .set('name', name);
-    return this.http.delete<any>(this.url + `watchlists/users/${userId}?name=${name}`);
+    const params = new HttpParams().set('name', name);
+    return this.http.delete<any>(this.url + `watchlists/users/${userId}`, { params });
   }
 
   //watched stocks
@@ -34,13 +32,13 @@ export class WatchlistService {
   }
 
   addWatchedStock(watchlistId: string, stockId: number): Observable<any> {
-    const params = new HttpParams()
-      .set('stockId', stockId);
-    return this.http.post<any>(this.url + `stocks/watchlists/${watchlistId}/`, params);
+    const params = new HttpParams().set('stockId', stockId);
+    return this.http.post<any>(this.url + `stocks/watchlists/${watchlistId}/`, null, { params });
   }
 
   removeWatchedStock(watchlistId: string, stockId: number): Observable<any> {
-    return this.http.delete<any>(this.url + `stocks/watchlists/${watchlistId}?stockId=${stockId}`);
+    const params = new HttpParams().set('stockId', stockId);
+    return this.http.delete<any>(this.url + `stocks/watchlists/${watchlistId}`, { params });
   }
 
 }
