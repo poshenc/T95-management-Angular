@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -13,17 +13,17 @@ export class WatchlistService {
 
   //watchlist
   getWatchlists(userId: number): Observable<any[]> {
-    return this.http.get<any[]>(this.url + 'watchlists/users/' + userId);
+    return this.http.get<any[]>(this.url + 'watchlists');
   }
 
   addWatchlist(userId: number, name: string): Observable<any> {
     const params = new HttpParams().set('name', name);
-    return this.http.post<any>(this.url + `watchlists/users/${userId}`, null, { params });
+    return this.http.post<any>(this.url + 'watchlists', null, { params });
   }
 
   deleteWatchlist(userId: number, name: string): Observable<any> {
     const params = new HttpParams().set('name', name);
-    return this.http.delete<any>(this.url + `watchlists/users/${userId}`, { params });
+    return this.http.delete<any>(this.url + 'watchlists', { params });
   }
 
   //watched stocks
