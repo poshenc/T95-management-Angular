@@ -13,7 +13,7 @@ export class WatchlistService {
 
   //watchlist
   getWatchlists(userId: number): Observable<any[]> {
-    return this.http.get<any[]>(this.url + 'watchlists');
+    return this.http.get<any[]>(`${this.url}watchlists`);
   }
 
   addWatchlist(userId: number, name: string): Observable<any> {
