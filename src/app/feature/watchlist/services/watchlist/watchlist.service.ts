@@ -28,17 +28,17 @@ export class WatchlistService {
 
   //watched stocks
   getWatchedStocks(watchlistId: number): Observable<any[]> {
-    return this.http.get<any[]>(this.url + 'stocks/watchlists/' + watchlistId);
+    return this.http.get<any[]>(`${this.url}watchlists/${watchlistId}/stocks`);
   }
 
   addWatchedStock(watchlistId: string, stockId: number): Observable<any> {
     const params = new HttpParams().set('stockId', stockId);
-    return this.http.post<any>(this.url + `stocks/watchlists/${watchlistId}/`, null, { params });
+    return this.http.post<any>(`${this.url}watchlists/${watchlistId}/stocks`, null, { params });
   }
 
   removeWatchedStock(watchlistId: string, stockId: number): Observable<any> {
     const params = new HttpParams().set('stockId', stockId);
-    return this.http.delete<any>(this.url + `stocks/watchlists/${watchlistId}`, { params });
+    return this.http.delete<any>(`${this.url}watchlists/${watchlistId}/stocks`, { params });
   }
 
 }
