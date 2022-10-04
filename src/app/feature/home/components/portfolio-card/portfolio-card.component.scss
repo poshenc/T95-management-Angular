@@ -9,7 +9,7 @@
   }
 }
 
-.portfolio-card{
+.portfolio-card {
   background-color: rgb(126, 123, 123);
   padding: 15px;
   border-radius: 8px;
@@ -22,4 +22,30 @@
 .inline-flex-container {
   display: inline-flex;
   gap: 20px;
+}
+
+//portfolio stock list
+.company-full-name {
+  font-size: 10px;
+  font-weight: 100;
+}
+
+.stock-price {
+  font-size: 18px;
+  margin: auto 0;
+}
+
+.movement-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100px;
+  border-radius: 5px;
+  background-color: green;
+
+  padding: 2px 5px;
+
+  p:first-child {
+    font-size: 16px;
+  }
 }
