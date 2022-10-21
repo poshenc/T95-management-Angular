@@ -81,10 +81,10 @@ export class CollapsibleDirective implements OnInit {
   }
 
   onShowDone() {
-    console.log("Show animation done");
+    // console.log("Show animation done");
   }
 
   onHideDone() {
-    console.log("Hide animation done");
+    // console.log("Hide animation done");
   }
 }

@@ -12,7 +12,7 @@ import { HomeService } from '../../services/home.service';
 export class PortfolioCardComponent implements OnInit {
 
   //from parent
-  @Input() showMoney: boolean | undefined;
+  @Input() showMoney!: boolean;
 
   //local props
   public portfolioData = [] as any;

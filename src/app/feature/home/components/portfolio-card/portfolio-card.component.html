@@ -2,11 +2,13 @@
   <h3>Portfolio Lists</h3>
   <div *ngFor="let portfolio of portfolioData">
     <div class="portfolio-card" [ngClass]="{ 'radius-collapsed': portfolio.isCollapsed }">
-      <p>{{portfolio.name}}</p>
-      <div class="inline-flex-container">
-        <p *ngIf="showMoney">${{portfolio.total}}</p>
-        <p class="red-text" [ngClass]="{'green-text': portfolio.movementAmount > 0}"><span
-            *ngIf="showMoney">{{portfolio.movementAmount}}</span> ({{portfolio.movementPercentage}})</p>
+      <div [routerLink]="['/portfolio', portfolio.id]">
+        <p>{{portfolio.name}}</p>
+        <div class="inline-flex-container">
+          <p *ngIf="showMoney">${{portfolio.total}}</p>
+          <p class="red-text" [ngClass]="{'green-text': portfolio.movementAmount > 0}"><span
+              *ngIf="showMoney">{{portfolio.movementAmount}}</span> ({{portfolio.movementPercentage}})</p>
+        </div>
       </div>
       <!-- collapse -->
       <i *ngIf="portfolio.isCollapsed" class="bi bi-chevron-down collapse-btn"

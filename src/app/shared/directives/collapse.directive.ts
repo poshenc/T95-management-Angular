@@ -25,11 +25,11 @@ export class CollapseComponent {
 
   @HostListener("@collapse.start", ["$event"])
   onCollapseStart(event: any) {
-    console.log("Starting", event);
+    // console.log("Starting", event);
   }
 
   @HostListener("@collapse.done", ["$event"])
   onCollapseDone(event: any) {
-    console.log("Starting", event);
+    // console.log("Starting", event);
   }
 }
