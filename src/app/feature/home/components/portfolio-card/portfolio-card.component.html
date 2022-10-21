@@ -1,19 +1,21 @@
 <div class="portfolio-card-container">
   <h3>Portfolio Lists</h3>
   <div *ngFor="let portfolio of portfolioData">
-    <div class="portfolio-card">
+    <div class="portfolio-card" [ngClass]="{ 'radius-collapsed': portfolio.isCollapsed }">
       <p>{{portfolio.name}}</p>
       <div class="inline-flex-container">
         <p *ngIf="showMoney">${{portfolio.total}}</p>
         <p class="red-text" [ngClass]="{'green-text': portfolio.movementAmount > 0}"><span
             *ngIf="showMoney">{{portfolio.movementAmount}}</span> ({{portfolio.movementPercentage}})</p>
       </div>
-      <!-- bs collapse-->
-      <i class="bi bi-chevron-down" data-bs-toggle="collapse" data-bs-target="#demo"></i>
+      <!-- collapse -->
+      <i *ngIf="portfolio.isCollapsed" class="bi bi-chevron-down collapse-btn"
+        (click)="portfolio.isCollapsed = !portfolio.isCollapsed"></i>
+      <i *ngIf="!portfolio.isCollapsed" class="bi bi-chevron-up collapse-btn"
+        (click)="portfolio.isCollapsed = !portfolio.isCollapsed"></i>
     </div>
-    <!-- bs collapse-->
-    <div class="collapse" id="demo">
-      <div class="action-row">Add position</div>
+    <!-- collapsible block-->
+    <div class="content" [collapse]="!portfolio.isCollapsed">
       <div class="table-container">
         <!-- Table -->
         <table mat-table [dataSource]="getTableData(portfolio.positions)">

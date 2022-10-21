@@ -20,8 +20,6 @@ export class PortfolioCardComponent implements OnInit {
   //for table
   public displayedColumns: string[] = ['name', 'movement_points', 'price'];
 
-  isExpanded = false;
-
   constructor(private homeService: HomeService) { }
 
   ngOnInit(): void {
@@ -37,7 +35,7 @@ export class PortfolioCardComponent implements OnInit {
       //getPortfolioPositions
       const data = await lastValueFrom(this.homeService.getPortfolioPositions(port.id));
       this.portfolioData[i].positions = data;
-      this.portfolioData[i].isExpanded = false;
+      this.portfolioData[i].isCollapsed = true;
       //calc position total
       this.portfolioData[i].movementAmount = 188.8;
       this.portfolioData[i].movementPercentage = 88.88; //todo: compare with previous day

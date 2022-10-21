@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 
 /** directives **/
+import { CollapseComponent } from './directives/collapse.directive';
 
 /** pipes **/
 import { ObjectArrayFilterPipe } from './pipes/objectArrayFilter.pipe';
@@ -11,11 +12,13 @@ import { ObjectArrayFilterPipe } from './pipes/objectArrayFilter.pipe';
   providers: [],
   declarations: [
     ObjectArrayFilterPipe,
+    CollapseComponent,
   ],
   imports: [
   ],
   exports: [
     ObjectArrayFilterPipe,
+    CollapseComponent,
   ]
 })
 
