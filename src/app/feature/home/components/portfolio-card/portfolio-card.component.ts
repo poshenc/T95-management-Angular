@@ -38,7 +38,7 @@ export class PortfolioCardComponent implements OnInit {
       this.portfolioData[i].isCollapsed = true;
       //calc position total
       this.portfolioData[i].movementAmount = 188.8;
-      this.portfolioData[i].movementPercentage = 88.88; //todo: compare with previous day
+      this.portfolioData[i].movementPercentage = 88.88; //todo: compare with previous day (stock price)
       this.portfolioData[i].total = 288.8;
     }
 
