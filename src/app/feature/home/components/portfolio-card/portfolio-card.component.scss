@@ -9,17 +9,58 @@
   }
 }
 
-.portfolio-card{
+.portfolio-card {
   background-color: rgb(126, 123, 123);
   padding: 15px;
-  border-radius: 8px;
   font-weight: 700;
   color: #ffffff;
-  margin-bottom: 5px;
+  margin-top: 5px;
+  position: relative;
   cursor: pointer;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
 .inline-flex-container {
   display: inline-flex;
   gap: 20px;
+}
+
+//expand and collapse feature
+.bi-chevron-down {
+  // padding: 10px;
+  position: absolute;
+  top: 25px;
+  right: 15px;
+}
+
+//action row
+.action-row {
+  color: #ffffff;
+  padding-left: 15px;
+  background-color: rgb(126, 123, 123);
+}
+
+//position table
+table {
+  width: 100%;
+  background-color: rgb(126, 123, 123);
+  border-bottom: 0px solid transparent;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.table-container {
+  height: 100%;
+  max-width: 100%;
+  overflow-y: auto;
+  overflow: hidden;
+}
+
+.mat-table td:last-child {
+  padding-right: 15px;
+}
+
+.mat-table td:first-child {
+  padding-left: 15px;
 }
