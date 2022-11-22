@@ -1,12 +1,48 @@
 <div class="portfolio-card-container">
   <h3>Portfolio Lists</h3>
-  <div class="portfolio-card" *ngFor="let portfolio of portfolioData">
-    <p>{{portfolio.portfolioName}}</p>
-    <div class="inline-flex-container">
-      <p *ngIf="showMoney">${{portfolio.total}}</p>
-      <p class="red-text" [ngClass]="{'green-text': portfolio.movementAmount > 0}"><span
-          *ngIf="showMoney">{{portfolio.movementAmount}}</span>
-        ({{portfolio.movementPercentage}})</p>
+  <div *ngFor="let portfolio of portfolioData">
+    <div class="portfolio-card" [ngClass]="{ 'radius-collapsed': portfolio.isCollapsed }">
+      <div [routerLink]="['/portfolio', portfolio.id]">
+        <p>{{portfolio.name}}</p>
+        <div class="inline-flex-container">
+          <p *ngIf="showMoney">${{portfolio.total}}</p>
+          <p class="red-text" [ngClass]="{'green-text': portfolio.movementAmount > 0}"><span
+              *ngIf="showMoney">{{portfolio.movementAmount}}</span> ({{portfolio.movementPercentage}})</p>
+        </div>
+      </div>
+      <!-- collapse -->
+      <i *ngIf="portfolio.isCollapsed" class="bi bi-chevron-down collapse-btn"
+        (click)="portfolio.isCollapsed = !portfolio.isCollapsed"></i>
+      <i *ngIf="!portfolio.isCollapsed" class="bi bi-chevron-up collapse-btn"
+        (click)="portfolio.isCollapsed = !portfolio.isCollapsed"></i>
+    </div>
+    <!-- collapsible block-->
+    <div class="content" [collapse]="!portfolio.isCollapsed">
+      <div class="table-container">
+        <!-- Table -->
+        <table mat-table [dataSource]="getTableData(portfolio.positions)">
+          <!-- name Column -->
+          <ng-container matColumnDef="name">
+            <td mat-cell *matCellDef="let element">
+              <div>{{element.name}}</div>
+              <div>{{element.symbol}}</div>
+            </td>
+          </ng-container>
+          <!-- movement_points Column -->
+          <ng-container matColumnDef="movement_points">
+            <td mat-cell *matCellDef="let element"> {{element.movement_points}} </td>
+          </ng-container>
+          <!-- price Column -->
+          <ng-container matColumnDef="price">
+            <td mat-cell *matCellDef="let element">
+              <div>{{element.price}}</div>
+              <div>{{element.movement_percentage}}</div>
+            </td>
+          </ng-container>
+          <!-- Header -->
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
     </div>
     <!-- portfolio list-->
     <div>

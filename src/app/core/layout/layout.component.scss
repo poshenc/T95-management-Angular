@@ -1,7 +1,7 @@
 //small
 @media screen and (max-width: 1023px) {
   .content {
-    margin-bottom: 70px;
+    padding-bottom: 70px;
   }
 }
 
@@ -10,7 +10,7 @@
   .content {
     margin-left: 70px;
     transition: 300ms ease-in-out;
-  } 
+  }
 
   .sidenav-is-expanded {
     margin-left: 300px;
@@ -19,7 +19,7 @@
 }
 
 //large
-@media screen and (min-width: 1365px){
+@media screen and (min-width: 1365px) {
   .content {
     margin-left: 70px;
     transition: 300ms ease-in-out;

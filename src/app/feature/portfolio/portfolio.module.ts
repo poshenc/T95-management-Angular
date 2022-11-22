@@ -1,17 +1,21 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PortfolioRoutingModule } from './portfolio-routing.module';
+import { NgModule } from '@angular/core';
+import { AgGridModule } from 'ag-grid-angular';
 import { PortfolioComponent } from './pages/portfolio/portfolio.component';
+import { PortfoliosComponent } from './pages/portfolios/portfolios.component';
+import { PortfolioRoutingModule } from './portfolio-routing.module';
 
 
 
 @NgModule({
   declarations: [
-    PortfolioComponent
+    PortfolioComponent,
+    PortfoliosComponent
   ],
   imports: [
     CommonModule,
-    PortfolioRoutingModule
+    PortfolioRoutingModule,
+    AgGridModule
   ]
 })
 export class PortfolioModule { }

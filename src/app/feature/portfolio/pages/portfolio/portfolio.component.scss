@@ -1,0 +1,9 @@
+.grid-wrapper {
+  width: 100%;
+}
+
+.grid-container {
+  height: calc(100vh - 70px - 120px);
+  width: 100%;
+  overflow: auto;
+}

@@ -9,14 +9,28 @@
   }
 }
 
+.content {
+  overflow: hidden;
+}
+
+
 .portfolio-card {
   background-color: rgb(126, 123, 123);
   padding: 15px;
-  border-radius: 8px;
   font-weight: 700;
   color: #ffffff;
-  margin-bottom: 5px;
+  margin-top: 5px;
+  position: relative;
   cursor: pointer;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  -webkit-transition: border-radius 0.4s;
+  transition: border-radius 0.4s;
+}
+
+.radius-collapsed {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 
 .inline-flex-container {
@@ -48,4 +62,36 @@
   p:first-child {
     font-size: 16px;
   }
+}
+
+//expand and collapse feature
+.collapse-btn {
+  padding: 10px;
+  position: absolute;
+  top: 15px;
+  right: 5px;
+}
+
+//position table
+table {
+  width: 100%;
+  background-color: rgb(126, 123, 123);
+  border-bottom: 0px solid transparent;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.table-container {
+  height: 100%;
+  max-width: 100%;
+  overflow-y: auto;
+  overflow: hidden;
+}
+
+.mat-table td:last-child {
+  padding-right: 15px;
+}
+
+.mat-table td:first-child {
+  padding-left: 15px;
 }

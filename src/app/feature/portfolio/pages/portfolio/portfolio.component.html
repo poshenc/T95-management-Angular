@@ -1,1 +1,7 @@
-<p>portfolio works!</p>
+<p>single portfolio works!</p>
+<p>need to group same stock (sum total), and have expand to see all detial</p>
+<div id="gridContainer" class="grid-wrapper">
+  <ag-grid-angular #agGrid class="ag-theme-alpine grid-container" [rowData]="rowData" [columnDefs]="columnDefs"
+    (gridReady)="onGridReady($event)">
+  </ag-grid-angular>
+</div>
