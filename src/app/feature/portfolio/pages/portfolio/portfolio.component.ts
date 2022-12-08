@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ColDef } from 'ag-grid-community';
 import { lastValueFrom } from 'rxjs';
+import { PieChartElement } from '../../models/position-pie-chart.model';
 import { PortfolioService } from '../../services/portfolio/portfolio.service';
 
 @Component({
@@ -31,6 +32,10 @@ export class PortfolioComponent implements OnInit {
     // { headerName: 'Change%', field: 'movement_percentage', resizable: true, sortable: true, maxWidth: 165 },
   ];
 
+  //for pie chart
+  public dataLoaded = false;
+  public allPositions = [] as PieChartElement[];
+
   constructor(private portfolioService: PortfolioService, private activatedroute: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -55,10 +60,14 @@ export class PortfolioComponent implements OnInit {
     this.portfolioData.total = 288.8;
 
     console.log('Final Result: single Portfolios', this.portfolioData.positions);
+    //for pie chart data
+    this.allPositions = this.portfolioService.calculateAllocations(positionData);
+    this.dataLoaded = true;
   }
 
   onGridReady(params: any) {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
   }
+
 }

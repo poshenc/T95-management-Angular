@@ -1,5 +1,10 @@
 <p>single portfolio works!</p>
 <p>need to group same stock (sum total), and have expand to see all detial</p>
+<div *ngIf="dataLoaded">
+  <ngx-charts-pie-chart [results]="allPositions" [legend]="true" [legendTitle]="'Allocations'" [view]="[1000,300]"
+    [labels]="true">
+  </ngx-charts-pie-chart>
+</div>
 <div id="gridContainer" class="grid-wrapper">
   <ag-grid-angular #agGrid class="ag-theme-alpine grid-container" [rowData]="rowData" [columnDefs]="columnDefs"
     (gridReady)="onGridReady($event)">
