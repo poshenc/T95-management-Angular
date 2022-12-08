@@ -1,6 +1,13 @@
 <p>portfolios all all!</p>
 <p>need a pie chart, look up</p>
-<div *ngIf="dataLoaded">
+<!-- portfolio allocations-->
+<div *ngIf="portfoliosLoaded">
+  <ngx-charts-pie-chart [results]="allPortfolios" [legend]="true" [legendTitle]="'Allocations'" [view]="[1000,300]"
+    [labels]="true">
+  </ngx-charts-pie-chart>
+</div>
+<!-- position allocations-->
+<div *ngIf="positionsLoaded">
   <ngx-charts-pie-chart [results]="allPositions" [legend]="true" [legendTitle]="'Allocations'" [view]="[1000,300]"
     [labels]="true">
   </ngx-charts-pie-chart>
