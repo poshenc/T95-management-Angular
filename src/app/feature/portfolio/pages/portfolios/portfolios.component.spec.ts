@@ -1,20 +1,19 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { of } from 'rxjs';
+import { PortfolioService } from '../../services/portfolio/portfolio.service';
 
 import { PortfoliosComponent } from './portfolios.component';
 
 describe('PortfoliosComponent', () => {
   let component: PortfoliosComponent;
-  let fixture: ComponentFixture<PortfoliosComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ PortfoliosComponent ]
-    })
-    .compileComponents();
+  let portfolioServiceSpy: jasmine.SpyObj<PortfolioService>;
 
-    fixture = TestBed.createComponent(PortfoliosComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  beforeAll(() => {
+    portfolioServiceSpy = jasmine.createSpyObj(['getPortfolios', 'calculateAllocations', 'getPortfolioPositions']);
+    portfolioServiceSpy.getPortfolios.and.returnValue(of([]));
+
+    component = new PortfoliosComponent(portfolioServiceSpy);
+    component.ngOnInit();
   });
 
   it('should create', () => {

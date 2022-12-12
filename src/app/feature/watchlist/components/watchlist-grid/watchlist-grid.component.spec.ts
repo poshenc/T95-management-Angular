@@ -8,9 +8,9 @@ describe('WatchlistGridComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WatchlistGridComponent ]
+      declarations: [WatchlistGridComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(WatchlistGridComponent);
     component = fixture.componentInstance;

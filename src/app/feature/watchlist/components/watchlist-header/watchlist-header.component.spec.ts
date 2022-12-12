@@ -1,20 +1,20 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { of } from 'rxjs';
 
 import { WatchlistHeaderComponent } from './watchlist-header.component';
 
 describe('WatchlistHeaderComponent', () => {
   let component: WatchlistHeaderComponent;
-  let fixture: ComponentFixture<WatchlistHeaderComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ WatchlistHeaderComponent ]
-    })
-    .compileComponents();
+  let matDialogSpy: jasmine.SpyObj<any>;
 
-    fixture = TestBed.createComponent(WatchlistHeaderComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  beforeAll(() => {
+    matDialogSpy = jasmine.createSpyObj(['open', 'close']);
+    matDialogSpy.open.and.returnValue({
+      afterClosed: () => of(true)
+    });
+
+    component = new WatchlistHeaderComponent(matDialogSpy);
+    component.ngOnInit();
   });
 
   it('should create', () => {

@@ -1,20 +1,19 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
+import { SessionsService } from '../service/sessions/sessions.service';
+import { UserAccountService } from '../service/user-account/user-account.service';
 
 import { LoginComponent } from './login.component';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ LoginComponent ]
-    })
-    .compileComponents();
+  let routerSpy: jasmine.SpyObj<Router>;
+  let userAccountServiceSpy: jasmine.SpyObj<UserAccountService>;
+  let sessionsServiceSpy: jasmine.SpyObj<SessionsService>;
 
-    fixture = TestBed.createComponent(LoginComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  beforeAll(() => {
+    component = new LoginComponent(routerSpy, userAccountServiceSpy, sessionsServiceSpy);
+    component.ngOnInit();
   });
 
   it('should create', () => {

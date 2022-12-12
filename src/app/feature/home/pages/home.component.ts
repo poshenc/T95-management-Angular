@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { StocksService } from 'src/app/core/service/stocks/stocks.service';
-import { YahooFinanceApiService } from 'src/app/core/service/yahoo-finance-api/yahoo-finance-api.service';
 import { portfolioCard, priceCard } from 'src/app/feature/home/models/price-card.models';
 
 @Component({
@@ -18,7 +17,7 @@ export class HomeComponent implements OnInit {
   //props to children
   public showMoney = true;
 
-  constructor(private yahooFinanceApiService: YahooFinanceApiService, private stocksService: StocksService) {
+  constructor(private stocksService: StocksService) {
 
     //for fetch API use
     this.stockList = ['AAPL', 'TSLA']
@@ -51,19 +50,19 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     //yahoo finance API
-    // this.getIntradayPriceData(this.stockList);ß
+    // this.getIntradayPriceData(this.stockList);
     this.fetchStocks();
   }
 
-  getIntradayPriceData(stockList: string[]) {
-    stockList.map(async stock => {
-      let data = await this.yahooFinanceApiService.getIntradayPriceData(stock).toPromise();
-      console.log('stock name:', stock)
-      console.log('regularMarketPrice', data.quoteResponse.result[0].regularMarketPrice);
-      console.log('regularMarketChange', data.quoteResponse.result[0].regularMarketChange)
-      console.log('regularMarketChangePercent', data.quoteResponse.result[0].regularMarketChangePercent);
-    })
-  }
+  // getIntradayPriceData(stockList: string[]) {
+  //   stockList.map(async stock => {
+  //     let data = await this.yahooFinanceApiService.getIntradayPriceData(stock).toPromise();
+  //     console.log('stock name:', stock)
+  //     console.log('regularMarketPrice', data.quoteResponse.result[0].regularMarketPrice);
+  //     console.log('regularMarketChange', data.quoteResponse.result[0].regularMarketChange)
+  //     console.log('regularMarketChangePercent', data.quoteResponse.result[0].regularMarketChangePercent);
+  //   })
+  // }
 
   async fetchStocks() {
     const mainSymbols = ['DOW J', 'IXIC', 'GSPC', 'USDTWD']

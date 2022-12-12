@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { SessionsService } from './../service/sessions/sessions.service';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class JwtHttpInterceptorService {
 
   constructor(private sessionsService: SessionsService) { }

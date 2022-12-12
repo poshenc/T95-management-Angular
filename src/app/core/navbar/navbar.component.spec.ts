@@ -1,20 +1,20 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { BehaviorSubject } from 'rxjs';
+import { SideNavToggleService } from '../service/sidenav-toggle/side-nav-toggle.service';
 
 import { NavbarComponent } from './navbar.component';
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
-  let fixture: ComponentFixture<NavbarComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ NavbarComponent ]
-    })
-    .compileComponents();
+  let sideNavToggleServiceSpy: jasmine.SpyObj<SideNavToggleService>;
 
-    fixture = TestBed.createComponent(NavbarComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+
+  beforeAll(() => {
+    sideNavToggleServiceSpy = jasmine.createSpyObj(['sideNavState$']);
+    sideNavToggleServiceSpy.sideNavState$ = new BehaviorSubject<boolean>(true);
+
+    component = new NavbarComponent(sideNavToggleServiceSpy);
+    component.ngOnInit();
   });
 
   it('should create', () => {

@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { lastValueFrom } from 'rxjs';
-import { Watchlist } from '../../models/watchlist.model';
 import { StocksService } from '../../../../core/service/stocks/stocks.service';
+import { Watchlist } from '../../models/watchlist.model';
 import { WatchlistService } from '../../services/watchlist/watchlist.service';
 
 @Component({
@@ -25,7 +25,7 @@ export class EditWatchlistComponent implements OnInit {
   //for column search function
   public searchText = '';
 
-  constructor(private stocksService: StocksService, private watchlistService: WatchlistService, @Inject(MAT_DIALOG_DATA) public data: any, private dialogRef: MatDialogRef<EditWatchlistComponent>) {
+  constructor(private stocksService: StocksService, private watchlistService: WatchlistService, private dialogRef: MatDialogRef<EditWatchlistComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
     this.watchListId = data.watchListId;
     this.watchListName = data.watchListName;
     this.watchlistData = data.watchlistData;

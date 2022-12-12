@@ -1,20 +1,15 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { WatchlistService } from '../../services/watchlist/watchlist.service';
 import { NewWatchlistComponent } from './new-watchlist.component';
 
 describe('NewWatchlistComponent', () => {
   let component: NewWatchlistComponent;
-  let fixture: ComponentFixture<NewWatchlistComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ NewWatchlistComponent ]
-    })
-    .compileComponents();
+  let matDialogRefSpy: jasmine.SpyObj<any>;
+  let watchlistServiceSpy: jasmine.SpyObj<WatchlistService>;
 
-    fixture = TestBed.createComponent(NewWatchlistComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  beforeAll(() => {
+    component = new NewWatchlistComponent(matDialogRefSpy, watchlistServiceSpy);
+    component.ngOnInit();
   });
 
   it('should create', () => {
