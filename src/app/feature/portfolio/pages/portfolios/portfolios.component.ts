@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { curveBasis } from 'd3-shape';
 import { lastValueFrom } from 'rxjs';
 import { PortfolioPositionElement } from '../../models/portfolio-position.model';
 import { PieChartElement } from '../../models/position-pie-chart.model';
 import { PortfolioService } from '../../services/portfolio/portfolio.service';
+import { historyData } from '../portfolios/sampleHistoryData';
+
 
 @Component({
   selector: 'app-portfolios',
@@ -17,7 +20,26 @@ export class PortfoliosComponent implements OnInit {
   public allPortfolios = [] as PieChartElement[];
   public allPositions = [] as PieChartElement[];
 
-  constructor(private portfolioService: PortfolioService) { }
+  //for line chart
+  historyData!: any;
+  public view: any = [700, 400];
+  public curve: any = curveBasis;
+  public showXAxis = true;
+  public showYAxis = true;
+  public gradient = false;
+  public showLegend = true;
+  public showXAxisLabel = true;
+  public xAxisLabel!: "Years";
+  public showYAxisLabel = true;
+  public yAxisLabel!: "Salary";
+  public graphDataChart!: any[];
+  public colorScheme = {
+    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+  };
+
+  constructor(private portfolioService: PortfolioService) {
+    Object.assign(this, { historyData })
+  }
 
   ngOnInit(): void {
     this.fetchAllPortfolioPositions();

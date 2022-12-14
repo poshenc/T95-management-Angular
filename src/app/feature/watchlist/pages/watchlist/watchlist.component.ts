@@ -31,8 +31,6 @@ export class WatchlistComponent implements OnInit {
     this.currentWatchlistId = this.watchlists[0].id;
     if (this.currentWatchlistId) {
       this.watchlistData = await lastValueFrom(this.watchlistService.getWatchedStocks(this.currentWatchlistId));
-      console.log('watchlistData', this.watchlistData);
-
     }
 
   }
