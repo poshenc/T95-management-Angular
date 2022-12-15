@@ -90,9 +90,27 @@
   font-weight: 600;
 }
 
+/* Password */
 .password-hidden {
   -webkit-text-security: disc;
   font-family: text-security-disc;
+}
+
+.password-hidden::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  font-family: Arial, Helvetica, sans-serif;
+  opacity: 1;
+  /* Firefox */
+}
+
+.password-hidden:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.password-hidden::-ms-input-placeholder {
+  /* Microsoft Edge */
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .displacement {

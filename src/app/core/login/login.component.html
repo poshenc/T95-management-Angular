@@ -16,6 +16,7 @@
         <i class="bi bi-arrow-right-circle-fill"></i>
         <div class="actions btn-actions" (click)="login()">Login</div>
       </div>
+      <p *ngIf="error" class="error-message displacement" id="error">Wrong credentials.</p>
     </div>
     <div class="text" [routerLink]="['/signup']">Create an account</div>
     <div class="text">Use a demo account</div>

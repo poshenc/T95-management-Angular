@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { lastValueFrom } from 'rxjs';
 import { SessionsService } from '../service/sessions/sessions.service';
 import { UserAccountService } from '../service/user-account/user-account.service';
 
@@ -12,6 +11,7 @@ import { UserAccountService } from '../service/user-account/user-account.service
 export class LoginComponent implements OnInit {
 
   public user: any = {};
+  public error = false;
 
   constructor(private router: Router, private userAccountService: UserAccountService, private sessionsService: SessionsService) { }
 
@@ -19,22 +19,23 @@ export class LoginComponent implements OnInit {
   }
 
   async login() {
-    try {
-      this.user = {
-        name: this.user.name,
-        password: this.user.password,
-      }
-
-      const res: any = await lastValueFrom(this.userAccountService.login(this.user));
-
-      if (res.status === 200) {
-        this.sessionsService.setSession('currentUser', res.body);
-        this.router.navigateByUrl('/');
-      }
-
-    } catch (err) {
-      console.log(err);
+    this.error = false;
+    this.user = {
+      name: this.user.name,
+      password: this.user.password,
     }
+
+    this.userAccountService.login(this.user).subscribe({
+      next: (res) => {
+        if (res.status === 200) {
+          this.sessionsService.setSession('currentUser', res.body);
+          this.router.navigateByUrl('/');
+        }
+      },
+      error: (msg) => {
+        this.error = msg.error === "Wrong credentials" ?? true;
+      }
+    })
   }
 
   onKeydown(event: { key: string; }) {
