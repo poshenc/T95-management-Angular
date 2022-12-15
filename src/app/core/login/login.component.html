@@ -19,6 +19,6 @@
       <p *ngIf="error" class="error-message displacement" id="error">Wrong credentials.</p>
     </div>
     <div class="text" [routerLink]="['/signup']">Create an account</div>
-    <div class="text">Use a demo account</div>
+    <div class="text" (click)="demo()">Use a demo account</div>
   </div>
 </div>

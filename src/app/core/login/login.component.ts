@@ -20,11 +20,6 @@ export class LoginComponent implements OnInit {
 
   async login() {
     this.error = false;
-    this.user = {
-      name: this.user.name,
-      password: this.user.password,
-    }
-
     this.userAccountService.login(this.user).subscribe({
       next: (res) => {
         if (res.status === 200) {
@@ -42,6 +37,14 @@ export class LoginComponent implements OnInit {
     if (event.key === 'Enter') {
       this.login();
     }
+  }
+
+  demo() {
+    this.user = {
+      name: 'demo001',
+      password: 'demo123'
+    }
+    this.login();
   }
 
 }

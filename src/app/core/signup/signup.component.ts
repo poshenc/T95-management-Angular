@@ -30,12 +30,6 @@ export class SignupComponent implements OnInit {
   async signup() {
     const isValid = this.validationCheck();
     if (await isValid) {
-      this.user = {
-        name: this.user.name,
-        password: this.user.password,
-        email: this.user.email
-      }
-
       //sign up
       const res = await lastValueFrom(this.userAccountService.signup(this.user));
 
@@ -70,6 +64,21 @@ export class SignupComponent implements OnInit {
     const res = await lastValueFrom(this.userAccountService.findDuplicate(name));
     const isDuplicated = res.body.result;
     return isDuplicated
+  }
+
+  async demo() {
+    const demo = {
+      name: 'demo001',
+      password: 'demo123'
+    }
+    this.userAccountService.login(demo).subscribe({
+      next: (res) => {
+        if (res.status === 200) {
+          this.sessionsService.setSession('currentUser', res.body);
+          this.router.navigateByUrl('/');
+        }
+      }
+    })
   }
 
 }
