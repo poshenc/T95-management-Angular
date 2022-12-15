@@ -17,4 +17,18 @@ export class UserAccountService {
       observe: 'response'
     });
   }
+
+  signup(data: any): Observable<any> {
+    return this.http.post(`${this.url}user/signup/`, data, {
+      responseType: 'json',
+      observe: 'response'
+    });
+  }
+
+  findDuplicate(name: string): Observable<any> {
+    return this.http.get(`${this.url}user/findDuplicate/${name}/`, {
+      responseType: 'json',
+      observe: 'response'
+    });
+  }
 }

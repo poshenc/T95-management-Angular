@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SessionsService } from 'src/app/core/service/sessions/sessions.service';
 
 @Component({
   selector: 'app-profile-card',
@@ -8,9 +9,12 @@ import { Router } from '@angular/router';
 })
 export class ProfileCardComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  public username!: string;
+
+  constructor(private router: Router, private sessionsService: SessionsService) { }
 
   ngOnInit(): void {
+    this.username = this.sessionsService.getUserName();
   }
 
   logout() {

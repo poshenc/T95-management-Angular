@@ -14,6 +14,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 
 //interceptors
 import { JwtHttpInterceptorService } from './interceptors/jwt-http-interceptor.service';
+import { SignupComponent } from './signup/signup.component';
 
 
 
@@ -23,6 +24,7 @@ import { JwtHttpInterceptorService } from './interceptors/jwt-http-interceptor.s
     LayoutComponent,
     NavbarComponent,
     LoginComponent,
+    SignupComponent,
   ],
   imports: [
     CommonModule,

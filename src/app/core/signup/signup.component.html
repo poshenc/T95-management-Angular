@@ -1,0 +1,39 @@
+<div class="login-container">
+  <div class="login-box">
+    <div class="t95">T95</div>
+    <div class="title">Create your account</div>
+    <div class="input-container">
+      <div class="input-wrapper">
+        <i class="bi bi-person-circle"></i>
+        <input class="actions" type="text" placeholder="New Username" (keydown)="onKeydown($event)"
+          [(ngModel)]="user.name">
+      </div>
+      <p *ngIf="errorName" class="error-message displacement" id="errorNameSyntax">Invalid Username.</p>
+      <p *ngIf="errorNameDuplicate" class="error-message displacement" id="errorName">Username taken.</p>
+      <div class="input-wrapper">
+        <i class="bi bi-envelope"></i>
+        <input class="actions" type="text" placeholder="Email" (keydown)="onKeydown($event)" [(ngModel)]="user.email">
+      </div>
+      <p *ngIf="errorEmail" class="error-message displacement" id="errorEmail">Invalid Email.</p>
+      <div class="input-wrapper">
+        <i class="bi bi-unlock-fill"></i>
+        <input class="actions password-hidden" type="text" placeholder="Password" (keydown)="onKeydown($event)"
+          [(ngModel)]="user.password">
+      </div>
+      <p *ngIf="errorPassword" class="error-message displacement" id="errorPassword">Invalid Password.</p>
+      <div class="input-wrapper">
+        <div class="blank-icon"></div>
+        <input class="actions password-hidden" type="text" placeholder="Confirm Password" (keydown)="onKeydown($event)"
+          [(ngModel)]="user.confirmPassword">
+      </div>
+      <p *ngIf="errorConfirmPassword" class="error-message displacement" id="errorConfirmPassword">Passwords don't
+        match.</p>
+      <div class="input-wrapper">
+        <i class="bi bi-arrow-right-circle-fill"></i>
+        <div class="actions btn-actions" (click)="signup()">Sign up</div>
+      </div>
+    </div>
+    <div class="text" [routerLink]="['/login']">Back to log in page</div>
+    <div class="text">Use a demo account</div>
+  </div>
+</div>

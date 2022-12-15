@@ -3,9 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './core/gaurds/auth.guard';
 import { LayoutComponent } from './core/layout/layout.component';
 import { LoginComponent } from './core/login/login.component';
+import { SignupComponent } from './core/signup/signup.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
   {
     path: '', component: LayoutComponent,
     canActivate: [AuthGuard],

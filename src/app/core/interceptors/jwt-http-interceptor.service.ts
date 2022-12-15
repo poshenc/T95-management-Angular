@@ -10,7 +10,7 @@ export class JwtHttpInterceptorService {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     //ignore login request
-    if (request.url.indexOf('/login/') != -1) {
+    if (request.url.indexOf('/login/') != -1 || request.url.indexOf('/user/findDuplicate/') != -1 || request.url.indexOf('/user/signup/') != -1) {
       return next.handle(request);
     }
 
