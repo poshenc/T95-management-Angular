@@ -36,13 +36,18 @@ export class PortfolioCardComponent implements OnInit {
       const data = await lastValueFrom(this.homeService.getPortfolioPositions(port.id));
       this.portfolioData[i].positions = data;
       this.portfolioData[i].isCollapsed = true;
-      //calc position total
+      //calc daily movements
       this.portfolioData[i].movementAmount = 188.8;
-      this.portfolioData[i].movementPercentage = 88.88; //todo: compare with previous day (stock price)
-      this.portfolioData[i].total = 288.8;
+      this.portfolioData[i].movementPercentage = 88.88; //todo: compare with previous day (total value of portfolio last day)
+      //calc portfolio total
+      let sum = 0;
+      for (let i = 0; i < data.length; i++) {
+        sum += Number(data[i].price) * data[i].quantity
+      }
+      this.portfolioData[i].total = port.cash + sum; //cash + (price * quantity)
     }
 
-    // console.log('Final Result: allPortfolios', this.portfolioData);
+    console.log('Final Result: allPortfolios', this.portfolioData);
 
   }
 
