@@ -1,12 +1,12 @@
-<div class="price-card-container">
-  <div *ngFor="let stock of stockData">
-    <div class="card-wrapper" [ngClass]="{'red-card-wrapper': stock.movementPercentage < 0}">
+<swiper [config]="config" class="price-card-swiper">
+  <ng-template *ngFor="let stock of stockData" swiperSlide>
+    <div class="card-wrapper" [ngClass]="{'red-card-wrapper': stock.movementPoints < 0}">
       <p class="stock-name">{{stock.name}}</p>
       <p class="stock-price">{{stock.price}}</p>
       <div class="movement-container">
         <p class="movement-point">{{stock.movementPoints}}</p>
-        <p class="movement-percentage">{{stock.movementPercentage}}%</p>
+        <p class="movement-percentage">{{stock.movementPercentage}}</p>
       </div>
     </div>
-  </div>
-</div>
+  </ng-template>
+</swiper>

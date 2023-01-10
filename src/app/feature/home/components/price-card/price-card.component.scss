@@ -1,9 +1,5 @@
-.price-card-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-  margin-bottom: 15px;
-}
+@import 'swiper/scss';
+@import 'swiper/scss/pagination';
 
 .card-wrapper {
   display: flex;
@@ -13,7 +9,7 @@
   background-color: rgb(110, 158, 126);
   color: #ffffff;
   border-radius: 5px;
-  min-width: 85px;
+  width: 100%;
 }
 
 .red-card-wrapper {
@@ -33,7 +29,7 @@
 }
 
 //movement
-.movement-container{
+.movement-container {
   padding: 8px 4px;
   width: 85px;
   display: flex;
@@ -48,4 +44,18 @@
 .movement-percentage {
   font-size: 8px;
   line-height: 8px;
+}
+
+//swipper
+.price-card-swiper {
+  padding-bottom: 18px;
+}
+
+.swiper {
+  width: 100%;
+  height: 83px;
+}
+
+.swiper-pagination {
+  top: 62px;
 }

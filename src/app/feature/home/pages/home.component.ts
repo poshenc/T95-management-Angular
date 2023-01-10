@@ -65,7 +65,7 @@ export class HomeComponent implements OnInit {
   // }
 
   async fetchStocks() {
-    const mainSymbols = ['DOW J', 'IXIC', 'GSPC', 'USDTWD']
+    const mainSymbols = ['DOW J', 'IXIC', 'GSPC', 'USDTWD', 'TSLA', 'APPL', '2330', 'BTC', 'ETH']
     for (let symbol of mainSymbols) {
       const res = await lastValueFrom(this.stocksService.getStockBySymbol(symbol));
       this.stockData.push(res);

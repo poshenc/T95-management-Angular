@@ -8,6 +8,7 @@ import { PriceCardComponent } from './components/price-card/price-card.component
 import { ProfileCardComponent } from './components/profile-card/profile-card.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './pages/home.component';
+import { SwiperModule } from "swiper/angular";
 
 
 
@@ -23,7 +24,8 @@ import { HomeComponent } from './pages/home.component';
     CommonModule,
     HomeRoutingModule,
     MatTableModule,
-    SharedModule
+    SharedModule,
+    SwiperModule
   ]
 })
 export class HomeModule { }
