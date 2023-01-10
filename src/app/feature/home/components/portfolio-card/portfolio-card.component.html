@@ -5,7 +5,7 @@
       <div [routerLink]="['/portfolio', portfolio.id]">
         <p>{{portfolio.name}}</p>
         <div class="inline-flex-container">
-          <p *ngIf="showMoney">${{portfolio.total}}</p>
+          <p *ngIf="showMoney">${{portfolio.total | number}}</p>
           <p class="red-text" [ngClass]="{'green-text': portfolio.movementAmount > 0}"><span
               *ngIf="showMoney">{{portfolio.movementAmount}}</span> ({{portfolio.movementPercentage}})</p>
         </div>
