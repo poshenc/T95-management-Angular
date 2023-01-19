@@ -10,8 +10,6 @@ import { WatchlistService } from '../../services/watchlist/watchlist.service';
 })
 export class WatchlistComponent implements OnInit {
 
-  public userId = 1;
-
   public watchlists: Watchlist[] | undefined;
   public currentWatchlist: string | undefined;
   public currentWatchlistId: number | undefined;
@@ -26,7 +24,7 @@ export class WatchlistComponent implements OnInit {
   }
 
   async fetchData() {
-    this.watchlists = await lastValueFrom(this.watchlistService.getWatchlists(this.userId));
+    this.watchlists = await lastValueFrom(this.watchlistService.getWatchlists());
     this.currentWatchlist = this.watchlists[0].name;
     this.currentWatchlistId = this.watchlists[0].id;
     if (this.currentWatchlistId) {
@@ -48,7 +46,7 @@ export class WatchlistComponent implements OnInit {
   }
 
   async updateWatchlist(newWatchlistName: string) {
-    this.watchlists = await lastValueFrom(this.watchlistService.getWatchlists(this.userId));
+    this.watchlists = await lastValueFrom(this.watchlistService.getWatchlists());
     if (newWatchlistName) {
       const newWatchlist = this.watchlists.filter(watchlist => {
         return watchlist.name === newWatchlistName

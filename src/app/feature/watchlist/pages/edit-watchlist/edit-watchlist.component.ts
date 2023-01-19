@@ -12,9 +12,6 @@ import { WatchlistService } from '../../services/watchlist/watchlist.service';
 })
 export class EditWatchlistComponent implements OnInit {
 
-  //todo
-  public userId = 1;
-
   public watchedStocks = [] as Watchlist[];
   public remainedStocks = [] as Watchlist[];
 
@@ -84,7 +81,7 @@ export class EditWatchlistComponent implements OnInit {
 
   deleteWatchlist() {
     if (this.watchListName) {
-      this.watchlistService.deleteWatchlist(this.userId, this.watchListName).subscribe(() => {
+      this.watchlistService.deleteWatchlist(this.watchListName).subscribe(() => {
         this.dialogRef.close('delete');
       });
     }

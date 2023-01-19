@@ -9,12 +9,9 @@ import { WatchlistService } from '../../services/watchlist/watchlist.service';
 })
 export class NewWatchlistComponent implements OnInit {
 
-  //todo
-  public userId = 1;
-
   public watchlistName: string | undefined;
 
-  //validation 
+  //validation
   public errorName = false;
 
   constructor(private dialogRef: MatDialogRef<NewWatchlistComponent>, private watchlistService: WatchlistService) { }
@@ -28,7 +25,7 @@ export class NewWatchlistComponent implements OnInit {
 
   onConfirm() {
     if (this.watchlistName) {
-      this.watchlistService.addWatchlist(this.userId, this.watchlistName).subscribe((res) => {
+      this.watchlistService.addWatchlist(this.watchlistName).subscribe((res) => {
         this.dialogRef.close(this.watchlistName);
       });
     } else {
