@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { PortfolioValueElement } from '../../portfolio/models/portfolio-value.model';
 import { PortfolioPositionElement } from '../models/portfolio-position.model';
 
 @Injectable({
@@ -20,5 +21,11 @@ export class HomeService {
   //get all portfolios by user
   getPortfoliosByUser(): Observable<any[]> {
     return this.http.get<any[]>(`${this.url}portfolios/`);
+  }
+
+  //get single portfolio value by date and by user
+  getPortfolioValue(portfolioId: any, date: string): Observable<PortfolioValueElement> {
+    const params = new HttpParams().set('portfolioId', portfolioId).set('date', date);
+    return this.http.get<PortfolioValueElement>(`${this.url}portfolioHistory/portfolioByDate`, { params });
   }
 }
