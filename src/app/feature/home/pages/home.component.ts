@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
+import { AppConfigService } from 'src/app/core/service/app-config/app-config.service';
 import { SessionsService } from 'src/app/core/service/sessions/sessions.service';
 import { StocksService } from 'src/app/core/service/stocks/stocks.service';
 import { priceCard } from 'src/app/feature/home/models/price-card.models';
@@ -23,7 +24,7 @@ export class HomeComponent implements OnInit {
   // @ts-ignore, to suppress warning related to being undefined
   private downloadStatusSubscription: Subscription;
 
-  constructor(private stocksService: StocksService, private sessionsService: SessionsService, private rxStompService: RxStompService) {
+  constructor(private stocksService: StocksService, private sessionsService: SessionsService, private rxStompService: RxStompService, private appConfig: AppConfigService) {
   }
 
   ngOnInit(): void {
@@ -47,9 +48,7 @@ export class HomeComponent implements OnInit {
 
   //websocket market data status
   connectWebsocket() {
-    // const currentUrl = this.appConfigService.settings.apiServer.url;
-    // downloadStatusConfig.brokerURL = 'ws' + currentUrl.slice(currentUrl.indexOf(':')) + 'websocket';
-    stompWebSocketConfig.brokerURL = 'ws://127.0.0.1:8086/t95-websocket';
+    stompWebSocketConfig.brokerURL = this.appConfig.socketEndpoint + 't95-websocket';
     stompWebSocketConfig.connectHeaders = {
       Authorization: this.sessionsService.getJWT()
     };
