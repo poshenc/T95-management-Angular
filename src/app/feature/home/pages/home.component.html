@@ -1,6 +1,6 @@
 <div class="layout-container">
   <app-price-card [stockData]="stockData"></app-price-card>
   <app-profile-card></app-profile-card>
-  <app-holdings-card [(showMoney)]="showMoney"></app-holdings-card>
-  <app-portfolio-card [showMoney]="showMoney"></app-portfolio-card>
+  <app-holdings-card [(showMoney)]="showMoney" [currentTotal]="currentTotal"></app-holdings-card>
+  <app-portfolio-card [showMoney]="showMoney" [portfolioData]="portfolioData"></app-portfolio-card>
 </div>
