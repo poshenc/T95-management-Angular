@@ -30,7 +30,13 @@ export class PortfolioService {
     return this.http.get<PortfolioPositionElement[]>(`${this.url}portfolios/${portfolioId}/positions`);
   }
 
-  //todo [single portfolio page]: single history chart
+  //[portfolio daily movement] todo: implement in single portfolio page
+  //get single portfolio value by date and by user
+  getPortfolioValueByPortfolioId(portfolioId: any, date: string): Observable<PortfolioValueElement> {
+    const params = new HttpParams().set('portfolioId', portfolioId).set('date', date);
+    return this.http.get<PortfolioValueElement>(`${this.url}portfolioHistory/portfolioByDate`, { params });
+  }
+
   //get single portfolio value by date range and by user
   getPortfolioValueByDateRangeAndPortfolioId(portfolioId: any, dateStart: string, dateEnd: string): Observable<PortfolioValueElement[]> {
     const params = new HttpParams().set('portfolioId', portfolioId).set('dateStart', dateStart).set('dateEnd', dateEnd);

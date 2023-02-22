@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ColDef } from 'ag-grid-community';
+import { curveBasis } from 'd3-shape';
 import { lastValueFrom } from 'rxjs';
 import { PortfolioDetail } from '../../models/portfolio-detail.model';
+import { PortfolioValueElement } from '../../models/portfolio-value.model';
 import { PieChartElement } from '../../models/position-pie-chart.model';
 import { PortfolioService } from '../../services/portfolio/portfolio.service';
 
@@ -37,6 +39,23 @@ export class PortfolioComponent implements OnInit {
   public dataLoaded = false;
   public allPositions = [] as PieChartElement[];
 
+  //for historical line chart
+  historyData!: any;
+  public view: any = [700, 400];
+  public curve: any = curveBasis;
+  public showXAxis = true;
+  public showYAxis = true;
+  public gradient = false;
+  public showLegend = true;
+  public showXAxisLabel = true;
+  public xAxisLabel!: "Years";
+  public showYAxisLabel = true;
+  public yAxisLabel!: "Dollars";
+  public graphDataChart!: any[];
+  public colorScheme = {
+    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+  };
+
   constructor(private portfolioService: PortfolioService, private activatedroute: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -50,7 +69,10 @@ export class PortfolioComponent implements OnInit {
 
   public async fetchPortfolioPositions(portfolioId: number) {
     const portfolioInfo: PortfolioDetail = await lastValueFrom(this.portfolioService.getPortfolioInfo(portfolioId));
+    //fetch historical data for line chart
+    this.fetchHistoricalData(portfolioInfo);
     const positionData = await lastValueFrom(this.portfolioService.getPortfolioPositions(portfolioId));
+    //todo: fetch yesterday data from API
 
     this.portfolioData.name = portfolioInfo.name;
     this.rowData = positionData;
@@ -71,4 +93,22 @@ export class PortfolioComponent implements OnInit {
     this.gridColumnApi = params.columnApi;
   }
 
+
+  async fetchHistoricalData(portfolioInfo: PortfolioDetail) {
+    const values = await lastValueFrom(this.portfolioService.getPortfolioValueByDateRangeAndPortfolioId(portfolioInfo.id, "2023-01-10", "2023-01-18"));
+    this.historyData = this.sortPortfolios(values, portfolioInfo.name);
+  }
+
+  sortPortfolios(values: PortfolioValueElement[], portfolioName: string) {
+    const portfolioValues = values.map((portfolio) => {
+      return {
+        name: portfolio.date,
+        value: portfolio.value
+      }
+    });
+    return [{
+      name: portfolioName,
+      series: portfolioValues
+    }]
+  }
 }
