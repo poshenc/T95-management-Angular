@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { curveBasis } from 'd3-shape';
 import { lastValueFrom } from 'rxjs';
+import { PortfolioDetail } from '../../models/portfolio-detail.model';
 import { PortfolioPositionElement } from '../../models/portfolio-position.model';
+import { PortfolioValueElement } from '../../models/portfolio-value.model';
 import { PieChartElement } from '../../models/position-pie-chart.model';
 import { PortfolioService } from '../../services/portfolio/portfolio.service';
-import { historyData } from '../portfolios/sampleHistoryData';
 
 
 @Component({
@@ -31,14 +32,13 @@ export class PortfoliosComponent implements OnInit {
   public showXAxisLabel = true;
   public xAxisLabel!: "Years";
   public showYAxisLabel = true;
-  public yAxisLabel!: "Salary";
+  public yAxisLabel!: "Dollars";
   public graphDataChart!: any[];
   public colorScheme = {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
   };
 
   constructor(private portfolioService: PortfolioService) {
-    Object.assign(this, { historyData })
   }
 
   ngOnInit(): void {
@@ -46,16 +46,17 @@ export class PortfoliosComponent implements OnInit {
   }
 
   async fetchAllPortfolioPositions() {
-    const allPortfolios = await lastValueFrom(this.portfolioService.getPortfolios());
-    const portfolioPositions = await this.runAsync(allPortfolios);
+    const portfoliosData: PortfolioDetail[] = await lastValueFrom(this.portfolioService.getPortfolios());
+    this.fetchHistoricalData(portfoliosData);
+    const portfolioPositions = await this.runAsync(portfoliosData);
     this.portfoliosLoaded = true;
     this.allPositions = this.portfolioService.calculateAllocations(portfolioPositions);
     this.positionsLoaded = true;
   }
 
-  async runAsync(allPortfolios: any): Promise<PortfolioPositionElement[]> {
+  async runAsync(portfoliosData: any): Promise<PortfolioPositionElement[]> {
     let portfolioPositions = [] as PortfolioPositionElement[];
-    for (let portfolio of allPortfolios) {
+    for (let portfolio of portfoliosData) {
       //fetch portfolio positions
       const position: PortfolioPositionElement[] = await lastValueFrom(this.portfolioService.getPortfolioPositions(portfolio.id));
 
@@ -72,6 +73,30 @@ export class PortfoliosComponent implements OnInit {
       portfolioPositions = [...portfolioPositions, ...position]
     }
     return portfolioPositions
+  }
+
+  async fetchHistoricalData(portfoliosData: any) {
+    const values = await lastValueFrom(this.portfolioService.getAllPortfoliosValueByDateRange("2023-01-10", "2023-01-18"));
+    this.historyData = this.sortPortfolios(portfoliosData, values);
+  }
+
+  sortPortfolios(portfolios: PortfolioDetail[], values: PortfolioValueElement[]) {
+    const portfolioIds = values.map((portfolio) => portfolio.portfolio_id);
+    const uniqueIds = [...new Set(portfolioIds)];
+    const portfoliosHistory = uniqueIds.map((id) => {
+      const history = values.filter(portfolio => portfolio.portfolio_id === id);
+      const portfolioValues = history.map((portfolio) => {
+        return {
+          name: portfolio.date,
+          value: portfolio.value
+        }
+      });
+      return {
+        name: portfolios.find((p) => p.id === id)!.name,
+        series: portfolioValues
+      }
+    })
+    return portfoliosHistory;
   }
 
 }

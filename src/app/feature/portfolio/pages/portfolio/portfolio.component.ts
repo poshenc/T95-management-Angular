@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ColDef } from 'ag-grid-community';
 import { lastValueFrom } from 'rxjs';
+import { PortfolioDetail } from '../../models/portfolio-detail.model';
 import { PieChartElement } from '../../models/position-pie-chart.model';
 import { PortfolioService } from '../../services/portfolio/portfolio.service';
 
@@ -48,7 +49,7 @@ export class PortfolioComponent implements OnInit {
   }
 
   public async fetchPortfolioPositions(portfolioId: number) {
-    const portfolioInfo = await lastValueFrom(this.portfolioService.getPortfolioInfo(portfolioId));
+    const portfolioInfo: PortfolioDetail = await lastValueFrom(this.portfolioService.getPortfolioInfo(portfolioId));
     const positionData = await lastValueFrom(this.portfolioService.getPortfolioPositions(portfolioId));
 
     this.portfolioData.name = portfolioInfo.name;
