@@ -29,15 +29,6 @@ export class HomeService {
     return this.http.get<PortfolioValueElement>(`${this.url}portfolioHistory/portfolioByDate`, { params });
   }
 
-
-  //move to portfolio feature???? todo, not implmented yet
-  //get single portfolio value by date range and by user
-  getPortfolioValueByDateRangeAndPortfolioId(portfolioId: any, dateStart: string, dateEnd: string): Observable<PortfolioValueElement[]> {
-    const params = new HttpParams().set('portfolioId', portfolioId).set('dateStart', dateStart).set('dateEnd', dateEnd);
-    return this.http.get<PortfolioValueElement[]>(`${this.url}portfolioHistory/portfolioByDateBetween`, { params });
-  }
-
-  //needed in portfolio card component, todo, not implmented yet
   //get all portfolios value by date and by user
   getAllPortfoliosValueByDate(date: string): Observable<PortfolioValueElement[]> {
     const params = new HttpParams().set('date', date);
@@ -45,7 +36,7 @@ export class HomeService {
   }
 
 
-  //need for total wealth historical chart, todo, not implmented yet
+  //todo: [home page] total wealth historical chart
   //get all portfolios values by date range and by user
   getAllPortfoliosValueByDateRange(dateStart: string, dateEnd: string): Observable<PortfolioValueElement[]> {
     const params = new HttpParams().set('dateStart', dateStart).set('dateEnd', dateEnd);

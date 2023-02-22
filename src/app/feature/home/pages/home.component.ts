@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { curveBasis } from 'd3-shape';
 import { lastValueFrom } from 'rxjs';
 import { AppConfigService } from 'src/app/core/service/app-config/app-config.service';
 import { SessionsService } from 'src/app/core/service/sessions/sessions.service';
@@ -29,6 +30,23 @@ export class HomeComponent implements OnInit {
   // @ts-ignore, to suppress warning related to being undefined
   private downloadStatusSubscription: Subscription;
 
+  //for historical line chart
+  historyData!: any;
+  public view: any = [700, 400];
+  public curve: any = curveBasis;
+  public showXAxis = true;
+  public showYAxis = true;
+  public gradient = false;
+  public showLegend = true;
+  public showXAxisLabel = true;
+  public xAxisLabel!: "Years";
+  public showYAxisLabel = true;
+  public yAxisLabel!: "Dollars";
+  public graphDataChart!: any[];
+  public colorScheme = {
+    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+  };
+
   constructor(private stocksService: StocksService, private sessionsService: SessionsService, private rxStompService: RxStompService, private appConfig: AppConfigService, private homeService: HomeService) {
   }
 
@@ -37,8 +55,10 @@ export class HomeComponent implements OnInit {
     //websocket
     this.connectWebsocket();
     this.subscribeWebsocket();
-    //fetch portfolios
+    //fetch portfolios current and historical
     this.fetchAllPortfolioData();
+    //fetch historical data
+    this.fetchHistoricalData();
   }
 
   ngOnDestroy() {
@@ -102,4 +122,29 @@ export class HomeComponent implements OnInit {
     this.currentTotal = totalSum
   }
 
+  async fetchHistoricalData() {
+    const values = await lastValueFrom(this.homeService.getAllPortfoliosValueByDateRange("2023-01-10", "2023-01-18"));
+    this.historyData = this.sortPortfolios(values);
+  }
+
+  sortPortfolios(values: PortfolioValueElement[]) {
+    const portfolioDates = values.map((portfolio) => portfolio.date);
+    const uniqueDates = [...new Set(portfolioDates)];
+    const portfoliosHistory = uniqueDates.map((date) => {
+      const allValues = values.filter(portfolio => portfolio.date === date);
+      let sum = 0;
+      allValues.forEach((portfolio) => { sum += portfolio.value });
+      return {
+        name: date,
+        value: sum
+      }
+    })
+    const result = [{
+      name: 'Historical Wealth',
+      series: portfoliosHistory
+    }];
+    return result;
+  }
+
 }
+
