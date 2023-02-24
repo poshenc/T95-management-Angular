@@ -1,0 +1,20 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.password-input {
+  height: 44px;
+  padding: 11px 14px;
+  border: 2px solid #04203c;
+  border-radius: 5px;
+  -webkit-text-security: disc;
+  font-family: text-security-disc;
+}
+
+@media (min-width: 600px) {
+  .container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

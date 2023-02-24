@@ -1,1 +1,12 @@
-<p>settings works!</p>
+<div>Password</div>
+<div class="container">
+  <div>
+    <label for="password">New Password</label>
+    <input type="text" class="password-input" [(ngModel)]="data.password" autocomplete="off" />
+  </div>
+  <div>
+    <label for="confirmPassword">Confirm Password</label>
+    <input type="text" class="password-input" [(ngModel)]="data.confirmPassword" autocomplete="off" />
+  </div>
+</div>
+<button class="btn-outline" (click)="onConfirm()" [disabled]="checkFields()">Confirm</button>
