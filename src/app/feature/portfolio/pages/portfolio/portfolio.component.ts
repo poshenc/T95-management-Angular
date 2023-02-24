@@ -4,6 +4,7 @@ import { ColDef } from 'ag-grid-community';
 import { curveBasis } from 'd3-shape';
 import { lastValueFrom } from 'rxjs';
 import { PortfolioDetail } from '../../models/portfolio-detail.model';
+import { PortfolioPositionElement } from '../../models/portfolio-position.model';
 import { PortfolioValueElement } from '../../models/portfolio-value.model';
 import { PieChartElement } from '../../models/position-pie-chart.model';
 import { PortfolioService } from '../../services/portfolio/portfolio.service';
@@ -71,18 +72,22 @@ export class PortfolioComponent implements OnInit {
     const portfolioInfo: PortfolioDetail = await lastValueFrom(this.portfolioService.getPortfolioInfo(portfolioId));
     //fetch historical data for line chart
     this.fetchHistoricalData(portfolioInfo);
-    const positionData = await lastValueFrom(this.portfolioService.getPortfolioPositions(portfolioId));
-    //todo: fetch yesterday data from API
+    const positionData: PortfolioPositionElement[] = await lastValueFrom(this.portfolioService.getPortfolioPositions(portfolioId));
 
+    //calc today portfolio sum
+    const numbers = positionData.map(val => Number(val.price) * val.quantity);
+    const currentSum = numbers.reduce((a, b) => a + b, 0) + portfolioInfo.cash; //all stocks + cash
+    //fetch yesterday worth
+    const yesterdayData: PortfolioValueElement = await lastValueFrom(this.portfolioService.getPortfolioValueByPortfolioId(portfolioId, "2023-01-17"));
+
+    //summary
     this.portfolioData.name = portfolioInfo.name;
     this.rowData = positionData;
     this.portfolioData.positions = positionData;
-    //calc position total
-    this.portfolioData.movementAmount = 188.8;
-    this.portfolioData.movementPercentage = 88.88; //todo: compare with previous day (stock price)
-    this.portfolioData.total = 288.8;
+    this.portfolioData.movementAmount = (currentSum - yesterdayData.value); //compare with previous day
+    this.portfolioData.movementPercentage = (((currentSum - yesterdayData.value) / yesterdayData.value) * 100); //compare with previous day
+    this.portfolioData.total = currentSum; //compare with previous day
 
-    console.log('Final Result: single Portfolios', this.portfolioData.positions);
     //for pie chart data
     this.allPositions = this.portfolioService.calculateAllocations(positionData);
     this.dataLoaded = true;

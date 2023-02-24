@@ -76,7 +76,7 @@ export class PortfoliosComponent implements OnInit {
   }
 
   async fetchHistoricalData(portfoliosData: any) {
-    const values = await lastValueFrom(this.portfolioService.getAllPortfoliosValueByDateRange("2023-01-10", "2023-01-18"));
+    const values: PortfolioValueElement[] = await lastValueFrom(this.portfolioService.getAllPortfoliosValueByDateRange("2023-01-10", "2023-01-18"));
     this.historyData = this.sortPortfolios(portfoliosData, values);
   }
 

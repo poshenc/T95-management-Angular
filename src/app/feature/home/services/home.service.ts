@@ -35,8 +35,6 @@ export class HomeService {
     return this.http.get<PortfolioValueElement[]>(`${this.url}portfolioHistory/allPortfoliosByDate`, { params });
   }
 
-
-  //todo: [home page] total wealth historical chart
   //get all portfolios values by date range and by user
   getAllPortfoliosValueByDateRange(dateStart: string, dateEnd: string): Observable<PortfolioValueElement[]> {
     const params = new HttpParams().set('dateStart', dateStart).set('dateEnd', dateEnd);

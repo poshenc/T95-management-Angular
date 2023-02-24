@@ -30,7 +30,6 @@ export class PortfolioService {
     return this.http.get<PortfolioPositionElement[]>(`${this.url}portfolios/${portfolioId}/positions`);
   }
 
-  //[portfolio daily movement] todo: implement in single portfolio page
   //get single portfolio value by date and by user
   getPortfolioValueByPortfolioId(portfolioId: any, date: string): Observable<PortfolioValueElement> {
     const params = new HttpParams().set('portfolioId', portfolioId).set('date', date);

@@ -1,4 +1,4 @@
-export const historyData = [
+export const dataForNgxCharts = [
   {
     "name": "Karthikeyan",
     "series": [
