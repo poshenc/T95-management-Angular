@@ -1,9 +1,7 @@
-<p>portfolios all all!</p>
-<p>need a pie chart, look up</p>
 <!-- portfolio allocations-->
 <div *ngIf="portfoliosLoaded">
   <ngx-charts-pie-chart [results]="allPortfolios" [legend]="true" [legendTitle]="'Allocations'" [view]="[1000,300]"
-    [labels]="true">
+    [labels]="true" (select)="onPieSelect($event)">
   </ngx-charts-pie-chart>
 </div>
 <!-- position allocations-->

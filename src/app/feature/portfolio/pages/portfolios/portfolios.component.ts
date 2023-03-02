@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { curveBasis } from 'd3-shape';
 import { lastValueFrom } from 'rxjs';
 import { PortfolioDetail } from '../../models/portfolio-detail.model';
@@ -18,6 +19,7 @@ export class PortfoliosComponent implements OnInit {
   //for pie chart
   public portfoliosLoaded = false;
   public positionsLoaded = false;
+  public portfoliosData = [] as PortfolioDetail[];
   public allPortfolios = [] as PieChartElement[];
   public allPositions = [] as PieChartElement[];
 
@@ -38,7 +40,7 @@ export class PortfoliosComponent implements OnInit {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
   };
 
-  constructor(private portfolioService: PortfolioService) {
+  constructor(private portfolioService: PortfolioService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -46,9 +48,9 @@ export class PortfoliosComponent implements OnInit {
   }
 
   async fetchAllPortfolioPositions() {
-    const portfoliosData: PortfolioDetail[] = await lastValueFrom(this.portfolioService.getPortfolios());
-    this.fetchHistoricalData(portfoliosData);
-    const portfolioPositions = await this.runAsync(portfoliosData);
+    this.portfoliosData = await lastValueFrom(this.portfolioService.getPortfolios());
+    this.fetchHistoricalData(this.portfoliosData);
+    const portfolioPositions = await this.runAsync(this.portfoliosData);
     this.portfoliosLoaded = true;
     this.allPositions = this.portfolioService.calculateAllocations(portfolioPositions);
     this.positionsLoaded = true;
@@ -97,6 +99,13 @@ export class PortfoliosComponent implements OnInit {
       }
     })
     return portfoliosHistory;
+  }
+
+  onPieSelect(event: any) {
+    const portfolio = this.portfoliosData.find(portfolio => portfolio.name === event.name);
+    if (portfolio !== undefined) {
+      this.router.navigate([`/portfolio/${portfolio.id}`]);
+    }
   }
 
 }
