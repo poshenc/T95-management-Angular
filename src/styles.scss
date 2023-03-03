@@ -114,6 +114,26 @@ body {
   color: #ffffff;
 }
 
+.btn-outline-dark {
+  padding: 8px 16px;
+  border: 2px solid #04203c;
+  border-radius: 5px;
+  background-color: #FFFFFF;
+  transition: background-color 0.6s;
+  font-size: 20px;
+  font-family: NotoSansTC-Medium;
+  color: #04203C;
+  cursor: pointer;
+  width: auto;
+  line-height: 25px;
+  white-space: nowrap;
+}
+
+.btn-outline-dark:hover {
+  background-color: #5E5E70;
+  color: #ffffff;
+}
+
 .btn-container {
   margin-top: 20px;
   display: inline-flex;
@@ -136,4 +156,14 @@ body {
 //error message
 .error-message {
   color: red;
+}
+
+//dialog container
+.dialog-container {
+  height: 100%;
+  padding: 20px 30px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
 }

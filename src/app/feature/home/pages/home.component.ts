@@ -100,8 +100,8 @@ export class HomeComponent implements OnInit {
     calculation = await lastValueFrom(this.homeService.getPortfoliosByUser());
 
     //2. getPortfolioPositions
-    let sum = 0;
     for (const [i, port] of calculation.entries()) {
+      let sum = 0;
       //getPortfolioPositions
       const data = await lastValueFrom(this.homeService.getPortfolioPositions(port.id));
       calculation[i].positions = data;
@@ -114,9 +114,11 @@ export class HomeComponent implements OnInit {
       totalSum += port.cash + sum;
       //get portfolio value for yesterday
       const yesterdayPortfolioValue: PortfolioValueElement = await lastValueFrom(this.homeService.getPortfolioValueByPortfolioId(port.id, "2023-01-18"));
-      //calc daily movements
-      calculation[i].movementAmount = (calculation[i].total - yesterdayPortfolioValue.value).toFixed(2);
-      calculation[i].movementPercentage = (((calculation[i].total - yesterdayPortfolioValue.value) / yesterdayPortfolioValue.value) * 100).toFixed(2) + "%";
+      if (yesterdayPortfolioValue !== null) {
+        //calc daily movements
+        calculation[i].movementAmount = (calculation[i].total - yesterdayPortfolioValue.value).toFixed(2);
+        calculation[i].movementPercentage = (((calculation[i].total - yesterdayPortfolioValue.value) / yesterdayPortfolioValue.value) * 100).toFixed(2) + "%";
+      }
     }
     this.portfolioData = calculation
     this.currentTotal = totalSum

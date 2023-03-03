@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { curveBasis } from 'd3-shape';
 import { lastValueFrom } from 'rxjs';
@@ -7,6 +8,7 @@ import { PortfolioPositionElement } from '../../models/portfolio-position.model'
 import { PortfolioValueElement } from '../../models/portfolio-value.model';
 import { PieChartElement } from '../../models/position-pie-chart.model';
 import { PortfolioService } from '../../services/portfolio/portfolio.service';
+import { NewPortfolioComponent } from '../new-portfolio/new-portfolio.component';
 
 
 @Component({
@@ -40,7 +42,7 @@ export class PortfoliosComponent implements OnInit {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
   };
 
-  constructor(private portfolioService: PortfolioService, private router: Router) {
+  constructor(private portfolioService: PortfolioService, private router: Router, private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -48,6 +50,9 @@ export class PortfoliosComponent implements OnInit {
   }
 
   async fetchAllPortfolioPositions() {
+    this.portfoliosData = [];
+    this.allPortfolios = [];
+    this.allPositions = [];
     this.portfoliosData = await lastValueFrom(this.portfolioService.getPortfolios());
     this.fetchHistoricalData(this.portfoliosData);
     const portfolioPositions = await this.runAsync(this.portfoliosData);
@@ -67,9 +72,9 @@ export class PortfoliosComponent implements OnInit {
       const sum = numbers.reduce((a, b) => a + b, 0);
       const result = {
         name: portfolio.name,
-        value: sum
+        value: sum + portfolio.cash
       }
-      this.allPortfolios.push(result)
+      this.allPortfolios = [...this.allPortfolios, result]
 
       //for all positions data
       portfolioPositions = [...portfolioPositions, ...position]
@@ -106,6 +111,17 @@ export class PortfoliosComponent implements OnInit {
     if (portfolio !== undefined) {
       this.router.navigate([`/portfolio/${portfolio.id}`]);
     }
+  }
+
+  onNewPortfolio() {
+    const dialogRef = this.dialog.open(NewPortfolioComponent, {
+      width: '300px',
+      height: '250px'
+    })
+
+    dialogRef.afterClosed().subscribe(data => {
+      this.fetchAllPortfolioPositions();
+    })
   }
 
 }

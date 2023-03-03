@@ -48,6 +48,11 @@ export class PortfolioService {
     return this.http.get<PortfolioValueElement[]>(`${this.url}portfolioHistory/allPortfoliosByDateBetween`, { params });
   }
 
+  //add new portfolio by user
+  addPortfolio(data: any): Observable<any> {
+    return this.http.post<any>(this.url + 'portfolios', data);
+  }
+
   //for pie chart
   calculateAllocations(portfolioPositions: PortfolioPositionElement[]): PieChartElement[] {
     const allocations = portfolioPositions.map(portfolio => {

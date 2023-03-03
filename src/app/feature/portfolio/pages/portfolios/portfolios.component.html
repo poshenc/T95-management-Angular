@@ -1,4 +1,7 @@
+<button class="btn-outline-dark" (click)="onNewPortfolio()">New Portfolio</button>
 <!-- portfolio allocations-->
+<p>todo: Angular NGX-Charts: using a custom legend</p>
+<p>so user can see all portfolios(include small once, and link to single port page)</p>
 <div *ngIf="portfoliosLoaded">
   <ngx-charts-pie-chart [results]="allPortfolios" [legend]="true" [legendTitle]="'Allocations'" [view]="[1000,300]"
     [labels]="true" (select)="onPieSelect($event)">
