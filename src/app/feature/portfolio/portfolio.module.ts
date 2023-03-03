@@ -8,6 +8,7 @@ import { NewPortfolioComponent } from './pages/new-portfolio/new-portfolio.compo
 import { PortfolioComponent } from './pages/portfolio/portfolio.component';
 import { PortfoliosComponent } from './pages/portfolios/portfolios.component';
 import { PortfolioRoutingModule } from './portfolio-routing.module';
+import { EditPortfolioComponent } from './pages/edit-portfolio/edit-portfolio.component';
 
 
 
@@ -15,7 +16,8 @@ import { PortfolioRoutingModule } from './portfolio-routing.module';
   declarations: [
     PortfolioComponent,
     PortfoliosComponent,
-    NewPortfolioComponent
+    NewPortfolioComponent,
+    EditPortfolioComponent
   ],
   imports: [
     CommonModule,

@@ -1,4 +1,4 @@
-<p>single portfolio works!</p>
+<button class="btn-outline-dark" (click)="onEditPortfolio()">Edit Portfolio</button>
 <div>Name: <span>{{portfolioData.name}}</span></div>
 <div>Total: <span>{{portfolioData.total}}</span></div>
 <div>Movement Ammount: <span *ngIf="portfolioData.movementAmount > 0">+</span>{{portfolioData.movementAmount | number :

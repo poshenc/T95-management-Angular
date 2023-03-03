@@ -17,20 +17,21 @@ export class NewPortfolioComponent implements OnInit {
       name: '',
       cash: null
     }
+
   constructor(private portfolioService: PortfolioService, private dialogRef: MatDialogRef<NewPortfolioComponent>) { }
 
   ngOnInit(): void {
   }
 
-  closeDialog() {
-    this.dialogRef.close();
+  closeDialog(action: string) {
+    this.dialogRef.close(action);
   }
 
   async onConfirm() {
     if (this.data.name !== '') {
       this.data.cash = this.data.cash === null ? 0 : this.data.cash;
       await lastValueFrom(this.portfolioService.addPortfolio(this.data));
-      this.closeDialog();
+      this.closeDialog('onConfirm');
     }
   }
 

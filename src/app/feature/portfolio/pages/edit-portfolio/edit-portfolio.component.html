@@ -1,7 +1,11 @@
 <div class="dialog-container">
-  <h1 class="title">Create new portfolio</h1>
+  <h1 class="title">Edit portfolio</h1>
+  <button class="btn-outline" (click)="onDelete()">Delete</button>
   <input class="input-outline" type="text" placeholder="Enter name..." [(ngModel)]="data.name">
   <input class="input-outline" type="number" placeholder="Enter cash..." [(ngModel)]="data.cash">
+  <ul>
+    <li *ngFor="let position of data.positions">{{position.symbol}} | {{position.quantity}}</li>
+  </ul>
   <div class="btn-container">
     <button class="btn-outline" (click)="closeDialog('onCancel')">Cancel</button>
     <button class="btn-outline" (click)="onConfirm()" [disabled]="checkFields()">Confirm</button>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ColDef } from 'ag-grid-community';
 import { curveBasis } from 'd3-shape';
 import { lastValueFrom } from 'rxjs';
@@ -8,6 +9,7 @@ import { PortfolioPositionElement } from '../../models/portfolio-position.model'
 import { PortfolioValueElement } from '../../models/portfolio-value.model';
 import { PieChartElement } from '../../models/position-pie-chart.model';
 import { PortfolioService } from '../../services/portfolio/portfolio.service';
+import { EditPortfolioComponent } from '../edit-portfolio/edit-portfolio.component';
 
 @Component({
   selector: 'app-portfolio',
@@ -57,7 +59,7 @@ export class PortfolioComponent implements OnInit {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
   };
 
-  constructor(private portfolioService: PortfolioService, private activatedroute: ActivatedRoute) { }
+  constructor(private portfolioService: PortfolioService, private activatedroute: ActivatedRoute, private router: Router, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     // subsrice to path by url query params
@@ -82,11 +84,14 @@ export class PortfolioComponent implements OnInit {
 
     //summary
     this.portfolioData.name = portfolioInfo.name;
+    this.portfolioData.cash = portfolioInfo.cash;
     this.rowData = positionData;
     this.portfolioData.positions = positionData;
-    this.portfolioData.movementAmount = (currentSum - yesterdayData.value); //compare with previous day
-    this.portfolioData.movementPercentage = (((currentSum - yesterdayData.value) / yesterdayData.value) * 100); //compare with previous day
-    this.portfolioData.total = currentSum; //compare with previous day
+    this.portfolioData.total = currentSum;
+    if (yesterdayData !== null) {
+      this.portfolioData.movementAmount = (currentSum - yesterdayData.value); //compare with previous day
+      this.portfolioData.movementPercentage = (((currentSum - yesterdayData.value) / yesterdayData.value) * 100); //compare with previous day
+    }
 
     //for pie chart data
     this.allPositions = this.portfolioService.calculateAllocations(positionData);
@@ -115,5 +120,21 @@ export class PortfolioComponent implements OnInit {
       name: portfolioName,
       series: portfolioValues
     }]
+  }
+
+  onEditPortfolio() {
+    const dialogRef = this.dialog.open(EditPortfolioComponent, {
+      data: this.portfolioData,
+      width: '300px',
+      height: '450px'
+    })
+
+    dialogRef.afterClosed().subscribe(action => {
+      if (action === 'onConfirm') {
+        this.fetchPortfolioPositions(this.portfolioId);
+      } else if (action === 'onDelete') {
+        this.router.navigate(['/portfolio']);
+      }
+    })
   }
 }

@@ -119,8 +119,10 @@ export class PortfoliosComponent implements OnInit {
       height: '250px'
     })
 
-    dialogRef.afterClosed().subscribe(data => {
-      this.fetchAllPortfolioPositions();
+    dialogRef.afterClosed().subscribe(action => {
+      if (action === 'onConfirm') {
+        this.fetchAllPortfolioPositions();
+      }
     })
   }
 
