@@ -1,0 +1,10 @@
+<div class="legend-container">
+  <div class="portfolio-card" *ngFor="let item of data; let i = index" [attr.aria-label]="item.name + '-legend'"
+    (click)="onClick(item)">
+    <div class="title">
+      <div class="box" [style.background-color]="item[i]"></div>
+      <div>{{item.name}}</div>
+    </div>
+    <div>{{item.value / sum | percent: '1.2'}}</div>
+  </div>
+</div>

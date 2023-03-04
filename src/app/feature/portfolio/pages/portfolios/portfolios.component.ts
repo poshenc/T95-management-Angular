@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { curveBasis } from 'd3-shape';
-import { lastValueFrom } from 'rxjs';
+import { lastValueFrom, Subject } from 'rxjs';
 import { PortfolioDetail } from '../../models/portfolio-detail.model';
 import { PortfolioPositionElement } from '../../models/portfolio-position.model';
 import { PortfolioValueElement } from '../../models/portfolio-value.model';
@@ -17,6 +17,11 @@ import { NewPortfolioComponent } from '../new-portfolio/new-portfolio.component'
   styleUrls: ['./portfolios.component.scss']
 })
 export class PortfoliosComponent implements OnInit {
+
+  //custom legends
+  allPortfoliosWithColor: any = [];
+  onHoverTrueEmitSubject: Subject<void> = new Subject<void>();
+  onHoverFalseEmitSubject: Subject<void> = new Subject<void>();
 
   //for pie chart
   public portfoliosLoaded = false;
@@ -79,6 +84,10 @@ export class PortfoliosComponent implements OnInit {
       //for all positions data
       portfolioPositions = [...portfolioPositions, ...position]
     }
+
+    //for chart custom legend
+    this.getColorCodes();
+
     return portfolioPositions
   }
 
@@ -124,6 +133,34 @@ export class PortfoliosComponent implements OnInit {
         this.fetchAllPortfolioPositions();
       }
     })
+  }
+
+  //for custom legends
+  getColorCodes(): void {
+    let element;
+    let colorCode;
+
+    for (let i = 0; i < this.allPortfolios.length; i++) {
+      element = document.querySelector('[ng-reflect-label="' + this.allPortfolios[i].name + '"');
+      colorCode = element?.getAttribute("ng-reflect-color")
+      this.allPortfoliosWithColor[i] = this.allPortfolios[i];
+      this.allPortfoliosWithColor[i][i] = colorCode;
+    }
+  }
+
+  onHover($event: any): void {
+    this.onHoverTrueEmitSubject.next($event)
+  }
+
+  onHoverFalse($event: any): void {
+    this.onHoverFalseEmitSubject.next($event)
+  }
+
+  onClickEmit(data: any) {
+    const portfolioId = this.portfoliosData.find(portfolio => portfolio.name === data.name)?.id;
+    if (data.name) {
+      this.router.navigate([`/portfolio/${portfolioId}`]);
+    }
   }
 
 }

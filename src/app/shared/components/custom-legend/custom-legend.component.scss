@@ -1,0 +1,41 @@
+.portfolio-card {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(126, 123, 123);
+  padding: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 5px;
+  position: relative;
+  cursor: pointer;
+  border-radius: 8px;
+  max-width: 300px;
+}
+
+.active-portfolio-card {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(91, 91, 91);
+  padding: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 5px;
+  position: relative;
+  cursor: pointer;
+  border-radius: 8px;
+  max-width: 300px;
+}
+
+.portfolio-card:hover {
+  background-color: rgb(91, 91, 91);
+}
+
+.title {
+  display: flex;
+  gap: 10px;
+}
+
+.box {
+  width: 15px;
+  height: 15px;
+}

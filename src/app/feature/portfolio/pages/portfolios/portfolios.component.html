@@ -1,20 +1,26 @@
-<button class="btn-outline-dark" (click)="onNewPortfolio()">New Portfolio</button>
-<!-- portfolio allocations-->
-<p>todo: Angular NGX-Charts: using a custom legend</p>
-<p>so user can see all portfolios(include small once, and link to single port page)</p>
-<div *ngIf="portfoliosLoaded">
-  <ngx-charts-pie-chart [results]="allPortfolios" [legend]="true" [legendTitle]="'Allocations'" [view]="[1000,300]"
-    [labels]="true" (select)="onPieSelect($event)">
-  </ngx-charts-pie-chart>
+<div class="layout-container">
+  <!-- legend-->
+  <app-custom-legend *ngIf="allPortfoliosWithColor.length > 0" [data]="allPortfoliosWithColor"
+    [onTrueHoverEvent]="onHoverTrueEmitSubject" [onFalseHoverEvent]="onHoverFalseEmitSubject"
+    (onClickEvent)="onClickEmit($event)">
+  </app-custom-legend>
+  <button class="btn-outline-dark" (click)="onNewPortfolio()">New Portfolio</button>
+  <!-- portfolio allocations-->
+  <div *ngIf="portfoliosLoaded">
+    <ngx-charts-pie-chart [results]="allPortfolios" [legendTitle]="'Allocations'" [view]="[1000,300]" [labels]="true"
+      (select)="onPieSelect($event)" (activate)="onHover($event)" (deactivate)="onHoverFalse($event)"
+      aria-hidden="false">
+    </ngx-charts-pie-chart>
+  </div>
+  <!-- position allocations-->
+  <div *ngIf="positionsLoaded">
+    <ngx-charts-pie-chart [results]="allPositions" [legend]="true" [legendTitle]="'Allocations'" [view]="[1000,300]"
+      [labels]="true">
+    </ngx-charts-pie-chart>
+  </div>
+  <!-- total wealth history chart-->
+  <ngx-charts-line-chart [view]="view" [results]="historyData" [curve]="curve" [gradient]="gradient" [xAxis]="showXAxis"
+    [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+    [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel">
+  </ngx-charts-line-chart>
 </div>
-<!-- position allocations-->
-<div *ngIf="positionsLoaded">
-  <ngx-charts-pie-chart [results]="allPositions" [legend]="true" [legendTitle]="'Allocations'" [view]="[1000,300]"
-    [labels]="true">
-  </ngx-charts-pie-chart>
-</div>
-<!-- total wealth history chart-->
-<ngx-charts-line-chart [view]="view" [results]="historyData" [curve]="curve" [gradient]="gradient" [xAxis]="showXAxis"
-  [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
-  [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel">
-</ngx-charts-line-chart>

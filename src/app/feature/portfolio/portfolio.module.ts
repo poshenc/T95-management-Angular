@@ -9,8 +9,7 @@ import { PortfolioComponent } from './pages/portfolio/portfolio.component';
 import { PortfoliosComponent } from './pages/portfolios/portfolios.component';
 import { PortfolioRoutingModule } from './portfolio-routing.module';
 import { EditPortfolioComponent } from './pages/edit-portfolio/edit-portfolio.component';
-
-
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +24,8 @@ import { EditPortfolioComponent } from './pages/edit-portfolio/edit-portfolio.co
     AgGridModule,
     NgxChartsModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
+    SharedModule
   ]
 })
 export class PortfolioModule { }

@@ -1,22 +1,25 @@
-<button class="btn-outline-dark" (click)="onEditPortfolio()">Edit Portfolio</button>
-<div>Name: <span>{{portfolioData.name}}</span></div>
-<div>Total: <span>{{portfolioData.total}}</span></div>
-<div>Movement Ammount: <span *ngIf="portfolioData.movementAmount > 0">+</span>{{portfolioData.movementAmount | number :
-  '1.2-2'}}</div>
-<div>Movement Percentage: <span *ngIf="portfolioData.movementAmount > 0">+</span>{{portfolioData.movementPercentage |
-  number : '1.2-2'}}%</div>
-<div *ngIf="dataLoaded">
-  <ngx-charts-pie-chart [results]="allPositions" [legend]="true" [legendTitle]="'Allocations'" [view]="[1000,300]"
-    [labels]="true">
-  </ngx-charts-pie-chart>
-</div>
-<!-- total wealth history chart-->
-<ngx-charts-line-chart [view]="view" [results]="historyData" [curve]="curve" [gradient]="gradient" [xAxis]="showXAxis"
-  [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
-  [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel">
-</ngx-charts-line-chart>
-<div id="gridContainer" class="grid-wrapper">
-  <ag-grid-angular #agGrid class="ag-theme-alpine grid-container" [rowData]="rowData" [columnDefs]="columnDefs"
-    (gridReady)="onGridReady($event)">
-  </ag-grid-angular>
+<div class="layout-container">
+  <button class="btn-outline-dark" (click)="onEditPortfolio()">Edit Portfolio</button>
+  <div>Name: <span>{{portfolioData.name}}</span></div>
+  <div>Total: <span>{{portfolioData.total}}</span></div>
+  <div>Movement Ammount: <span *ngIf="portfolioData.movementAmount > 0">+</span>{{portfolioData.movementAmount | number
+    :
+    '1.2-2'}}</div>
+  <div>Movement Percentage: <span *ngIf="portfolioData.movementAmount > 0">+</span>{{portfolioData.movementPercentage |
+    number : '1.2-2'}}%</div>
+  <div *ngIf="dataLoaded">
+    <ngx-charts-pie-chart [results]="allPositions" [legend]="true" [legendTitle]="'Allocations'" [view]="[1000,300]"
+      [labels]="true">
+    </ngx-charts-pie-chart>
+  </div>
+  <!-- total wealth history chart-->
+  <ngx-charts-line-chart [view]="view" [results]="historyData" [curve]="curve" [gradient]="gradient" [xAxis]="showXAxis"
+    [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+    [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel">
+  </ngx-charts-line-chart>
+  <div id="gridContainer" class="grid-wrapper">
+    <ag-grid-angular #agGrid class="ag-theme-alpine grid-container" [rowData]="rowData" [columnDefs]="columnDefs"
+      (gridReady)="onGridReady($event)">
+    </ag-grid-angular>
+  </div>
 </div>
