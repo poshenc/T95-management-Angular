@@ -11,6 +11,7 @@ import { PortfolioRoutingModule } from './portfolio-routing.module';
 import { EditPortfolioComponent } from './pages/edit-portfolio/edit-portfolio.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { HoldingsCardComponent } from './components/holdings-card/holdings-card.component';
+import { NewPositionComponent } from './pages/new-position/new-position.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HoldingsCardComponent } from './components/holdings-card/holdings-card.
     PortfoliosComponent,
     NewPortfolioComponent,
     EditPortfolioComponent,
-    HoldingsCardComponent
+    HoldingsCardComponent,
+    NewPositionComponent
   ],
   imports: [
     CommonModule,

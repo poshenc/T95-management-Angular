@@ -9,6 +9,7 @@ import { PortfolioPositionElement } from '../../models/portfolio-position.model'
 import { PortfolioValueElement } from '../../models/portfolio-value.model';
 import { PieChartElement } from '../../models/position-pie-chart.model';
 import { PortfolioService } from '../../services/portfolio/portfolio.service';
+import { NewPositionComponent } from '../new-position/new-position.component';
 
 @Component({
   selector: 'app-portfolio',
@@ -122,8 +123,16 @@ export class PortfolioComponent implements OnInit {
   }
 
   onAddPosition() {
-    console.log('add position');
+    const dialogRef = this.dialog.open(NewPositionComponent, {
+      width: '300px',
+      height: '350px'
+    })
 
+    dialogRef.afterClosed().subscribe(action => {
+      if (action === 'onConfirm') {
+        console.log('added new position');
+      }
+    })
   }
 
   onEditPosition() {

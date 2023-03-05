@@ -28,14 +28,14 @@ export class NewPortfolioComponent implements OnInit {
   }
 
   async onConfirm() {
-    if (this.data.name !== '') {
+    if (!this.checkFields()) {
       this.data.cash = this.data.cash === null ? 0 : this.data.cash;
       await lastValueFrom(this.portfolioService.addPortfolio(this.data));
       this.closeDialog('onConfirm');
     }
   }
 
-  checkFields() {
+  checkFields(): boolean {
     const valid: boolean = this.data.name !== '';
     return !valid
   }

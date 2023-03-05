@@ -1,6 +1,6 @@
 <div *ngIf="portfolioData" class="holdings-card">
   <div class="flex-between-container">
-    <p>Total Value</p>
+    <p>Portfolio Value</p>
     <i class="bi bi-gear-fill settings-icon" (click)="onEditPortfolio()"></i>
   </div>
   <h1 class="holdings-total">${{portfolioData.total | number : '1.2-2'}}</h1>
