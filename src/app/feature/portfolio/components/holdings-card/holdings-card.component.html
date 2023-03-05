@@ -1,0 +1,29 @@
+<div *ngIf="portfolioData" class="holdings-card">
+  <div class="flex-between-container">
+    <p>Total Value</p>
+    <i class="bi bi-gear-fill settings-icon" (click)="onEditPortfolio()"></i>
+  </div>
+  <h1 class="holdings-total">${{portfolioData.total | number : '1.2-2'}}</h1>
+  <div class="flex-container">
+    <p>Daily Gain</p>
+    <div [ngClass]="portfolioData.movementAmount > 0 ? 'green-text' : 'red-text' " class="value-change-wrapper">
+      <span *ngIf="portfolioData.movementAmount > 0">+</span>{{portfolioData.movementAmount | number
+      :
+      '1.2-2'}}
+    </div>
+  </div>
+  <div class="flex-container">
+    <p>Daily %</p>
+    <div [ngClass]="portfolioData.movementAmount > 0 ? 'green-text' : 'red-text' " class="value-change-wrapper">
+      <div>(<span *ngIf="portfolioData.movementAmount > 0">+</span>{{portfolioData.movementPercentage |
+        number : '1.2-2'}}%) </div>
+    </div>
+  </div>
+  <div class="flex-container">
+    <p>Cash At Bank</p>
+    <div class="green-text value-change-wrapper">
+      <div>${{portfolioData.cash}}</div>
+    </div>
+  </div>
+  <p class="card-date">{{currentTime | date: 'yyyy/MM/dd hh:mm a'}}</p>
+</div>

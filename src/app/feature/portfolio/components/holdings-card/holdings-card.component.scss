@@ -1,0 +1,35 @@
+.settings-icon {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.holdings-card {
+  background-color: rgb(126, 123, 123);
+  padding: 15px;
+  border-radius: 8px;
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+
+.holdings-total {
+  margin-top: 5px;
+  margin-bottom: 18px;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.card-date {
+  padding-top: 10px;
+}
+
+.value-change-wrapper {
+  display: flex;
+  justify-content: end;
+  gap: 5px;
+}
