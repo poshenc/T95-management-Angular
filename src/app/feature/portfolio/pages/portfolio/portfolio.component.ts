@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { ColDef } from 'ag-grid-community';
 import { curveBasis } from 'd3-shape';
 import { lastValueFrom } from 'rxjs';
+import { BtnCellRendererComponent } from '../../components/btn-cell-renderer/btn-cell-renderer.component';
 import { PortfolioDetail } from '../../models/portfolio-detail.model';
 import { PortfolioPositionElement } from '../../models/portfolio-position.model';
 import { PortfolioValueElement } from '../../models/portfolio-value.model';
@@ -24,11 +25,18 @@ export class PortfolioComponent implements OnInit {
   //ag-grid
   public gridApi: any;
   public gridColumnApi: any;
+  public frameworkComponents: any;
 
   public rowData: any[] = [];
 
   columnDefs: ColDef[] = [
-    { headerName: 'Name', field: 'name', resizable: true, sortable: true, width: 120, pinned: 'left', lockPinned: true, cellClass: 'lock-pinned' },
+    {
+      headerName: 'Name', field: 'name', resizable: true, sortable: true, width: 120, pinned: 'left', lockPinned: true, cellClass: 'lock-pinned',
+      cellRenderer: 'btnCellRenderer',
+      cellRendererParams: {
+        editBtn: this.onEditPosition.bind(this)
+      },
+    },
     { headerName: 'Symbol', field: 'symbol', resizable: true, sortable: true, width: 85 },
     { headerName: 'Price', field: 'price', resizable: true, sortable: true, width: 95 },
     { headerName: 'Quantity', field: 'quantity', resizable: true, sortable: true, width: 95 },
@@ -59,7 +67,11 @@ export class PortfolioComponent implements OnInit {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
   };
 
-  constructor(private portfolioService: PortfolioService, private activatedroute: ActivatedRoute, private dialog: MatDialog) { }
+  constructor(private portfolioService: PortfolioService, private activatedroute: ActivatedRoute, private dialog: MatDialog) {
+    this.frameworkComponents = {
+      btnCellRenderer: BtnCellRendererComponent,
+    }
+  }
 
   ngOnInit(): void {
     // subsrice to path by url query params
@@ -135,8 +147,8 @@ export class PortfolioComponent implements OnInit {
     })
   }
 
-  onEditPosition() {
-    console.log('edit position');
+  onEditPosition(event: any) {
+    console.log('edit position: ', event);
 
   }
 

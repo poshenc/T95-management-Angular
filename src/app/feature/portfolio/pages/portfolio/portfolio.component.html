@@ -18,7 +18,7 @@
   <button class="btn-outline-dark" (click)="onAddPosition()">Add</button>
   <div id="gridContainer" class="grid-wrapper">
     <ag-grid-angular #agGrid class="ag-theme-alpine grid-container" [rowData]="rowData" [columnDefs]="columnDefs"
-      (gridReady)="onGridReady($event)">
+      [frameworkComponents]="frameworkComponents" (gridReady)="onGridReady($event)">
     </ag-grid-angular>
   </div>
 </div>

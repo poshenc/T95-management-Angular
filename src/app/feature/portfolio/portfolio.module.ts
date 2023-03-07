@@ -12,6 +12,7 @@ import { EditPortfolioComponent } from './pages/edit-portfolio/edit-portfolio.co
 import { SharedModule } from 'src/app/shared/shared.module';
 import { HoldingsCardComponent } from './components/holdings-card/holdings-card.component';
 import { NewPositionComponent } from './pages/new-position/new-position.component';
+import { BtnCellRendererComponent } from './components/btn-cell-renderer/btn-cell-renderer.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NewPositionComponent } from './pages/new-position/new-position.componen
     NewPortfolioComponent,
     EditPortfolioComponent,
     HoldingsCardComponent,
-    NewPositionComponent
+    NewPositionComponent,
+    BtnCellRendererComponent
   ],
   imports: [
     CommonModule,
