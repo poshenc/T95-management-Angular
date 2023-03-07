@@ -11,6 +11,7 @@
 
 .content {
   overflow: hidden;
+  margin-top: -10px;
 }
 
 
@@ -19,11 +20,12 @@
   padding: 15px;
   font-weight: 700;
   color: #ffffff;
-  margin-top: 5px;
+  margin-top: 15px;
   position: relative;
   cursor: pointer;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+  border: 1px solid rgb(126, 123, 123);
   -webkit-transition: border-radius 0.4s;
   transition: border-radius 0.4s;
 }
@@ -85,6 +87,7 @@ table {
   border-bottom: 0px solid transparent;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
+  border: 1px solid rgb(126, 123, 123);
 }
 
 .table-container {
@@ -92,6 +95,10 @@ table {
   max-width: 100%;
   overflow-y: auto;
   overflow: hidden;
+  padding-top: 10px;
+  background-color: rgb(126, 123, 123);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 
 .mat-table td:last-child {
