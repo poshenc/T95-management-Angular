@@ -1,10 +1,14 @@
 <div class="dialog-container">
   <h1 class="title">Add position</h1>
-  <p>change to horizontal table</p>
-  <input class="input-outline" type="text" placeholder="Enter Symbol..." [(ngModel)]="data.symbol">
+  <input class="input-outline" type="date" [(ngModel)]="data.date">
+  <p>RWD change to horizontal table</p>
+  <!-- option select with search -->
+  <ng-select [items]="symbols" [virtualScroll]="true" bindLabel="name" bindValue="id" placeholder="Select symbol"
+    [(ngModel)]="data.symbol">
+  </ng-select>
   <input class="input-outline" type="number" placeholder="Enter quantity..." [(ngModel)]="data.quantity">
   <input class="input-outline" type="number" placeholder="Enter cost..." [(ngModel)]="data.cost">
-  <input class="input-outline" type="number" placeholder="Enter date..." [(ngModel)]="data.date">
+  <!-- <input class="input-outline" type="number" placeholder="Enter date..." [(ngModel)]="data.date"> -->
   <div class="btn-container">
     <button class="btn-outline" (click)="closeDialog('onCancel')">Cancel</button>
     <button class="btn-outline" (click)="onConfirm()" [disabled]="checkFields()">Confirm</button>
