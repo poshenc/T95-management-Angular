@@ -32,4 +32,10 @@ export class SessionsService {
     return JSON.parse(this.getCurrentUser() as string).jwt;
   }
 
+  setUserName(username: string) {
+    let currentUser = JSON.parse(sessionStorage.getItem("currentUser")!)
+    currentUser.name = username
+    sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
+  }
+
 }

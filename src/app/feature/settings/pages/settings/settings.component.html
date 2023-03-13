@@ -1,12 +1,18 @@
-<div>Password</div>
-<div class="container">
-  <div>
-    <label for="password">New Password</label>
-    <input type="text" class="password-input" [(ngModel)]="data.password" autocomplete="off" />
+<div *ngIf="data">
+  <div>Name</div>
+  <input class="input-outline" type="text" placeholder="Enter name..." [(ngModel)]="data.name">
+  <div>Email</div>
+  <input class="input-outline" type="text" placeholder="Enter email..." [(ngModel)]="data.email">
+  <div>Password</div>
+  <div class="container">
+    <div>
+      <label for="password">New Password</label>
+      <input type="text" class="password-input" [(ngModel)]="data.password" autocomplete="off" />
+    </div>
+    <div>
+      <label for="confirmPassword">Confirm Password</label>
+      <input type="text" class="password-input" [(ngModel)]="data.confirmPassword" autocomplete="off" />
+    </div>
   </div>
-  <div>
-    <label for="confirmPassword">Confirm Password</label>
-    <input type="text" class="password-input" [(ngModel)]="data.confirmPassword" autocomplete="off" />
-  </div>
+  <button class="btn-outline" (click)="onConfirm()" [disabled]="checkFields()">Confirm</button>
 </div>
-<button class="btn-outline-dark" (click)="onConfirm()" [disabled]="checkFields()">Confirm</button>

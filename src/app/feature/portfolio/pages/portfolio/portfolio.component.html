@@ -1,6 +1,5 @@
 <div class="layout-container">
   <div>HHH note2: Finish Sample UI + RWD</div>
-  <div>WWW note4: BE, build API for close position, add close date and change quantity to 0</div>
   <div class="title">{{portfolioData.name}}</div>
   <app-holdings-card [portfolioData]="portfolioData" (onUpdatePortfolio)="refreshPage()"></app-holdings-card>
   <div *ngIf="dataLoaded">

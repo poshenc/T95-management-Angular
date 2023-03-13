@@ -11,7 +11,11 @@ export class SettingsService {
 
   constructor(private http: HttpClient) { }
 
-  changePassword(data: any): Observable<any> {
+  fetchUserInfo(): Observable<any> {
+    return this.http.get(`${this.url}user/`);
+  }
+
+  updateUserInfo(data: any): Observable<any> {
     return this.http.put(`${this.url}user/`, data, {
       responseType: 'json',
       observe: 'response'
