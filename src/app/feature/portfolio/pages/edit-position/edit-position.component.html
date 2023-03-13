@@ -1,5 +1,6 @@
 <div class="dialog-container">
   <h1 class="title">Edit position</h1>
+  <button class="btn-outline" (click)="onClosePosition()">Close Position</button>
   <input class="input-outline" type="date" [(ngModel)]="position.openDate">
   <p>RWD change to horizontal table</p>
   <input class="input-outline" type="text" [value]="position.name" disabled>

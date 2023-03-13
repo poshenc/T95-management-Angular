@@ -74,6 +74,11 @@ export class PortfolioService {
     return this.http.put<any>(this.url + `portfolios/${portfolioId}/positions`, data);
   }
 
+  //close position of portfolio
+  closePosition(positionId: number, portfolioId: number): Observable<any> {
+    return this.http.delete<any>(this.url + `portfolios/${portfolioId}/positions/${positionId}`);
+  }
+
   //for pie chart
   calculateAllocations(portfolioPositions: PortfolioPositionElement[]): PieChartElement[] {
     const allocations = portfolioPositions.map(portfolio => {

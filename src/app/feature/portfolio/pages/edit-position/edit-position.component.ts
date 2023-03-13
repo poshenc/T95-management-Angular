@@ -14,7 +14,7 @@ export class EditPositionComponent implements OnInit {
   position: any;
 
   constructor(private portfolioService: PortfolioService, private dialogRef: MatDialogRef<EditPositionComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
-    this.position = data;
+    this.position = { ...data };
   }
 
   ngOnInit(): void {
@@ -34,6 +34,11 @@ export class EditPositionComponent implements OnInit {
       await lastValueFrom(this.portfolioService.editPosition(data, Number(this.data.portfolioId)));
       this.closeDialog('onConfirm');
     }
+  }
+
+  async onClosePosition() {
+    await lastValueFrom(this.portfolioService.closePosition(Number(this.data.positionId), Number(this.data.portfolioId)));
+    this.closeDialog('onConfirm');
   }
 
   checkFields(): boolean {
