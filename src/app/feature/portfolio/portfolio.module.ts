@@ -14,6 +14,7 @@ import { NewPositionComponent } from './pages/new-position/new-position.componen
 import { PortfolioComponent } from './pages/portfolio/portfolio.component';
 import { PortfoliosComponent } from './pages/portfolios/portfolios.component';
 import { PortfolioRoutingModule } from './portfolio-routing.module';
+import { EditPositionComponent } from './pages/edit-position/edit-position.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { PortfolioRoutingModule } from './portfolio-routing.module';
     EditPortfolioComponent,
     HoldingsCardComponent,
     NewPositionComponent,
-    BtnCellRendererComponent
+    BtnCellRendererComponent,
+    EditPositionComponent
   ],
   imports: [
     CommonModule,

@@ -3,6 +3,6 @@ export interface PositionElement {
   costBasis: number;
   openDate: Date;
   closeDate?: Date;
-  positionId: number;
-  stockId: number;
+  positionId?: number;
+  stockId?: number;
 }

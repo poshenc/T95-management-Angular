@@ -16,15 +16,15 @@ export class NewPositionComponent implements OnInit {
   stocklist: any;
 
   public position: {
-    symbol: string | null;
+    stockId: number | null;
     quantity: number | null;
-    cost: number | null;
-    date: string;
+    costBasis: number | null;
+    openDate: string;
   } = {
-      symbol: null,
+      stockId: null,
       quantity: null,
-      cost: null,
-      date: '',
+      costBasis: null,
+      openDate: '',
     }
 
   constructor(private portfolioService: PortfolioService, private stocksService: StocksService, private dialogRef: MatDialogRef<NewPositionComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
@@ -45,9 +45,9 @@ export class NewPositionComponent implements OnInit {
   async onConfirm() {
     if (!this.checkFields()) {
       const data = {} as PositionElement;
-      data.openDate = new Date(this.position.date);
-      data.stockId = Number(this.position.symbol);
-      data.costBasis = this.position.cost!;
+      data.openDate = new Date(this.position.openDate);
+      data.stockId = this.position.stockId!;
+      data.costBasis = this.position.costBasis!;
       data.quantity = this.position.quantity!;
       const portfolioId = this.data;
       await lastValueFrom(this.portfolioService.addPosition(data, portfolioId));
@@ -56,7 +56,7 @@ export class NewPositionComponent implements OnInit {
   }
 
   checkFields(): boolean {
-    const valid: boolean = this.position.symbol !== '' && this.position.quantity !== null && this.position.cost !== null && this.position.date !== ''
+    const valid: boolean = this.position.stockId !== null && this.position.quantity !== null && this.position.costBasis !== null && this.position.openDate !== ''
     return !valid
   }
 

@@ -10,6 +10,7 @@ import { PortfolioPositionElement } from '../../models/portfolio-position.model'
 import { PortfolioValueElement } from '../../models/portfolio-value.model';
 import { PieChartElement } from '../../models/position-pie-chart.model';
 import { PortfolioService } from '../../services/portfolio/portfolio.service';
+import { EditPositionComponent } from '../edit-position/edit-position.component';
 import { NewPositionComponent } from '../new-position/new-position.component';
 
 @Component({
@@ -149,8 +150,19 @@ export class PortfolioComponent implements OnInit {
   }
 
   onEditPosition(event: any) {
-    console.log('edit position: ', event);
+    const data = { ...event };
+    data.portfolioId = this.portfolioId;
+    const dialogRef = this.dialog.open(EditPositionComponent, {
+      data: data,
+      width: '300px',
+      height: '350px'
+    })
 
+    dialogRef.afterClosed().subscribe(action => {
+      if (action === 'onConfirm') {
+        this.fetchPortfolioPositions(this.portfolioId);
+      }
+    })
   }
 
   refreshPage() {

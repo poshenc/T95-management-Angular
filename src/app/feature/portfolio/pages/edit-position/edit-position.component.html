@@ -1,11 +1,8 @@
 <div class="dialog-container">
-  <h1 class="title">Add position</h1>
+  <h1 class="title">Edit position</h1>
   <input class="input-outline" type="date" [(ngModel)]="position.openDate">
   <p>RWD change to horizontal table</p>
-  <!-- option select with search -->
-  <ng-select [items]="stocklist" [virtualScroll]="true" bindLabel="name" bindValue="id" placeholder="Select symbol"
-    [(ngModel)]="position.stockId">
-  </ng-select>
+  <input class="input-outline" type="text" [value]="position.name" disabled>
   <input class="input-outline" type="number" placeholder="Enter quantity..." [(ngModel)]="position.quantity">
   <input class="input-outline" type="number" placeholder="Enter cost..." [(ngModel)]="position.costBasis">
   <div class="btn-container">
