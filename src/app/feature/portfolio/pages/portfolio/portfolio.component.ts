@@ -136,13 +136,14 @@ export class PortfolioComponent implements OnInit {
 
   onAddPosition() {
     const dialogRef = this.dialog.open(NewPositionComponent, {
+      data: this.portfolioId,
       width: '300px',
       height: '350px'
     })
 
     dialogRef.afterClosed().subscribe(action => {
       if (action === 'onConfirm') {
-        console.log('added new position');
+        this.fetchPortfolioPositions(this.portfolioId);
       }
     })
   }

@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { lastValueFrom } from 'rxjs';
+import { StocksService } from 'src/app/core/service/stocks/stocks.service';
 import { PositionElement } from '../../models/position.model';
 import { PortfolioService } from '../../services/portfolio/portfolio.service';
 
@@ -11,15 +13,9 @@ import { PortfolioService } from '../../services/portfolio/portfolio.service';
 export class NewPositionComponent implements OnInit {
 
   //sample
-  symbols = [
-    { id: 1, name: 'Vilnius' },
-    { id: 2, name: 'Kaunas' },
-    { id: 3, name: 'Pavilnys' },
-    { id: 4, name: 'Pabradė' },
-    { id: 5, name: 'Klaipėda' }
-  ];
+  stocklist: any;
 
-  public data: {
+  public position: {
     symbol: string | null;
     quantity: number | null;
     cost: number | null;
@@ -31,11 +27,16 @@ export class NewPositionComponent implements OnInit {
       date: '',
     }
 
-  constructor(private portfolioService: PortfolioService, private dialogRef: MatDialogRef<NewPositionComponent>) { }
+  constructor(private portfolioService: PortfolioService, private stocksService: StocksService, private dialogRef: MatDialogRef<NewPositionComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
+    this.fetchStocksList();
   }
 
+  async fetchStocksList() {
+    const allStocksList = await lastValueFrom(this.stocksService.getStocksList());
+    this.stocklist = allStocksList
+  }
 
   closeDialog(action: string) {
     this.dialogRef.close(action);
@@ -43,22 +44,19 @@ export class NewPositionComponent implements OnInit {
 
   async onConfirm() {
     if (!this.checkFields()) {
-      console.log(this.data);
       const data = {} as PositionElement;
-      data.openDate = new Date(this.data.date);
-      data.stockId = 5; //todo: change to actual
-      data.costBasis = this.data.quantity!;
-      data.quantity = this.data.quantity!;
-
-      console.log('result data:', data);
-
-      // await lastValueFrom(this.portfolioService.addPosition(this.data));
-      // this.closeDialog('onConfirm');
+      data.openDate = new Date(this.position.date);
+      data.stockId = Number(this.position.symbol);
+      data.costBasis = this.position.cost!;
+      data.quantity = this.position.quantity!;
+      const portfolioId = this.data;
+      await lastValueFrom(this.portfolioService.addPosition(data, portfolioId));
+      this.closeDialog('onConfirm');
     }
   }
 
   checkFields(): boolean {
-    const valid: boolean = this.data.symbol !== '' && this.data.quantity !== null && this.data.cost !== null && this.data.date !== ''
+    const valid: boolean = this.position.symbol !== '' && this.position.quantity !== null && this.position.cost !== null && this.position.date !== ''
     return !valid
   }
 
