@@ -1,5 +1,7 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { lastValueFrom } from 'rxjs';
 import { priceCard } from 'src/app/feature/home/models/price-card.models';
+import { HomeService } from './../../services/home.service';
 
 // import Swiper core and required modules
 import SwiperCore, { Pagination, SwiperOptions } from "swiper";
@@ -40,12 +42,15 @@ export class PriceCardComponent implements OnInit {
     }
   };
 
-  constructor() {
-  }
+  constructor(private homeService: HomeService) { }
 
   ngOnInit(): void {
-    // console.log(this.stockData)
+    this.getKeyIndices();
   }
 
+  async getKeyIndices() {
+    this.stockData = await lastValueFrom(this.homeService.getKeyIndices());
+  }
 }
+
 

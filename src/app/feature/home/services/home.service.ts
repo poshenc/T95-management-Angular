@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PortfolioValueElement } from '../../portfolio/models/portfolio-value.model';
 import { PortfolioPositionElement } from '../models/portfolio-position.model';
+import { priceCard } from '../models/price-card.models';
 import { environment } from './../../../../environments/environment.prod';
 
 @Injectable({
@@ -42,5 +43,10 @@ export class HomeService {
   getAllPortfoliosValueByDateRange(dateStart: string, dateEnd: string): Observable<PortfolioValueElement[]> {
     const params = new HttpParams().set('dateStart', dateStart).set('dateEnd', dateEnd);
     return this.http.get<PortfolioValueElement[]>(`${this.domain}portfolioHistory/allPortfoliosByDateBetween`, { params });
+  }
+
+  //get key indices at ngOnInit
+  getKeyIndices() {
+    return this.http.get<priceCard[]>(`${this.domain}stocks/keyIndices`);
   }
 }
