@@ -1,21 +1,24 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from './../../../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StocksService {
 
-  public url: string = 'http://localhost:8086/api/stocks/';
+  public domain: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.domain = environment.domain;
+  }
 
   getStockBySymbol(symbol: string): Observable<any> {
-    return this.http.get<any>(this.url + symbol);
+    return this.http.get<any>(this.domain + symbol);
   }
 
   getStocksList(): Observable<any[]> {
-    return this.http.get<any[]>(this.url);
+    return this.http.get<any[]>(this.domain);
   }
 }
