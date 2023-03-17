@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  domain: 'http://localhost:8086/api/'
+  domain: 'http://localhost:8086/api/',
+  socketEndpoint: "ws://127.0.0.1:8086/"
 };
 
 /*

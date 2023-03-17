@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { curveBasis } from 'd3-shape';
 import { lastValueFrom } from 'rxjs';
-import { AppConfigService } from 'src/app/core/service/app-config/app-config.service';
 import { SessionsService } from 'src/app/core/service/sessions/sessions.service';
-import { StocksService } from 'src/app/core/service/stocks/stocks.service';
 import { priceCard } from 'src/app/feature/home/models/price-card.models';
+import { environment } from 'src/environments/environment.prod';
 import { PortfolioValueElement } from '../../portfolio/models/portfolio-value.model';
 import { RxStompService } from '../../portfolio/services/webSocket/rx-stomp.service';
 import { stompWebSocketConfig } from '../../portfolio/services/webSocket/stompWebSocket.config';
@@ -47,7 +46,7 @@ export class HomeComponent implements OnInit {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
   };
 
-  constructor(private stocksService: StocksService, private sessionsService: SessionsService, private rxStompService: RxStompService, private appConfig: AppConfigService, private homeService: HomeService) {
+  constructor(private sessionsService: SessionsService, private rxStompService: RxStompService, private homeService: HomeService) {
   }
 
   ngOnInit(): void {
@@ -66,7 +65,7 @@ export class HomeComponent implements OnInit {
 
   //websocket market data status
   connectWebsocket() {
-    stompWebSocketConfig.brokerURL = this.appConfig.socketEndpoint + 't95-websocket';
+    stompWebSocketConfig.brokerURL = environment.socketEndpoint + 't95-websocket';
     stompWebSocketConfig.connectHeaders = {
       Authorization: this.sessionsService.getJWT()
     };
@@ -79,7 +78,7 @@ export class HomeComponent implements OnInit {
       .watch('/topic/globalIndex', stompWebSocketConfig.connectHeaders)
       .subscribe((data: any) => {
         this.stockData = JSON.parse(data.body);
-        // console.log('Scheduled update stock data,', this.stockData);
+        console.log('websocket incoming,', this.stockData);
       });
   }
 
