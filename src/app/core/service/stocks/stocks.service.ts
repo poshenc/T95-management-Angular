@@ -15,10 +15,10 @@ export class StocksService {
   }
 
   getStockBySymbol(symbol: string): Observable<any> {
-    return this.http.get<any>(this.domain + symbol);
+    return this.http.get<any>(this.domain + 'stocks/' + symbol);
   }
 
   getStocksList(): Observable<any[]> {
-    return this.http.get<any[]>(this.domain);
+    return this.http.get<any[]>(this.domain + 'stocks');
   }
 }

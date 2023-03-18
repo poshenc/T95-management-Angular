@@ -1,5 +1,12 @@
 <div class="portfolio-card-container">
-  <h3>Portfolio Lists</h3>
+  <!-- header -->
+  <div class="header">
+    <div class="flex-between-container">
+      <h2>Portfolio Lists</h2>
+      <h2>Total: {{portfolioData.length}}</h2>
+    </div>
+  </div>
+  <!-- portfolio lists-->
   <div *ngFor="let portfolio of portfolioData">
     <div class="portfolio-card" [ngClass]="{ 'radius-collapsed': portfolio.isCollapsed }">
       <div [routerLink]="['/portfolio', portfolio.id]">
