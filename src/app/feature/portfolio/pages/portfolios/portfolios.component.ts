@@ -32,7 +32,7 @@ export class PortfoliosComponent implements OnInit {
 
   //for line chart
   historyData!: any;
-  public view: any = [700, 400];
+  // public view: any = [700, 400];
   public curve: any = curveBasis;
   public showXAxis = true;
   public showYAxis = true;

@@ -1,26 +1,37 @@
 <div class="layout-container">
+  <div class="header">
+    <h1>Portfolios</h1>
+    <button class="btn-outline-dark" (click)="onNewPortfolio()">Add Portfolio</button>
+  </div>
   <!-- legend-->
   <app-custom-legend *ngIf="allPortfoliosWithColor.length > 0" [data]="allPortfoliosWithColor"
     [onTrueHoverEvent]="onHoverTrueEmitSubject" [onFalseHoverEvent]="onHoverFalseEmitSubject"
     (onClickEvent)="onClickEmit($event)">
   </app-custom-legend>
-  <button class="btn-outline-dark" (click)="onNewPortfolio()">New Portfolio</button>
-  <!-- portfolio allocations-->
-  <div *ngIf="portfoliosLoaded">
-    <ngx-charts-pie-chart [results]="allPortfolios" [legendTitle]="'Allocations'" [view]="[1000,300]" [labels]="true"
-      (select)="onPieSelect($event)" (activate)="onHover($event)" (deactivate)="onHoverFalse($event)"
-      aria-hidden="false">
-    </ngx-charts-pie-chart>
-  </div>
-  <!-- position allocations-->
-  <div *ngIf="positionsLoaded">
-    <ngx-charts-pie-chart [results]="allPositions" [legend]="true" [legendTitle]="'Allocations'" [view]="[1000,300]"
-      [labels]="true">
-    </ngx-charts-pie-chart>
+  <div class="grid-container">
+    <!-- portfolio allocations-->
+    <div class="pie-chart-container">
+      <h3>Portfolios</h3>
+      <div *ngIf="portfoliosLoaded">
+        <ngx-charts-pie-chart [results]="allPortfolios" [labels]="true" (select)="onPieSelect($event)"
+          (activate)="onHover($event)" (deactivate)="onHoverFalse($event)" aria-hidden="false">
+        </ngx-charts-pie-chart>
+      </div>
+    </div>
+    <!-- position allocations-->
+    <div class="pie-chart-container">
+      <h3>Positions</h3>
+      <div *ngIf="positionsLoaded">
+        <ngx-charts-pie-chart [results]="allPositions" [labels]="true">
+        </ngx-charts-pie-chart>
+      </div>
+    </div>
   </div>
   <!-- total wealth history chart-->
-  <ngx-charts-line-chart [view]="view" [results]="historyData" [curve]="curve" [gradient]="gradient" [xAxis]="showXAxis"
-    [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
-    [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel">
-  </ngx-charts-line-chart>
+  <div class="line-chart-container">
+    <ngx-charts-line-chart [results]="historyData" [curve]="curve" [gradient]="gradient" [xAxis]="showXAxis"
+      [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+      [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel">
+    </ngx-charts-line-chart>
+  </div>
 </div>

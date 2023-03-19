@@ -1,3 +1,22 @@
+.legend-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-bottom: 5px;
+}
+
+@media (min-width: 495px) {
+  .legend-container {
+    grid-gap: 5px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 690px) {
+  .legend-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 .portfolio-card {
   display: flex;
   justify-content: space-between;
@@ -6,10 +25,11 @@
   font-weight: 700;
   color: #ffffff;
   margin-bottom: 5px;
+  margin-right: 5px;
   position: relative;
   cursor: pointer;
   border-radius: 8px;
-  max-width: 300px;
+  width: 100%;
 }
 
 .active-portfolio-card {
@@ -23,7 +43,7 @@
   position: relative;
   cursor: pointer;
   border-radius: 8px;
-  max-width: 300px;
+  width: 100%;
 }
 
 .portfolio-card:hover {
