@@ -43,6 +43,15 @@
   margin: 0;
 }
 
+.ag-theme-alpine {
+  --ag-foreground-color: #ffffff;
+  --ag-background-color: rgb(126, 123, 123);
+  --ag-header-foreground-color: #ffffff;
+  --ag-header-background-color: #383c54;
+  --ag-odd-row-background-color: rgb(0, 0, 0, 0.12);
+  --ag-header-column-resize-handle-color: #ffffff;
+}
+
 .mat-typography p,
 .mat-typography span {
   padding: 0;
