@@ -1,21 +1,25 @@
 <div class="layout-container">
-  <div>HHH note2: Finish Sample UI + RWD</div>
   <div class="title">{{portfolioData.name}}</div>
-  <app-holdings-card [portfolioData]="portfolioData" (onUpdatePortfolio)="refreshPage()"></app-holdings-card>
-  <div *ngIf="dataLoaded">
-    <ngx-charts-pie-chart [results]="allPositions" [legend]="true" [legendTitle]="'Allocations'" [view]="[1000,300]"
-      [labels]="true">
-    </ngx-charts-pie-chart>
+  <div class="grid-container">
+    <!-- portfolio card -->
+    <app-holdings-card [portfolioData]="portfolioData" (onUpdatePortfolio)="refreshPage()"></app-holdings-card>
+    <!-- pie chart -->
+    <div *ngIf="dataLoaded" class="pie-chart-container">
+      <h3>Positions</h3>
+      <ngx-charts-pie-chart [results]="allPositions" [labels]="true">
+      </ngx-charts-pie-chart>
+    </div>
   </div>
   <!-- total wealth history chart-->
-  <ngx-charts-line-chart [view]="view" [results]="historyData" [curve]="curve" [gradient]="gradient" [xAxis]="showXAxis"
-    [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
-    [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel">
-  </ngx-charts-line-chart>
-  <button class="btn-outline-dark" (click)="onAddPosition()">Add</button>
+  <div class="line-chart-container">
+    <ngx-charts-line-chart [results]="historyData" [curve]="curve" [gradient]="gradient" [xAxis]="showXAxis"
+      [yAxis]="showYAxis">
+    </ngx-charts-line-chart>
+  </div>
+  <button class="btn-outline-dark" (click)="onAddPosition()">Add Position</button>
   <div id="gridContainer" class="grid-wrapper">
-    <ag-grid-angular #agGrid class="ag-theme-alpine grid-container" [rowData]="rowData" [columnDefs]="columnDefs"
-      [frameworkComponents]="frameworkComponents" (gridReady)="onGridReady($event)">
+    <ag-grid-angular #agGrid class="ag-theme-alpine" [rowData]="rowData" [columnDefs]="columnDefs"
+      [frameworkComponents]="frameworkComponents" (gridReady)="onGridReady($event)" domLayout='autoHeight'>
     </ag-grid-angular>
   </div>
 </div>

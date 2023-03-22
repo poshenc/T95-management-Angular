@@ -1,6 +1,6 @@
 <div class="layout-container">
   <div class="header">
-    <h1>Portfolios</h1>
+    <div>Portfolios</div>
     <button class="btn-outline-dark" (click)="onNewPortfolio()">Add Portfolio</button>
   </div>
   <!-- legend-->
@@ -10,28 +10,23 @@
   </app-custom-legend>
   <div class="grid-container">
     <!-- portfolio allocations-->
-    <div class="pie-chart-container">
+    <div *ngIf="portfoliosLoaded" class="pie-chart-container">
       <h3>Portfolios</h3>
-      <div *ngIf="portfoliosLoaded">
-        <ngx-charts-pie-chart [results]="allPortfolios" [labels]="true" (select)="onPieSelect($event)"
-          (activate)="onHover($event)" (deactivate)="onHoverFalse($event)" aria-hidden="false">
-        </ngx-charts-pie-chart>
-      </div>
+      <ngx-charts-pie-chart [results]="allPortfolios" [labels]="true" (select)="onPieSelect($event)"
+        (activate)="onHover($event)" (deactivate)="onHoverFalse($event)" aria-hidden="false">
+      </ngx-charts-pie-chart>
     </div>
     <!-- position allocations-->
-    <div class="pie-chart-container">
+    <div *ngIf="positionsLoaded" class="pie-chart-container">
       <h3>Positions</h3>
-      <div *ngIf="positionsLoaded">
-        <ngx-charts-pie-chart [results]="allPositions" [labels]="true">
-        </ngx-charts-pie-chart>
-      </div>
+      <ngx-charts-pie-chart [results]="allPositions" [labels]="true">
+      </ngx-charts-pie-chart>
     </div>
   </div>
   <!-- total wealth history chart-->
   <div class="line-chart-container">
     <ngx-charts-line-chart [results]="historyData" [curve]="curve" [gradient]="gradient" [xAxis]="showXAxis"
-      [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
-      [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel">
+      [yAxis]="showYAxis">
     </ngx-charts-line-chart>
   </div>
 </div>

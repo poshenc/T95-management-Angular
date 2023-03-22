@@ -38,11 +38,11 @@ export class PortfolioComponent implements OnInit {
         editBtn: this.onEditPosition.bind(this)
       },
     },
-    { headerName: 'Symbol', field: 'symbol', resizable: true, sortable: true, width: 85 },
     { headerName: 'Price', field: 'price', resizable: true, sortable: true, width: 95 },
     { headerName: 'Quantity', field: 'quantity', resizable: true, sortable: true, width: 95 },
-    { headerName: 'Cost Basis', field: 'costBasis', resizable: true, sortable: true, width: 100 },
-    { headerName: 'Open Date', field: 'openDate', resizable: true, sortable: true, width: 110 },
+    { headerName: 'Cost Basis', field: 'costBasis', resizable: true, sortable: true, width: 105 },
+    { headerName: 'Symbol', field: 'symbol', resizable: true, sortable: true, width: 85 },
+    { headerName: 'Open Date', field: 'openDate', resizable: true, sortable: true, width: 120 },
     // { headerName: 'Change', field: 'movement_points', resizable: true, sortable: true, maxWidth: 165 },
     // { headerName: 'Change%', field: 'movement_percentage', resizable: true, sortable: true, maxWidth: 165 },
   ];
@@ -53,7 +53,7 @@ export class PortfolioComponent implements OnInit {
 
   //for historical line chart
   historyData!: any;
-  public view: any = [700, 400];
+  // public view: any = [700, 400];
   public curve: any = curveBasis;
   public showXAxis = true;
   public showYAxis = true;
