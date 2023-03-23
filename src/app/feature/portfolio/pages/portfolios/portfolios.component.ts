@@ -92,8 +92,23 @@ export class PortfoliosComponent implements OnInit {
   }
 
   async fetchHistoricalData(portfoliosData: any) {
-    const values: PortfolioValueElement[] = await lastValueFrom(this.portfolioService.getAllPortfoliosValueByDateRange("2023-01-10", "2023-01-18"));
+    const minDate = await this.getMinDateOfAllPortfolios()
+    const nowDate = new Date().toISOString().slice(0, 10)
+    const values: PortfolioValueElement[] = await lastValueFrom(this.portfolioService.getAllPortfoliosValueByDateRange(minDate, nowDate));
     this.historyData = this.sortPortfolios(portfoliosData, values);
+  }
+
+  async getMinDateOfAllPortfolios(): Promise<string> {
+    let minDate: string = "";
+    for (const portfolio of this.portfoliosData) {
+      const res = await lastValueFrom(this.portfolioService.getEarliestDateOfPortfolio(portfolio.id))
+      if (minDate === "") {
+        minDate = res.date
+      } else {
+        minDate = Date.parse(res.date) < Date.parse(minDate) ? res.date : minDate
+      }
+    }
+    return minDate
   }
 
   sortPortfolios(portfolios: PortfolioDetail[], values: PortfolioValueElement[]) {

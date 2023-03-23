@@ -18,8 +18,8 @@ export class HoldingsCardComponent implements OnInit {
   historical: any = {
     yesterdayChange: 0,
     yesterdatMovement: 0,
-    lastYearChange: 0,
-    lastYearMovement: 0
+    totalChange: 0,
+    totalMovement: 0
   };
   currentTime: Date = new Date();
 
@@ -28,9 +28,11 @@ export class HoldingsCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  ngOnChanges(): void {
-    this.getAllPortfoliosValueByDate("2023-01-18", "yesterday");
-    this.getAllPortfoliosValueByDate("2023-01-17", "lastYear");
+  async ngOnChanges(): Promise<void> {
+    const yesterdayStr = (d => new Date(d.setDate(d.getDate() - 1)))(new Date).toISOString().slice(0, 10);
+    this.getAllPortfoliosValueByDate(yesterdayStr, "yesterday");
+    const minDate = this.homeService.getMinDateOfAllPortfolios()
+    this.getAllPortfoliosValueByDate(await minDate, "total");
   }
 
   toggleShowMoney() {

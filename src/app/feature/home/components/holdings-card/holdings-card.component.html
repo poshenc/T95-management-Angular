@@ -17,11 +17,11 @@
   </div>
   <div class="flex-container">
     <p>Total P&L</p>
-    <div [ngClass]="historical.lastYearChange > 0 ? 'green-text' : 'red-text' " class="value-change-wrapper">
+    <div [ngClass]="historical.totalChange > 0 ? 'green-text' : 'red-text' " class="value-change-wrapper">
       <div *ngIf="showMoney">
-        <span *ngIf="historical.lastYearChange > 0">+</span>{{historical.lastYearChange | number : '1.2-2'}}
+        <span *ngIf="historical.totalChange > 0">+</span>{{historical.totalChange | number : '1.2-2'}}
       </div>
-      <div>(<span *ngIf="historical.lastYearChange > 0">+</span>{{historical.lastYearMovement * 100 | number :
+      <div>(<span *ngIf="historical.totalChange > 0">+</span>{{historical.totalMovement * 100 | number :
         '1.2-2'}}%) </div>
     </div>
   </div>

@@ -93,7 +93,8 @@ export class PortfolioComponent implements OnInit {
     const numbers = positionData.map(val => Number(val.price) * val.quantity);
     const currentSum = numbers.reduce((a, b) => a + b, 0) + portfolioInfo.cash; //all stocks + cash
     //fetch yesterday worth
-    const yesterdayData: PortfolioValueElement = await lastValueFrom(this.portfolioService.getPortfolioValueByPortfolioId(portfolioId, "2023-01-17"));
+    const yesterdayStr = (d => new Date(d.setDate(d.getDate() - 1)))(new Date).toISOString().slice(0, 10);
+    const yesterdayData: PortfolioValueElement = await lastValueFrom(this.portfolioService.getPortfolioValueByPortfolioId(portfolioId, yesterdayStr));
 
     //summary
     this.portfolioData.name = portfolioInfo.name;
@@ -118,7 +119,9 @@ export class PortfolioComponent implements OnInit {
 
 
   async fetchHistoricalData(portfolioInfo: PortfolioDetail) {
-    const values = await lastValueFrom(this.portfolioService.getPortfolioValueByDateRangeAndPortfolioId(portfolioInfo.id, "2023-01-10", "2023-01-18"));
+    const earliestDate = await lastValueFrom(this.portfolioService.getEarliestDateOfPortfolio(portfolioInfo.id));
+    const nowDate = new Date().toISOString().slice(0, 10);
+    const values = await lastValueFrom(this.portfolioService.getPortfolioValueByDateRangeAndPortfolioId(portfolioInfo.id, earliestDate.date, nowDate));
     this.historyData = this.sortPortfolios(values, portfolioInfo.name);
   }
 

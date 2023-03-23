@@ -103,7 +103,8 @@ export class HomeComponent implements OnInit {
       calculation[i].total = port.cash + sum; //cash + (price * quantity)
       totalSum += port.cash + sum;
       //get portfolio value for yesterday
-      const yesterdayPortfolioValue: PortfolioValueElement = await lastValueFrom(this.homeService.getPortfolioValueByPortfolioId(port.id, "2023-01-18"));
+      const yesterdayStr = (d => new Date(d.setDate(d.getDate() - 1)))(new Date).toISOString().slice(0, 10);
+      const yesterdayPortfolioValue: PortfolioValueElement = await lastValueFrom(this.homeService.getPortfolioValueByPortfolioId(port.id, yesterdayStr));
       if (yesterdayPortfolioValue !== null) {
         //calc daily movements
         calculation[i].movementAmount = (calculation[i].total - yesterdayPortfolioValue.value).toFixed(2);
@@ -115,7 +116,9 @@ export class HomeComponent implements OnInit {
   }
 
   async fetchHistoricalData() {
-    const values = await lastValueFrom(this.homeService.getAllPortfoliosValueByDateRange("2023-01-10", "2023-01-18"));
+    const yesterdayStr = (d => new Date(d.setDate(d.getDate() - 1)))(new Date).toISOString().slice(0, 10);
+    const minDate = await this.homeService.getMinDateOfAllPortfolios()
+    const values = await lastValueFrom(this.homeService.getAllPortfoliosValueByDateRange(minDate, yesterdayStr));
     this.historyData = this.sortPortfolios(values);
   }
 

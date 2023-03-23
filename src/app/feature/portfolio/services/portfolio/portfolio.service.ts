@@ -82,6 +82,12 @@ export class PortfolioService {
     return this.http.delete<any>(this.domain + `portfolios/${portfolioId}/positions/${positionId}`)
   }
 
+  //get earliest date of a portfolio
+  getEarliestDateOfPortfolio(portfolioId: number): Observable<any> {
+    const params = new HttpParams().set('portfolioId', portfolioId)
+    return this.http.get<any>(`${this.domain}portfolioHistory/portfolioBeginDate`, { params })
+  }
+
   //for pie chart
   calculateAllocations(portfolioPositions: PortfolioPositionElement[]): PieChartElement[] {
     const allocations = portfolioPositions.map(portfolio => {
