@@ -26,7 +26,7 @@ export class HoldingsCardComponent implements OnInit {
     const dialogRef = this.dialog.open(EditPortfolioComponent, {
       data: cloneData,
       width: '300px',
-      height: '450px'
+      height: '270px'
     })
 
     dialogRef.afterClosed().subscribe(action => {

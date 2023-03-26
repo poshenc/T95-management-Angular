@@ -142,7 +142,7 @@ export class PortfolioComponent implements OnInit {
     const dialogRef = this.dialog.open(NewPositionComponent, {
       data: this.portfolioId,
       width: '300px',
-      height: '350px'
+      height: '370px'
     })
 
     dialogRef.afterClosed().subscribe(action => {
@@ -158,7 +158,7 @@ export class PortfolioComponent implements OnInit {
     const dialogRef = this.dialog.open(EditPositionComponent, {
       data: data,
       width: '300px',
-      height: '350px'
+      height: '390px'
     })
 
     dialogRef.afterClosed().subscribe(action => {

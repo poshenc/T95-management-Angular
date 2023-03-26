@@ -1,7 +1,7 @@
 <div class="dialog-container">
   <div class="title-container">
     <h1 class="title">Edit <span>{{watchListName}}</span></h1>
-    <div class="btn-outline" (click)="deleteWatchlist()">Delete watchlist</div>
+    <div class="btn-danger" (click)="deleteWatchlist()">Delete watchlist</div>
   </div>
   <div class="checklist-container">
     <!-- title -->
@@ -9,7 +9,7 @@
 
     <!-- search -->
     <input type="text" class="search-bar" id="searchText" aria-describedby="searchText" [(ngModel)]="searchText"
-      [ngModelOptions]="{standalone: true}" placeholder="Search name or code..." autocomplete="off">
+      [ngModelOptions]="{standalone: true}" placeholder="Search name or code..." autocomplete="off" autofocus>
 
     <!-- checklist wrapper-->
     <div class="checklist-wrapper">

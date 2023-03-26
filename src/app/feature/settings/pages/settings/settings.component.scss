@@ -1,20 +1,95 @@
-.container {
-  display: grid;
-  grid-template-columns: 1fr;
+.background {
+  height: 100vh;
+  background-color: #565d86;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
 }
 
-.password-input {
-  height: 44px;
-  padding: 11px 14px;
-  border: 2px solid #04203c;
-  border-radius: 5px;
+.login-container {
+  height: 400px;
+  width: 300px;
+  border-radius: 8px;
+  background-color: #383c54;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.login-box {
+  width: 280px;
+  color: #ffffff;
+  padding: 20px;
+}
+
+.t95 {
+  margin: 0 auto;
+  width: fit-content;
+  font-size: 32px;
+  line-height: 32px;
+  text-align: center;
+  padding-bottom: 3px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ffffff;
+}
+
+.title {
+  font-size: 26px;
+  line-height: 28px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.input-container {
+  margin-bottom: 40px;
+}
+
+
+
+.text {
+  color: #8289b5;
+  text-align: center;
+  cursor: pointer;
+}
+
+.text:hover {
+  font-weight: 600;
+}
+
+/* Password */
+.password-hidden {
   -webkit-text-security: disc;
   font-family: text-security-disc;
 }
 
-@media (min-width: 600px) {
-  .container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-  }
+.password-hidden::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  font-family: Arial, Helvetica, sans-serif;
+  opacity: 1;
+  /* Firefox */
+}
+
+.password-hidden:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.password-hidden::-ms-input-placeholder {
+  /* Microsoft Edge */
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.displacement {
+  margin-left: 74px;
+  margin-top: -14px;
+  margin-bottom: 14px;
+}
+
+*:disabled {
+  background-color: dimgrey;
+  color: linen;
+  opacity: 1;
 }

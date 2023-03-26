@@ -1,18 +1,31 @@
-<div *ngIf="data">
-  <div>Name</div>
-  <input class="input-outline" type="text" placeholder="Enter name..." [(ngModel)]="data.name">
-  <div>Email</div>
-  <input class="input-outline" type="text" placeholder="Enter email..." [(ngModel)]="data.email">
-  <div>Password</div>
-  <div class="container">
-    <div>
-      <label for="password">New Password</label>
-      <input type="text" class="password-input" [(ngModel)]="data.password" autocomplete="off" />
-    </div>
-    <div>
-      <label for="confirmPassword">Confirm Password</label>
-      <input type="text" class="password-input" [(ngModel)]="data.confirmPassword" autocomplete="off" />
+<div class="background">
+  <div class="title">Account settings</div>
+  <div class="login-container" *ngIf="data">
+    <div class="login-box">
+      <div class="input-container">
+        <div class="input-wrapper">
+          <i class="bi bi-person-circle"></i>
+          <input class="actions" type="text" placeholder="Enter name..." [(ngModel)]="data.name">
+        </div>
+        <div class="input-wrapper">
+          <i class="bi bi-envelope"></i>
+          <input class="actions" type="text" placeholder="Enter email..." [(ngModel)]="data.email">
+        </div>
+        <div class="input-wrapper">
+          <i class="bi bi-unlock-fill"></i>
+          <input type="text" class="actions password-hidden" placeholder="New password..." [(ngModel)]="data.password"
+            autocomplete="off" />
+        </div>
+        <div class="input-wrapper">
+          <div class="blank-icon"></div>
+          <input type="text" class="actions password-hidden" [(ngModel)]="data.confirmPassword"
+            placeholder="Confirm Password..." autocomplete="off" />
+        </div>
+        <div class="input-wrapper">
+          <div class="blank-icon"></div>
+          <button class="actions btn-outline" [disabled]="checkFields()" (click)="onConfirm()">Confirm</button>
+        </div>
+      </div>
     </div>
   </div>
-  <button class="btn-outline" (click)="onConfirm()" [disabled]="checkFields()">Confirm</button>
 </div>

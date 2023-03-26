@@ -39,6 +39,5 @@ export class SettingsComponent implements OnInit {
   checkFields() {
     const valid: boolean = this.data.name !== '' && this.data.email !== '' && this.data.password === this.data.confirmPassword;
     return !valid
-
   }
 }

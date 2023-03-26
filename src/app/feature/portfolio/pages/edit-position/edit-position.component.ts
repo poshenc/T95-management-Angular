@@ -37,8 +37,25 @@ export class EditPositionComponent implements OnInit {
   }
 
   async onClosePosition() {
-    await lastValueFrom(this.portfolioService.closePosition(Number(this.data.positionId), Number(this.data.portfolioId)));
-    this.closeDialog('onConfirm');
+    console.log("this.position", this.position);
+
+    // await lastValueFrom(this.portfolioService.closePosition(Number(this.data.positionId), Number(this.data.portfolioId)));
+    this.closeDialog('close');
+
+
+    //other
+    // const dialogRef = this.dialog.open(EditPositionComponent, {
+    //   data: this.position,
+    //   width: '300px',
+    //   height: '390px'
+    // })
+
+    // dialogRef.afterClosed().subscribe(action => {
+    //   if (action === 'onConfirm') {
+    //     this.fetchPortfolioPositions(this.portfolioId);
+    //   }
+    // })
+
   }
 
   checkFields(): boolean {

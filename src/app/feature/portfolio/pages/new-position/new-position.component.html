@@ -1,15 +1,20 @@
 <div class="dialog-container">
   <h1 class="title">Add position</h1>
-  <input class="input-outline" type="date" [(ngModel)]="position.openDate">
-  <p>RWD change to horizontal table</p>
+  <input class="actions date-outline mb-20px" type="date" [(ngModel)]="position.openDate">
   <!-- option select with search -->
-  <ng-select [items]="stocklist" [virtualScroll]="true" bindLabel="name" bindValue="id" placeholder="Select symbol"
-    [(ngModel)]="position.stockId">
+  <ng-select class="actions mb-20px" [items]="stocklist" [virtualScroll]="true" bindLabel="name" bindValue="id"
+    placeholder="Select symbol" [(ngModel)]="position.stockId">
   </ng-select>
-  <input class="input-outline" type="number" placeholder="Enter quantity..." [(ngModel)]="position.quantity">
-  <input class="input-outline" type="number" placeholder="Enter cost..." [(ngModel)]="position.costBasis">
+  <div class="input-wrapper">
+    <div class="input-title">Qty: </div>
+    <input class="actions" type="number" placeholder="Enter quantity...." [(ngModel)]="position.quantity">
+  </div>
+  <div class="input-wrapper">
+    <div class="input-title">Cost:</div>
+    <input class="actions" type="number" placeholder="Enter cost...." [(ngModel)]="position.costBasis">
+  </div>
   <div class="btn-container">
-    <button class="btn-outline" (click)="closeDialog('onCancel')">Cancel</button>
+    <button class="btn-danger" (click)="closeDialog('onCancel')">Cancel</button>
     <button class="btn-outline" (click)="onConfirm()" [disabled]="checkFields()">Confirm</button>
   </div>
 </div>

@@ -1,9 +1,13 @@
 <div class="dialog-container">
   <h1 class="title">Create new portfolio</h1>
-  <input class="input-outline" type="text" placeholder="Enter name..." [(ngModel)]="data.name">
-  <input class="input-outline" type="number" placeholder="Enter cash..." [(ngModel)]="data.cash">
+  <div class="input-wrapper">
+    <input class="actions" type="text" placeholder="Enter name..." [(ngModel)]="data.name">
+  </div>
+  <div class="input-wrapper">
+    <input class="actions" type="number" placeholder="Enter cash..." [(ngModel)]="data.cash">
+  </div>
   <div class="btn-container">
-    <button class="btn-outline" (click)="closeDialog('onCancel')">Cancel</button>
+    <button class="btn-danger" (click)="closeDialog('onCancel')">Cancel</button>
     <button class="btn-outline" (click)="onConfirm()" [disabled]="checkFields()">Confirm</button>
   </div>
 </div>
