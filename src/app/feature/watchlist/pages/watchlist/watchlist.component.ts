@@ -25,10 +25,12 @@ export class WatchlistComponent implements OnInit {
 
   async fetchData() {
     this.watchlists = await lastValueFrom(this.watchlistService.getWatchlists());
-    this.currentWatchlist = this.watchlists[0].name;
-    this.currentWatchlistId = this.watchlists[0].id;
-    if (this.currentWatchlistId) {
-      this.watchlistData = await lastValueFrom(this.watchlistService.getWatchedStocks(this.currentWatchlistId));
+    if (this.watchlists.length > 0) {
+      this.currentWatchlist = this.watchlists[0].name;
+      this.currentWatchlistId = this.watchlists[0].id;
+      if (this.currentWatchlistId) {
+        this.watchlistData = await lastValueFrom(this.watchlistService.getWatchedStocks(this.currentWatchlistId));
+      }
     }
 
   }

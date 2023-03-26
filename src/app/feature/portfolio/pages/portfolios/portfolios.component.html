@@ -3,33 +3,38 @@
     <div>Portfolios</div>
     <button class="btn-outline-dark" (click)="onNewPortfolio()">Create Portfolio</button>
   </div>
-  <!-- legend-->
-  <app-custom-legend *ngIf="allPortfoliosWithColor.length > 0" [data]="allPortfoliosWithColor"
-    [onTrueHoverEvent]="onHoverTrueEmitSubject" [onFalseHoverEvent]="onHoverFalseEmitSubject"
-    (onClickEvent)="onClickEmit($event)">
-  </app-custom-legend>
-  <div class="grid-container">
-    <!-- portfolio allocations-->
-    <div class="position-relative">
-      <h3>Portfolios</h3>
-      <div *ngIf="portfoliosLoaded" class="pie-chart-container">
-        <ngx-charts-pie-chart [results]="allPortfolios" [labels]="true" (select)="onPieSelect($event)"
-          (activate)="onHover($event)" (deactivate)="onHoverFalse($event)" aria-hidden="false">
-        </ngx-charts-pie-chart>
+  <div *ngIf="portfoliosData.length > 0">
+    <!-- legend-->
+    <app-custom-legend *ngIf="allPortfoliosWithColor.length > 0" [data]="allPortfoliosWithColor"
+      [onTrueHoverEvent]="onHoverTrueEmitSubject" [onFalseHoverEvent]="onHoverFalseEmitSubject"
+      (onClickEvent)="onClickEmit($event)">
+    </app-custom-legend>
+    <div class="grid-container">
+      <!-- portfolio allocations-->
+      <div class="position-relative">
+        <h3>Allocation of portfolios</h3>
+        <div *ngIf="portfoliosLoaded" class="pie-chart-container">
+          <ngx-charts-pie-chart [results]="allPortfolios" [labels]="true" (select)="onPieSelect($event)"
+            (activate)="onHover($event)" (deactivate)="onHoverFalse($event)" aria-hidden="false">
+          </ngx-charts-pie-chart>
+        </div>
+      </div>
+      <!-- position allocations-->
+      <div class="position-relative">
+        <h3>Allocation of positions</h3>
+        <div *ngIf="positionsLoaded" class="pie-chart-container">
+          <ngx-charts-pie-chart [results]="allPositions" [labels]="true">
+          </ngx-charts-pie-chart>
+        </div>
       </div>
     </div>
-    <!-- position allocations-->
-    <div class="position-relative">
-      <h3>Positions</h3>
-      <div *ngIf="positionsLoaded" class="pie-chart-container">
-        <ngx-charts-pie-chart [results]="allPositions" [labels]="true">
-        </ngx-charts-pie-chart>
-      </div>
+    <!-- total wealth history chart-->
+    <div class="line-chart-container">
+      <ngx-charts-line-chart [results]="historyData" [curve]="curve" [gradient]="gradient" [yAxis]="showYAxis">
+      </ngx-charts-line-chart>
     </div>
   </div>
-  <!-- total wealth history chart-->
-  <div class="line-chart-container">
-    <ngx-charts-line-chart [results]="historyData" [curve]="curve" [gradient]="gradient" [yAxis]="showYAxis">
-    </ngx-charts-line-chart>
+  <div *ngIf="!(portfoliosData.length > 0)">
+    Hint: You can create a new portfolio by clicking the button on the top right corner.
   </div>
 </div>

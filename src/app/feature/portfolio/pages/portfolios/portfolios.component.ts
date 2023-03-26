@@ -59,11 +59,13 @@ export class PortfoliosComponent implements OnInit {
     this.allPortfolios = [];
     this.allPositions = [];
     this.portfoliosData = await lastValueFrom(this.portfolioService.getPortfolios());
-    this.fetchHistoricalData(this.portfoliosData);
-    const portfolioPositions = await this.runAsync(this.portfoliosData);
-    this.portfoliosLoaded = true;
-    this.allPositions = this.portfolioService.calculateAllocations(portfolioPositions);
-    this.positionsLoaded = true;
+    if (this.portfoliosData.length > 0) {
+      this.fetchHistoricalData(this.portfoliosData);
+      const portfolioPositions = await this.runAsync(this.portfoliosData);
+      this.portfoliosLoaded = true;
+      this.allPositions = this.portfolioService.calculateAllocations(portfolioPositions);
+      this.positionsLoaded = true;
+    }
   }
 
   async runAsync(portfoliosData: any): Promise<PortfolioPositionElement[]> {

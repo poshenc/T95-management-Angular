@@ -5,6 +5,12 @@
     (refreshWatchlist)='refreshWatchlist()'>
   </app-watchlist-header>
 
-  <app-watchlist-grid [watchlistData]=' watchlistData'>
-  </app-watchlist-grid>
+  <div *ngIf="this.watchlists.length > 0">
+    <app-watchlist-grid [watchlistData]=' watchlistData'>
+    </app-watchlist-grid>
+  </div>
+  <div *ngIf="!(this.watchlists.length > 0)">
+    Hint: You can create a new watchlist by clicking the plus sign button on the top.
+  </div>
+
 </div>
