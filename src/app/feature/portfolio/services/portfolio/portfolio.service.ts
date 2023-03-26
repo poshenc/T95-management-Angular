@@ -61,6 +61,11 @@ export class PortfolioService {
     return this.http.put<any>(this.domain + `portfolios/${originalName}`, data)
   }
 
+  //only add cash to portfolio
+  addCashToPortfolio(portfolioId: any, data: any): Observable<unknown> {
+    return this.http.post<any>(this.domain + `portfolios/${portfolioId}/cash`, data)
+  }
+
   //delete portfolio by user
   deletePortfolio(name: any): Observable<unknown> {
     const params = new HttpParams().set('name', name)

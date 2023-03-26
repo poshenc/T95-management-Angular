@@ -1,8 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { lastValueFrom } from 'rxjs';
 import { PositionElement } from '../../models/position.model';
 import { PortfolioService } from '../../services/portfolio/portfolio.service';
+import { ConfirmCloseComponent } from '../confirm-close/confirm-close.component';
 
 @Component({
   selector: 'app-edit-position',
@@ -13,7 +14,7 @@ export class EditPositionComponent implements OnInit {
 
   position: any;
 
-  constructor(private portfolioService: PortfolioService, private dialogRef: MatDialogRef<EditPositionComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
+  constructor(private portfolioService: PortfolioService, private dialog: MatDialog, private dialogRef: MatDialogRef<EditPositionComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
     this.position = { ...data };
   }
 
@@ -37,25 +38,18 @@ export class EditPositionComponent implements OnInit {
   }
 
   async onClosePosition() {
-    console.log("this.position", this.position);
+    //open a confirm close dialog with add cash dialog
+    const confirmCloseDialogRef = this.dialog.open(ConfirmCloseComponent, {
+      data: this.position,
+      width: '350px',
+      height: '440px'
+    })
 
-    // await lastValueFrom(this.portfolioService.closePosition(Number(this.data.positionId), Number(this.data.portfolioId)));
-    this.closeDialog('close');
-
-
-    //other
-    // const dialogRef = this.dialog.open(EditPositionComponent, {
-    //   data: this.position,
-    //   width: '300px',
-    //   height: '390px'
-    // })
-
-    // dialogRef.afterClosed().subscribe(action => {
-    //   if (action === 'onConfirm') {
-    //     this.fetchPortfolioPositions(this.portfolioId);
-    //   }
-    // })
-
+    confirmCloseDialogRef.afterClosed().subscribe(async action => {
+      if (action === 'onConfirmAddCash') {
+        this.closeDialog('onConfirm');
+      }
+    })
   }
 
   checkFields(): boolean {

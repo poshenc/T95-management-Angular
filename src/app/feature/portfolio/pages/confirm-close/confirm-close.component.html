@@ -1,0 +1,36 @@
+<div class="dialog-container">
+  <h1 class="title">Confirm to close position and update cash Balance</h1>
+  <div class="input-wrapper">
+    <div class="input-title">Position: </div>
+    <input class="actions" type="text" [(ngModel)]="data.name" disabled>
+  </div>
+  <div class="input-wrapper">
+    <div class="input-title">Quantity: </div>
+    <input class="actions" type="number" [(ngModel)]="data.quantity" disabled>
+  </div>
+  <div class="input-wrapper">
+    <div class="input-title">Market Price:</div>
+    <input class="actions" type="number" [(ngModel)]="data.price" disabled>
+  </div>
+  <div class="input-wrapper">
+    <div class="input-title">Add cash $:</div>
+    <input class="actions" type="number" [(ngModel)]="data.addCashAmount">
+  </div>
+  <!-- <input class="date-outline" type="date" [(ngModel)]="position.openDate">
+  <div class="input-wrapper">
+    <div class="input-title">Symbol: </div>
+    <input class="actions" type="text" [value]="position.name" disabled>
+  </div>
+  <div class="input-wrapper">
+    <div class="input-title">Qty: </div>
+    <input class="actions" type="number" placeholder="Enter quantity...." [(ngModel)]="position.quantity">
+  </div>
+  <div class="input-wrapper">
+    <div class="input-title">Cost:</div>
+    <input class="actions" type="number" placeholder="Enter cost...." [(ngModel)]="position.costBasis">
+  </div> -->
+  <div class="btn-container">
+    <button class="btn-danger" (click)="closeDialog('onCancel')">Cancel</button>
+    <button class="btn-outline" (click)="onConfirm()">Confirm</button>
+  </div>
+</div>
