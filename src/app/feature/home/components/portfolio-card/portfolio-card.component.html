@@ -39,15 +39,15 @@
           <!-- movement_points Column -->
           <ng-container matColumnDef="movement_points">
             <td mat-cell *matCellDef="let element" width="20%">
-              <div class="movement-points">{{element.movement_points}}</div>
+              <div class="price-text">{{element.price}}</div>
             </td>
           </ng-container>
           <!-- price Column -->
           <ng-container matColumnDef="price">
             <td mat-cell *matCellDef="let element" width="20%">
               <div class="align-right">
-                <div class="movement-card">
-                  <div>{{element.price}}</div>
+                <div class="movement-card" [ngClass]="{'green-movement-card': element.movement_points > 0 }">
+                  <div>{{element.movement_points}}</div>
                   <div>{{element.movement_percentage}}</div>
                 </div>
               </div>

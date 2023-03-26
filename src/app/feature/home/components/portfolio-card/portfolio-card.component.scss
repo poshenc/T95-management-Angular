@@ -42,7 +42,7 @@
   font-weight: 100;
 }
 
-.movement-points {
+.price-text {
   font-size: 18px;
   margin: auto 0;
 }
@@ -59,13 +59,17 @@
   align-items: flex-end;
   width: 100px;
   border-radius: 5px;
-  background-color: green;
+  background-color: rgb(218, 132, 132);
 
   padding: 2px 5px;
 
   p:first-child {
     font-size: 16px;
   }
+}
+
+.green-movement-card {
+  background-color: rgb(110, 158, 126);
 }
 
 //expand and collapse feature
@@ -95,11 +99,11 @@ table {
   background-color: rgb(126, 123, 123);
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
+  color: #ffffff;
 }
 
 .mat-table td:last-child {
-  padding-right: 15px;
-  padding-bottom: 15px;
+  padding: 7px 15px 7px 0;
 }
 
 .mat-table td:first-child {
