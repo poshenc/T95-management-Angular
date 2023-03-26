@@ -13,7 +13,7 @@ export class ConfirmCloseComponent implements OnInit {
   constructor(private portfolioService: PortfolioService, private dialogRef: MatDialogRef<ConfirmCloseComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
-    this.data.addCashAmount = this.data.quantity * this.data.price;
+    this.data.addCashAmount = Math.round(this.data.quantity * this.data.price);
   }
 
   closeDialog(action: string) {
