@@ -10,23 +10,26 @@
   </app-custom-legend>
   <div class="grid-container">
     <!-- portfolio allocations-->
-    <div *ngIf="portfoliosLoaded" class="pie-chart-container">
+    <div class="position-relative">
       <h3>Portfolios</h3>
-      <ngx-charts-pie-chart [results]="allPortfolios" [labels]="true" (select)="onPieSelect($event)"
-        (activate)="onHover($event)" (deactivate)="onHoverFalse($event)" aria-hidden="false">
-      </ngx-charts-pie-chart>
+      <div *ngIf="portfoliosLoaded" class="pie-chart-container">
+        <ngx-charts-pie-chart [results]="allPortfolios" [labels]="true" (select)="onPieSelect($event)"
+          (activate)="onHover($event)" (deactivate)="onHoverFalse($event)" aria-hidden="false">
+        </ngx-charts-pie-chart>
+      </div>
     </div>
     <!-- position allocations-->
-    <div *ngIf="positionsLoaded" class="pie-chart-container">
+    <div class="position-relative">
       <h3>Positions</h3>
-      <ngx-charts-pie-chart [results]="allPositions" [labels]="true">
-      </ngx-charts-pie-chart>
+      <div *ngIf="positionsLoaded" class="pie-chart-container">
+        <ngx-charts-pie-chart [results]="allPositions" [labels]="true">
+        </ngx-charts-pie-chart>
+      </div>
     </div>
   </div>
   <!-- total wealth history chart-->
   <div class="line-chart-container">
-    <ngx-charts-line-chart [results]="historyData" [curve]="curve" [gradient]="gradient" [xAxis]="showXAxis"
-      [yAxis]="showYAxis">
+    <ngx-charts-line-chart [results]="historyData" [curve]="curve" [gradient]="gradient" [yAxis]="showYAxis">
     </ngx-charts-line-chart>
   </div>
 </div>

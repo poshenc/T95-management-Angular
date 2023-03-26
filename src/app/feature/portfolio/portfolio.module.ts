@@ -15,6 +15,7 @@ import { PortfolioComponent } from './pages/portfolio/portfolio.component';
 import { PortfoliosComponent } from './pages/portfolios/portfolios.component';
 import { PortfolioRoutingModule } from './portfolio-routing.module';
 import { EditPositionComponent } from './pages/edit-position/edit-position.component';
+import { ConfirmCloseComponent } from './pages/confirm-close/confirm-close.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { EditPositionComponent } from './pages/edit-position/edit-position.compo
     HoldingsCardComponent,
     NewPositionComponent,
     BtnCellRendererComponent,
-    EditPositionComponent
+    EditPositionComponent,
+    ConfirmCloseComponent
   ],
   imports: [
     CommonModule,

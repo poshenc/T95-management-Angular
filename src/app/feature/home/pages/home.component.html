@@ -5,8 +5,8 @@
       <app-profile-card></app-profile-card>
       <!-- total wealth history chart-->
       <div class="chart-container">
-        <ngx-charts-line-chart [results]="historyData" [curve]="curve" [gradient]="gradient" [xAxis]="showXAxis"
-          [yAxis]="showYAxis" [showXAxisLabel]="showXAxisLabel">
+        <ngx-charts-line-chart [results]="historyData" [curve]="curve" [gradient]="gradient" [yAxis]="showYAxis"
+          [showXAxisLabel]="showXAxisLabel">
         </ngx-charts-line-chart>
       </div>
       <app-holdings-card [(showMoney)]="showMoney" [currentTotal]="currentTotal"></app-holdings-card>

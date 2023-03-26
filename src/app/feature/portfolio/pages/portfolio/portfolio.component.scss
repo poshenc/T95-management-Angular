@@ -43,12 +43,6 @@
 .grid-container {
   display: grid;
   grid-template-columns: 1fr;
-
-  h3 {
-    margin-left: 20px;
-    position: absolute;
-    color: #ffffff;
-  }
 }
 
 @media (min-width: 800px) {
@@ -57,4 +51,10 @@
     grid-gap: 10px;
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+.chart-title {
+  position: absolute;
+  margin-left: 20px;
+  color: #ffffff;
 }
