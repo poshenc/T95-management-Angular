@@ -116,9 +116,9 @@ export class HomeComponent implements OnInit {
   }
 
   async fetchHistoricalData() {
-    const yesterdayStr = (d => new Date(d.setDate(d.getDate() - 1)))(new Date).toISOString().slice(0, 10);
+    const nowDate = new Date().toISOString().slice(0, 10);
     const minDate = await this.homeService.getMinDateOfAllPortfolios()
-    const values = await lastValueFrom(this.homeService.getAllPortfoliosValueByDateRange(minDate, yesterdayStr));
+    const values = await lastValueFrom(this.homeService.getAllPortfoliosValueByDateRange(minDate, nowDate));
     this.historyData = this.sortPortfolios(values);
   }
 
