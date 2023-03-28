@@ -1,27 +1,73 @@
-# T95
+# Project Title
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.0.
+**T95 Wealth Management**  
 
-## Development server
+This repository is the front-end part of T95 Wealth Management Web App, which is built with Angular 14.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Demo Link:
 
-## Build
+[http://t95-angular.s3-website-ap-southeast-1.amazonaws.com/](http://t95-angular.s3-website-ap-southeast-1.amazonaws.com/)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+This project was deployed on AWS S3.
+
+
+
+## Test Account
+
+**Username:** demo001
+
+**Password:** demo001
+
+
+
+## About The App
+
+Intro to app, features.
+
+
+
+## Screenshots
+
+Shots
+
+
+
+## Technologies
+
++ Angular/HTML/CSS/TypeScript
++ Responsive Web Design (RWD)
++ Modular Architecture
++ Jasmine Unit Tests
++ Websockets
++ Rxjs
++ Routes Authentication Gaurds
++ JWT Interceptors
++ Directives
++ Lazy Loading
++ JWT token and Sessions
++ Ngx-Chart
++ String Validation Utils
++ Two-way Property and Event Binding
+
+
+
+## Setup
+
++ Download or clone the repository
++ Run `npm install` 
++ Run `ng serve`
++ Navigate to `http://localhost:4235/`
+
+
 
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
+## Credits
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Contributor:  [Johnson Chen (PO-Shen Chen)](https://github.com/poshenc)
