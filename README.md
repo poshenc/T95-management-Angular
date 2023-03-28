@@ -1,6 +1,6 @@
 # Project Title
 
-**T95 Wealth Management**  
+**T95 Wealth Management (Front-end)**  
 
 This repository is the front-end part of T95 Wealth Management Web App, which is built with Angular 14.
 
